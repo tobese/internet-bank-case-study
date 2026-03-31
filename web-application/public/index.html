@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Internet Banking Calculator</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #f5f7fa;
+      color: #1a1a1a;
+      display: flex;
+      justify-content: center;
+      padding: 60px 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.08);
+      padding: 32px;
+      width: 100%;
+      max-width: 460px;
+    }
+
+    .logo {
+      display: block;
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto 20px;
+      border-radius: 10px;
+    }
+
+    h1 {
+      font-size: 1.4rem;
+      margin-bottom: 4px;
+    }
+
+    .subtitle {
+      font-size: .85rem;
+      color: #666;
+      margin-bottom: 24px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px 12px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+      transition: border-color .2s;
+    }
+
+    input[type="text"]:focus { border-color: #4a90d9; }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      flex: 1;
+      padding: 10px;
+      font-size: .95rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .2s;
+    }
+
+    .btn-primary { background: #4a90d9; color: #fff; }
+    .btn-primary:hover { background: #3a7bc8; }
+
+    .btn-fac { background: #34a853; color: #fff; }
+    .btn-fac:hover { background: #2b9245; }
+
+    .btn-fib { background: #f9a825; color: #fff; }
+    .btn-fib:hover { background: #e09000; }
+
+    .result-box {
+      margin-top: 20px;
+      padding: 14px;
+      background: #f0f4f8;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      min-height: 48px;
+      word-break: break-all;
+    }
+
+    .result-box.error { background: #fdecea; color: #c62828; }
+
+    .history {
+      margin-top: 24px;
+      border-top: 1px solid #eee;
+      padding-top: 16px;
+    }
+
+    .history h2 { font-size: 1rem; margin-bottom: 8px; }
+
+    .history ul {
+      list-style: none;
+      font-size: .9rem;
+      color: #444;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .history li {
+      padding: 4px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img src="/resources/doggerbank.png" alt="Doggerbank" class="logo" />
+    <h1>Internet Banking Calculator</h1>
+    <p class="subtitle">Arithmetic, factorial &amp; Fibonacci – powered by the Java Math API</p>
+
+    <label for="expr">Expression</label>
+    <input id="expr" type="text" placeholder='e.g. 3 + 4, fac(5), fib(10)' autofocus />
+
+    <div class="actions">
+      <button class="btn-primary" id="btnCalc">Calculate</button>
+      <button class="btn-fac" id="btnFac">fac(n)</button>
+      <button class="btn-fib" id="btnFib">fib(n)</button>
+    </div>
+
+    <div class="result-box" id="result">Enter an expression above</div>
+
+    <div class="history">
+      <h2>History</h2>
+      <ul id="history"></ul>
+    </div>
+  </div>
+
+  <script>
+    const API = "http://localhost:8282/api";
+    const exprInput = document.getElementById("expr");
+    const resultBox = document.getElementById("result");
+    const historyList = document.getElementById("history");
+
+    // ── helpers ──────────────────────────────────────────
+    function showResult(text, isError) {
+      resultBox.textContent = text;
+      resultBox.classList.toggle("error", !!isError);
+    }
+
+    function addHistory(expr, result) {
+      const li = document.createElement("li");
+      li.textContent = `${expr}  =  ${result}`;
+      historyList.prepend(li);
+    }
+
+    async function callApi(path) {
+      const res = await fetch(`${API}${path}`);
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.error || "API error");
+      return json.result;
+    }
+
+    function basicCalc(expression) {
+      const m = expression.match(/^\s*(-?\d+(?:\.\d+)?)\s*([+\-*/])\s*(-?\d+(?:\.\d+)?)\s*$/);
+      if (!m) return null;
+      const a = parseFloat(m[1]);
+      const op = m[2];
+      const b = parseFloat(m[3]);
+      switch (op) {
+        case "+": return a + b;
+        case "-": return a - b;
+        case "*": return a * b;
+        case "/": return b === 0 ? "Error: division by zero" : a / b;
+      }
+    }
+
+    // ── evaluate ────────────────────────────────────────
+    async function evaluate(input) {
+      const trimmed = input.trim().toLowerCase();
+
+      const fnMatch = trimmed.match(/^(fac|fib)\((\d+)\)$/);
+      if (fnMatch) {
+        return callApi(`/${fnMatch[1]}/${fnMatch[2]}`);
+      }
+
+      const result = basicCalc(trimmed);
+      if (result !== null) return result;
+
+      throw new Error('Unknown expression. Try "3 + 4", "fac(5)", or "fib(10)".');
+    }
+
+    async function handleSubmit() {
+      const input = exprInput.value.trim();
+      if (!input) return;
+      try {
+        const result = await evaluate(input);
+        showResult(result, false);
+        addHistory(input, result);
+      } catch (err) {
+        showResult(err.message, true);
+      }
+    }
+
+    // ── shortcut buttons ────────────────────────────────
+    document.getElementById("btnCalc").addEventListener("click", handleSubmit);
+
+    document.getElementById("btnFac").addEventListener("click", async () => {
+      const n = exprInput.value.trim();
+      if (!/^\d+$/.test(n)) { showResult("Enter a number for fac(n)", true); return; }
+      try {
+        const result = await callApi(`/fac/${n}`);
+        showResult(result, false);
+        addHistory(`fac(${n})`, result);
+      } catch (err) { showResult(err.message, true); }
+    });
+
+    document.getElementById("btnFib").addEventListener("click", async () => {
+      const n = exprInput.value.trim();
+      if (!/^\d+$/.test(n)) { showResult("Enter a number for fib(n)", true); return; }
+      try {
+        const result = await callApi(`/fib/${n}`);
+        showResult(result, false);
+        addHistory(`fib(${n})`, result);
+      } catch (err) { showResult(err.message, true); }
+    });
+
+    exprInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") handleSubmit();
+    });
+  </script>
+</body>
+</html>
