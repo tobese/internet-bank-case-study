@@ -1,0 +1,10 @@
+{
+  "name": "node-calculator",
+  "version": "1.0.0",
+  "description": "CLI calculator with fac/fib powered by the Java Math API",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {}
+}
