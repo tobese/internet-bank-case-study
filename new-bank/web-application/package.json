@@ -1,0 +1,10 @@
+{
+  "name": "web-server",
+  "version": "1.0.0",
+  "description": "Web client for the Java Math API – factorial & Fibonacci calculator",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {}
+}
