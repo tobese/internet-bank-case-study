@@ -5,9 +5,10 @@ metadata:
   labels:
     app: api
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     app: api
   ports:
     - port: 8282
       targetPort: 8282
+      nodePort: 30282

@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: web
+  name: web-client
   labels:
-    app: web
+    app: web-client
 spec:
   type: LoadBalancer
   selector:
-    app: web
+    app: web-client
   ports:
     - port: 80
-      targetPort: 3000
+      targetPort: 80

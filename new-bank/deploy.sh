@@ -42,10 +42,10 @@ done
 # Build image names
 if [[ -n "$REGISTRY" ]]; then
   API_IMAGE="${REGISTRY}/internet-bank/api-application:${TAG}"
-  WEB_IMAGE="${REGISTRY}/internet-bank/web-application:${TAG}"
+  WEB_CLIENT_IMAGE="${REGISTRY}/internet-bank/web-client:${TAG}"
 else
   API_IMAGE="internet-bank/api-application:${TAG}"
-  WEB_IMAGE="internet-bank/web-application:${TAG}"
+  WEB_CLIENT_IMAGE="internet-bank/web-client:${TAG}"
 fi
 
 # ── Pre-flight checks ───────────────────────────────────────────────
@@ -67,13 +67,13 @@ if [[ "$SKIP_BUILD" == false ]]; then
   echo "==> Building API image: ${API_IMAGE}"
   docker build -t "$API_IMAGE" "$SCRIPT_DIR/api-application"
 
-  echo "==> Building Web image: ${WEB_IMAGE}"
-  docker build -t "$WEB_IMAGE" "$SCRIPT_DIR/web-application"
+  echo "==> Building Web Client image: ${WEB_CLIENT_IMAGE}"
+  docker build -t "$WEB_CLIENT_IMAGE" "$SCRIPT_DIR/multi-client"
 
   if [[ -n "$REGISTRY" ]]; then
     echo "==> Pushing images to registry..."
     docker push "$API_IMAGE"
-    docker push "$WEB_IMAGE"
+    docker push "$WEB_CLIENT_IMAGE"
   fi
 else
   echo "==> Skipping Docker builds (--skip-build)"
@@ -83,7 +83,7 @@ fi
 if [[ -z "$REGISTRY" ]] && command -v minikube &>/dev/null && minikube status &>/dev/null; then
   echo "==> Loading images into minikube..."
   minikube image load "$API_IMAGE"
-  minikube image load "$WEB_IMAGE"
+  minikube image load "$WEB_CLIENT_IMAGE"
 fi
 
 # ── Update manifests if using a custom registry/tag ──────────────────
@@ -95,7 +95,7 @@ if [[ -n "$REGISTRY" || "$TAG" != "latest" ]]; then
   cp "$SCRIPT_DIR/k8s/"*.yaml "$TMPDIR_K8S/"
 
   sed -i.bak "s|image: .*api-application.*|image: ${API_IMAGE}|" "$TMPDIR_K8S/api-deployment.yaml"
-  sed -i.bak "s|image: .*web-application.*|image: ${WEB_IMAGE}|" "$TMPDIR_K8S/web-deployment.yaml"
+  sed -i.bak "s|image: .*web-client.*|image: ${WEB_CLIENT_IMAGE}|" "$TMPDIR_K8S/web-client-deployment.yaml"
   rm -f "$TMPDIR_K8S/"*.bak
 
   DEPLOY_DIR="$TMPDIR_K8S"
@@ -112,14 +112,14 @@ kubectl apply -f "$DEPLOY_DIR/"
 if [[ "$SKIP_BUILD" == false ]]; then
   echo "==> Restarting deployments to pick up new images..."
   kubectl rollout restart deployment/api
-  kubectl rollout restart deployment/web
+  kubectl rollout restart deployment/web-client
 fi
 
 echo "==> Waiting for API deployment to roll out..."
 kubectl rollout status deployment/api --timeout=120s
 
-echo "==> Waiting for Web deployment to roll out..."
-kubectl rollout status deployment/web --timeout=120s
+echo "==> Waiting for Web Client deployment to roll out..."
+kubectl rollout status deployment/web-client --timeout=120s
 
 # Clean up temp dir if used
 if [[ "${DEPLOY_DIR}" != "$SCRIPT_DIR/k8s" ]]; then
@@ -129,18 +129,18 @@ fi
 # ── Post-deploy info ─────────────────────────────────────────────────
 echo ""
 echo "==> Deployment complete!"
-kubectl get pods -l 'app in (api,web)'
+kubectl get pods -l 'app in (api,web-client)'
 echo ""
-kubectl get services -l 'app in (api,web)'
+kubectl get services -l 'app in (api,web-client)'
 
 if [[ "$PORT_FORWARD" == true ]]; then
   echo ""
   echo "==> Port-forwarding web service to localhost:${LOCAL_PORT}..."
   echo "    Press Ctrl+C to stop."
-  kubectl port-forward service/web "${LOCAL_PORT}:80"
+  kubectl port-forward service/web-client "${LOCAL_PORT}:80"
 else
   echo ""
-  echo "Access the application via the web service's EXTERNAL-IP on port 80."
+  echo "Access the application via the web-client service's EXTERNAL-IP on port 80."
   echo "For local clusters (minikube/kind), re-run with --port-forward or use:"
-  echo "  kubectl port-forward service/web 8080:80"
+  echo "  kubectl port-forward service/web-client 8080:80"
 fi

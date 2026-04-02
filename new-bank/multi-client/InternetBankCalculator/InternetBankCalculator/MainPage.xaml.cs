@@ -9,12 +9,19 @@ namespace InternetBankCalculator;
 
 public sealed partial class MainPage : Page
 {
-    // TODO: Update this URL to point at your running API instance.
-    // Android emulator: use 10.0.2.2 instead of localhost.
-    // WASM: use the host the WASM app is served from, or a CORS-enabled API URL.
-    private const string ApiBaseUrl = "http://localhost:8282";
+    private readonly MathApiService _api = new(GetApiBaseUrl());
 
-    private readonly MathApiService _api = new(ApiBaseUrl);
+    private static string GetApiBaseUrl()
+    {
+#if __WASM__
+        // When served from a container (nginx), /api/* is reverse-proxied to
+        // the backend API service, so we use the current page's origin.
+        return Uno.Foundation.WebAssemblyRuntime.InvokeJS("window.location.origin");
+#else
+        // Android emulator: use 10.0.2.2 instead of localhost.
+        return "http://localhost:8282";
+#endif
+    }
     private readonly ObservableCollection<string> _history = new();
 
     public MainPage()

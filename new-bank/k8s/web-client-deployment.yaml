@@ -1,37 +1,34 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web
+  name: web-client
   labels:
-    app: web
+    app: web-client
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: web
+      app: web-client
   template:
     metadata:
       labels:
-        app: web
+        app: web-client
     spec:
       containers:
-        - name: web
-          image: internet-bank/web-application:latest
+        - name: web-client
+          image: internet-bank/web-client:latest
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 3000
-          env:
-            - name: API_URL
-              value: "http://api:8282"
+            - containerPort: 80
           readinessProbe:
             httpGet:
               path: /
-              port: 3000
+              port: 80
             initialDelaySeconds: 5
             periodSeconds: 10
           livenessProbe:
             httpGet:
               path: /
-              port: 3000
+              port: 80
             initialDelaySeconds: 10
             periodSeconds: 15
