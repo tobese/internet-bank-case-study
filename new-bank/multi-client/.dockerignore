@@ -1,0 +1,11 @@
+# Exclude build outputs from the Docker build context
+# bin/ is intentionally NOT excluded so the pre-built WASM wwwroot can be copied
+**/obj/
+**/.vs/
+**/*.user
+
+# Exclude editor and OS files
+.DS_Store
+Thumbs.db
+*.swp
+*~

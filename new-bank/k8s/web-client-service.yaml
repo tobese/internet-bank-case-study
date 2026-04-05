@@ -2,10 +2,11 @@ apiVersion: v1
 kind: Service
 metadata:
   name: web-client
+  namespace: internet-bank
   labels:
     app: web-client
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: web-client
   ports:

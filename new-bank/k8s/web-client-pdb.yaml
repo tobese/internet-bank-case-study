@@ -1,0 +1,12 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: web-client-pdb
+  namespace: internet-bank
+  labels:
+    app: web-client
+spec:
+  minAvailable: 2
+  selector:
+    matchLabels:
+      app: web-client

@@ -23,6 +23,10 @@
     -->
     <UnoFeatures>
       SkiaRenderer;
+      Extensions;
+      MVUX;
+      Http;
+      Localization;
     </UnoFeatures>
   </PropertyGroup>
 

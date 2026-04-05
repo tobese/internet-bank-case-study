@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api-config
+  namespace: internet-bank
+  labels:
+    app: api
+data:
+  application.properties: |
+    server.port=8282

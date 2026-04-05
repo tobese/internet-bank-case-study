@@ -1,0 +1,17 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: "spring-boot-api"
+    metrics_path: "/actuator/prometheus"
+    static_configs:
+      - targets: ["api:8282"]
+        labels:
+          service: "internet-bank-api"
+
+  - job_name: "postgres"
+    static_configs:
+      - targets: ["postgres-exporter:9187"]
+        labels:
+          service: "internet-bank-postgres"

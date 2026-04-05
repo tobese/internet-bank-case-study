@@ -1,146 +1,139 @@
-#!/usr/bin/env bash
-set -euo pipefail
+n/
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# Internet Bank Deployment Script
+# Deploys Java API and .NET web client to Kubernetes with automated setup
 
-# Defaults
-REGISTRY=""
-TAG="latest"
-SKIP_BUILD=false
-PORT_FORWARD=false
-LOCAL_PORT=8080
+set -e
 
-usage() {
-  cat <<EOF
-Usage: $(basename "$0") [OPTIONS]
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
 
-Build and deploy the Internet Bank cluster to Kubernetes.
+echo -e "${BLUE}🚀 Internet Bank Deployment Script${NC}\n"
 
-Options:
-  -r, --registry REGISTRY   Docker registry prefix (e.g. ghcr.io/myorg)
-  -t, --tag TAG              Image tag (default: latest)
-  -s, --skip-build           Skip Docker image builds
-  -p, --port-forward         Set up port-forwarding after deploy (for local clusters)
-  -l, --local-port PORT      Local port for port-forwarding (default: 8080)
-  -h, --help                 Show this help message
-EOF
-  exit 0
+# Function to check if Docker is running
+check_docker() {
+    if ! docker ps > /dev/null 2>&1; then
+        echo -e "${RED}❌ Docker is not running${NC}"
+        echo -e "${YELLOW}Opening Docker Desktop...${NC}"
+        open /Applications/Docker.app
+        echo -e "${YELLOW}⏳ Waiting for Docker to start (60 seconds)...${NC}"
+        for i in {1..60}; do
+            if docker ps > /dev/null 2>&1; then
+                echo -e "${GREEN}✅ Docker is running${NC}\n"
+                return 0
+            fi
+            sleep 1
+        done
+        echo -e "${RED}❌ Docker failed to start${NC}"
+        exit 1
+    fi
+    echo -e "${GREEN}✅ Docker is running${NC}\n"
 }
 
-while [[ $# -gt 0 ]]; do
-  case "$1" in
-    -r|--registry)   REGISTRY="$2"; shift 2 ;;
-    -t|--tag)        TAG="$2"; shift 2 ;;
-    -s|--skip-build) SKIP_BUILD=true; shift ;;
-    -p|--port-forward) PORT_FORWARD=true; shift ;;
-    -l|--local-port) LOCAL_PORT="$2"; shift 2 ;;
-    -h|--help)       usage ;;
-    *) echo "Unknown option: $1"; usage ;;
-  esac
-done
+# Function to check if minikube is running
+check_minikube() {
+    if ! kubectl cluster-info > /dev/null 2>&1; then
+        echo -e "${YELLOW}🔄 Starting minikube...${NC}"
+        minikube start
+    fi
+    echo -e "${GREEN}✅ Kubernetes cluster ready${NC}\n"
+}
 
-# Build image names
-if [[ -n "$REGISTRY" ]]; then
-  API_IMAGE="${REGISTRY}/internet-bank/api-application:${TAG}"
-  WEB_CLIENT_IMAGE="${REGISTRY}/internet-bank/web-client:${TAG}"
-else
-  API_IMAGE="internet-bank/api-application:${TAG}"
-  WEB_CLIENT_IMAGE="internet-bank/web-client:${TAG}"
-fi
+# Function to build and deploy service
+deploy_service() {
+    local service_name=$1
+    local service_path=$2
+    local image_name=$3
+    local namespace=${4:-internet-bank}
+    
+    echo -e "${BLUE}📦 Building ${service_name}...${NC}"
+    cd "${service_path}"
+    
+    # For Java services, run Maven build first
+    if [ -f "pom.xml" ]; then
+        echo -e "${YELLOW}🔨 Compiling with Maven...${NC}"
+        mvn clean package -DskipTests -q
+    fi
+    
+    cd /Users/tb/Dev/internet-bank-case-study/new-bank
+    docker build -t "${image_name}:latest" "${service_path}"
+    
+    echo -e "${YELLOW}📤 Loading image into minikube...${NC}"
+    minikube image load "${image_name}:latest"
+    
+    echo -e "${GREEN}✅ ${service_name} deployed${NC}\n"
+}
 
-# ── Pre-flight checks ───────────────────────────────────────────────
-echo "==> Checking prerequisites..."
-for cmd in docker kubectl; do
-  if ! command -v "$cmd" &>/dev/null; then
-    echo "ERROR: '$cmd' is not installed or not in PATH." >&2
-    exit 1
-  fi
-done
+# Function to setup port forwarding
+setup_port_forward() {
+    local service=$1
+    local port=$2
+    local namespace=${3:-internet-bank}
+    
+    echo -e "${YELLOW}🔗 Setting up port forwarding for ${service}...${NC}"
+    kubectl port-forward -n ${namespace} svc/${service} ${port}:${port} &
+    sleep 2
+    echo -e "${GREEN}✅ Port forwarding ready at localhost:${port}${NC}\n"
+}
 
-if ! kubectl cluster-info &>/dev/null; then
-  echo "ERROR: Cannot reach a Kubernetes cluster. Check your kubeconfig." >&2
-  exit 1
-fi
+# Main deployment flow
+check_docker
+check_minikube
 
-# ── Build Docker images ─────────────────────────────────────────────
-if [[ "$SKIP_BUILD" == false ]]; then
-  echo "==> Building API image: ${API_IMAGE}"
-  docker build -t "$API_IMAGE" "$SCRIPT_DIR/api-application"
+# Build and deploy Java API
+deploy_service "Java API" "api-application" "internet-bank/api-application"
 
-  echo "==> Building Web Client image: ${WEB_CLIENT_IMAGE}"
-  docker build -t "$WEB_CLIENT_IMAGE" "$SCRIPT_DIR/multi-client"
+# Update Kubernetes deployment
+echo -e "${BLUE}🔄 Updating Kubernetes deployment...${NC}"
+kubectl set image deployment/api api=internet-bank/api-application:latest -n internet-bank --record 2>/dev/null || true
+kubectl rollout status deployment/api -n internet-bank
 
-  if [[ -n "$REGISTRY" ]]; then
-    echo "==> Pushing images to registry..."
-    docker push "$API_IMAGE"
-    docker push "$WEB_CLIENT_IMAGE"
-  fi
-else
-  echo "==> Skipping Docker builds (--skip-build)"
-fi
-
-# ── Load images into minikube if applicable ──────────────────────────
-if [[ -z "$REGISTRY" ]] && command -v minikube &>/dev/null && minikube status &>/dev/null; then
-  echo "==> Loading images into minikube..."
-  minikube image load "$API_IMAGE"
-  minikube image load "$WEB_CLIENT_IMAGE"
-fi
-
-# ── Update manifests if using a custom registry/tag ──────────────────
-if [[ -n "$REGISTRY" || "$TAG" != "latest" ]]; then
-  echo "==> Patching image references in manifests..."
-
-  # Use temp copies so we don't modify the originals
-  TMPDIR_K8S=$(mktemp -d)
-  cp "$SCRIPT_DIR/k8s/"*.yaml "$TMPDIR_K8S/"
-
-  sed -i.bak "s|image: .*api-application.*|image: ${API_IMAGE}|" "$TMPDIR_K8S/api-deployment.yaml"
-  sed -i.bak "s|image: .*web-client.*|image: ${WEB_CLIENT_IMAGE}|" "$TMPDIR_K8S/web-client-deployment.yaml"
-  rm -f "$TMPDIR_K8S/"*.bak
-
-  DEPLOY_DIR="$TMPDIR_K8S"
-else
-  DEPLOY_DIR="$SCRIPT_DIR/k8s"
-fi
-
-# ── Deploy to Kubernetes ─────────────────────────────────────────────
-echo "==> Applying Kubernetes manifests..."
-kubectl apply -f "$DEPLOY_DIR/"
-
-# Force pods to restart so they pick up freshly built images
-# (necessary when the tag, e.g. 'latest', hasn't changed)
-if [[ "$SKIP_BUILD" == false ]]; then
-  echo "==> Restarting deployments to pick up new images..."
-  kubectl rollout restart deployment/api
-  kubectl rollout restart deployment/web-client
-fi
-
-echo "==> Waiting for API deployment to roll out..."
-kubectl rollout status deployment/api --timeout=120s
-
-echo "==> Waiting for Web Client deployment to roll out..."
-kubectl rollout status deployment/web-client --timeout=120s
-
-# Clean up temp dir if used
-if [[ "${DEPLOY_DIR}" != "$SCRIPT_DIR/k8s" ]]; then
-  rm -rf "$DEPLOY_DIR"
-fi
-
-# ── Post-deploy info ─────────────────────────────────────────────────
+# Verify pods are running
+echo -e "${BLUE}📊 Checking pod status...${NC}"
+kubectl get pods -n internet-bank
 echo ""
-echo "==> Deployment complete!"
-kubectl get pods -l 'app in (api,web-client)'
-echo ""
-kubectl get services -l 'app in (api,web-client)'
 
-if [[ "$PORT_FORWARD" == true ]]; then
-  echo ""
-  echo "==> Port-forwarding web service to localhost:${LOCAL_PORT}..."
-  echo "    Press Ctrl+C to stop."
-  kubectl port-forward service/web-client "${LOCAL_PORT}:80"
-else
-  echo ""
-  echo "Access the application via the web-client service's EXTERNAL-IP on port 80."
-  echo "For local clusters (minikube/kind), re-run with --port-forward or use:"
-  echo "  kubectl port-forward service/web-client 8080:80"
-fi
+# Setup port forwarding
+echo -e "${BLUE}🔌 Setting up port forwarding...${NC}"
+kubectl port-forward -n internet-bank svc/api 8080:8282 > /dev/null 2>&1 &
+sleep 2
+
+# Test API endpoints
+echo -e "${BLUE}🧪 Testing API endpoints...${NC}"
+echo ""
+
+echo -e "${YELLOW}📌 Testing /api/mathematician/random${NC}"
+curl -s http://localhost:8080/api/mathematician/random | jq . || echo "Request failed"
+echo ""
+
+echo -e "${YELLOW}📌 Testing /api/mathematicians${NC}"
+curl -s http://localhost:8080/api/mathematicians | jq . || echo "Request failed"
+echo ""
+
+echo -e "${YELLOW}📌 Testing /api/math/factorial/5${NC}"
+curl -s http://localhost:8080/api/fac/5 | jq . || echo "Request failed"
+echo ""
+
+echo -e "${YELLOW}📌 Testing /api/fib/10${NC}"
+curl -s http://localhost:8080/api/fib/10 | jq . || echo "Request failed"
+echo ""
+
+echo -e "${GREEN}✅ Deployment complete!${NC}"
+echo -e "${BLUE}📍 Port forwarding running on localhost:8080${NC}"
+echo -e "${BLUE}🔗 API Documentation:${NC}"
+
+# ANSI OSC 8 hyperlink: \e]8;;URL\e\\TEXT\e]8;;\e\\
+link() { printf '\e]8;;%s\e\\%s\e]8;;\e\\\n' "$1" "   $2"; }
+
+link "http://localhost:8080/api/mathematician/random"       "Random mathematician:  GET http://localhost:8080/api/mathematician/random"
+link "http://localhost:8080/api/mathematicians"             "All mathematicians:    GET http://localhost:8080/api/mathematicians"
+link "http://localhost:8080/api/mathematician/1"            "By ID:                 GET http://localhost:8080/api/mathematician/{id}"
+link "http://localhost:8080/api/fac/5"                      "Factorial:             GET http://localhost:8080/api/fac/{n}"
+link "http://localhost:8080/api/fib/10"                     "Fibonacci:             GET http://localhost:8080/api/fib/{n}"
+link "http://localhost:8080/api/primes/sieve/30"            "Primes (SSE stream):   GET http://localhost:8080/api/primes/sieve/{limit}"
+echo ""
+echo -e "${YELLOW}💡 Tip: Kill port forwarding with 'pkill -f \"port-forward\"'${NC}"

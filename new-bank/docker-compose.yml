@@ -1,0 +1,94 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: internet-bank-postgres
+    environment:
+      POSTGRES_DB: internet_bank
+      POSTGRES_USER: bankuser
+      POSTGRES_PASSWORD: bankpass123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bankuser -d internet_bank"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - internet-bank
+
+  api:
+    build:
+      context: ./api-application
+      dockerfile: Dockerfile
+    container_name: internet-bank-api
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: internet_bank
+      DB_USER: bankuser
+      DB_PASSWORD: bankpass123
+      SERVER_PORT: 8282
+    ports:
+      - "8282:8282"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - primes_cache:/data/primes-cache
+    networks:
+      - internet-bank
+
+  web-client:
+    build:
+      context: ./multi-client
+      dockerfile: Dockerfile
+    container_name: internet-bank-web
+    ports:
+      - "80:80"
+    depends_on:
+      - api
+    networks:
+      - internet-bank
+
+  postgres-exporter:
+    image: prometheuscommunity/postgres-exporter:v0.16.0
+    container_name: internet-bank-postgres-exporter
+    environment:
+      DATA_SOURCE_NAME: "postgresql://bankuser:bankpass123@postgres:5432/internet_bank?sslmode=disable"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - internet-bank
+
+  prometheus:
+    image: prom/prometheus:v3.3.0
+    container_name: internet-bank-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+      - "--storage.tsdb.retention.time=15d"
+    depends_on:
+      - api
+      - postgres-exporter
+    networks:
+      - internet-bank
+
+volumes:
+  postgres_data:
+  prometheus_data:
+  primes_cache:
+
+networks:
+  internet-bank:
+    driver: bridge
