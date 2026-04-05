@@ -286,22 +286,24 @@ Grafana is pre-provisioned with Prometheus, Loki, and Tempo datasources — no m
 
 The OTel Java agent is baked into the API image and activated via `JAVA_TOOL_OPTIONS`. It instruments every HTTP request, JDBC call, and Redis operation automatically — no application code changes needed.
 
-| Setting | Value |
-|---|---|
-| Exporter | OTLP/gRPC → `tempo:4317` |
-| Service name | `internet-bank-api` |
+| Setting          | Value                                 |
+| ---------------- | ------------------------------------- |
+| Exporter         | OTLP/gRPC → `tempo:4317`              |
+| Service name     | `internet-bank-api`                   |
 | Metrics exporter | disabled (Micrometer handles metrics) |
-| Logs exporter | disabled (Loki handles logs) |
+| Logs exporter    | disabled (Loki handles logs)          |
 
 Tempo also runs a **metrics generator** that derives `service_graph` and `span_metrics` series and remote-writes them to Prometheus, so you can query span-level latency histograms in Grafana without any additional setup.
 
 **In Grafana → Explore → Tempo** you can:
+
 - Search traces by service, operation name, duration, or status
 - Click a trace to see the full waterfall (HTTP handler → JDBC queries → Redis calls)
 - Jump from a trace directly to the correlated Loki log lines via the Tempo→Loki link
 - Jump from a Prometheus exemplar directly to the related trace
 
 **Useful TraceQL queries**:
+
 ```
 { .service.name = "internet-bank-api" && duration > 100ms }
 { span.db.system = "postgresql" }
