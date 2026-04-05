@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Clearing cache…</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        background: #f5f7fa;
+      }
+      p {
+        font-size: 1.2rem;
+        color: #333;
+      }
+      progress {
+        width: 260px;
+        margin-top: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <p id="msg">Clearing service worker cache…</p>
+    <progress id="bar"></progress>
+    <script>
+      (async () => {
+        try {
+          const regs = await navigator.serviceWorker.getRegistrations();
+          await Promise.all(regs.map((r) => r.unregister()));
+          const keys = await caches.keys();
+          await Promise.all(keys.map((k) => caches.delete(k)));
+          document.getElementById("msg").textContent =
+            "Done! Redirecting to the app…";
+          document.getElementById("bar").value = 1;
+          document.getElementById("bar").max = 1;
+        } catch (e) {
+          document.getElementById("msg").textContent = "Error: " + e.message;
+        }
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 800);
+      })();
+    </script>
+  </body>
+</html>

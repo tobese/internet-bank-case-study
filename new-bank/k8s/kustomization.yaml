@@ -1,0 +1,34 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: internet-bank
+
+resources:
+  - namespace.yaml
+  - primes-cache-pvc.yaml
+  - postgres-service.yaml
+  - postgres-statefulset.yaml
+  - postgres-configmap.yaml
+  - postgres-secret.yaml
+  - web-client-deployment.yaml
+  - web-client-service.yaml
+  - web-client-ingress.yaml
+  - web-client-hpa.yaml
+  - web-client-pdb.yaml
+  - api-deployment.yaml
+  - api-service.yaml
+  - api-configmap.yaml
+  - api-hpa.yaml
+  - api-pdb.yaml
+  - network-policy.yaml
+  - prometheus-configmap.yaml
+  - prometheus-deployment.yaml
+  - prometheus-service.yaml
+  - postgres-exporter-deployment.yaml
+  - postgres-exporter-service.yaml
+
+images:
+  - name: internet-bank/web-client
+    newTag: latest
+  - name: internet-bank/api-application
+    newTag: latest

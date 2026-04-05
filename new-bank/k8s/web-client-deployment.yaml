@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-client
+  namespace: internet-bank
+  labels:
+    app: web-client
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web-client
+  template:
+    metadata:
+      namespace: internet-bank
+      labels:
+        app: web-client
+    spec:
+      containers:
+        - name: web-client
+          image: internet-bank/web-client:v1.0.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "200m"
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 15

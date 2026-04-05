@@ -1,0 +1,58 @@
+-- Internet Bank Database Initialization
+
+CREATE TABLE IF NOT EXISTS transactions (
+  id SERIAL PRIMARY KEY,
+  transaction_type VARCHAR(50) NOT NULL,
+  amount DECIMAL(10, 2) NOT NULL,
+  result VARCHAR(255),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS calculations (
+  id SERIAL PRIMARY KEY,
+  operation VARCHAR(50) NOT NULL,
+  operand INTEGER NOT NULL,
+  result VARCHAR(255),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS audit_log (
+  id SERIAL PRIMARY KEY,
+  event_type VARCHAR(100) NOT NULL,
+  details JSONB,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS mathematicians (
+  id BIGSERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL UNIQUE,
+  description TEXT NOT NULL,
+  era VARCHAR(100),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create indexes for performance
+CREATE INDEX idx_transactions_created ON transactions(created_at DESC);
+CREATE INDEX idx_calculations_created ON calculations(created_at DESC);
+CREATE INDEX idx_audit_log_created ON audit_log(created_at DESC);
+CREATE INDEX idx_mathematicians_name ON mathematicians(name);
+
+-- Insert famous mathematicians
+INSERT INTO mathematicians (name, description, era) VALUES
+  ('Euclid', 'Ancient Greek mathematician, father of geometry. Author of the Elements, which laid the foundation for mathematical reasoning.', '300 BC'),
+  ('Isaac Newton', 'English mathematician and physicist who developed calculus and the laws of motion. Revolutionized scientific thought.', '1642-1727'),
+  ('Leonhard Euler', 'Swiss mathematician with contributions to almost every area of mathematics. Prolific author with over 800 publications.', '1707-1783'),
+  ('Carl Friedrich Gauss', 'German mathematician known as the "Prince of Mathematicians". Made discoveries across algebra, statistics, and analysis.', '1777-1855'),
+  ('Georg Bernhard Riemann', 'German mathematician whose work in complex analysis and geometry laid foundations for modern mathematics.', '1826-1866'),
+  ('Emmy Noether', 'German mathematician who revolutionized theoretical physics with her work on invariance and conservation laws.', '1882-1935'),
+  ('David Hilbert', 'German mathematician who developed formalism and infinite-dimensional spaces, shaping modern mathematics.', '1862-1943'),
+  ('Alan Turing', 'British mathematician who founded computer science and made crucial contributions to cryptography and computability.', '1912-1954'),
+  ('Ada Lovelace', 'English mathematician, first computer programmer. Wrote the first algorithm intended for machine processing.', '1815-1852'),
+  ('Sophia Kovalevskaya', 'Russian mathematician who made contributions to analysis, mechanics, and the theory of differential equations.', '1850-1891'),
+  ('Eratosthenes', 'Ancient Greek mathematician and polymath who devised the Sieve of Eratosthenes for finding prime numbers and calculated the circumference of the Earth with remarkable accuracy.', '276-194 BC')
+ON CONFLICT DO NOTHING;
+
+-- Grant permissions
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO bankuser;
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO bankuser;
+

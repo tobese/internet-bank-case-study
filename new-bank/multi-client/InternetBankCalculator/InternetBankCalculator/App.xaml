@@ -1,17 +1,43 @@
-<Application x:Class="InternetBankCalculator.App"
-       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<Application x:Class="InternetBankCalculator.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Converters="using:InternetBankCalculator.Converters">
 
-  <Application.Resources>
-    <ResourceDictionary>
-      <ResourceDictionary.MergedDictionaries>
-        <!-- Load WinUI resources -->
-        <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
-      </ResourceDictionary.MergedDictionaries>
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Load WinUI resources -->
+                <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls"/>
+            </ResourceDictionary.MergedDictionaries>
 
-      <!-- Add resources here -->
+            <!-- Add resources here -->
+            <Converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+            <SolidColorBrush x:Key="ResultBackgroundSuccess"
+                             Color="#F0F4F8"/>
+            <SolidColorBrush x:Key="ResultBackgroundError"
+                             Color="#FDECEA"/>
+            <SolidColorBrush x:Key="ResultForegroundSuccess"
+                             Color="#1A1A1A"/>
+            <SolidColorBrush x:Key="ResultForegroundError"
+                             Color="#C62828"/>
 
-    </ResourceDictionary>
-  </Application.Resources>
+            <SolidColorBrush x:Key="ButtonCalculateBackground"
+                             Color="#4A90D9"/>
+            <SolidColorBrush x:Key="ButtonFacBackground"
+                             Color="#34A853"/>
+            <SolidColorBrush x:Key="ButtonFibBackground"
+                             Color="#00838F"/>
+            <SolidColorBrush x:Key="ButtonForeground"
+                             Color="White"/>
+
+            <Converters:BoolToBrushConverter x:Key="BoolToBackgroundConverter"
+                                             TrueBrush="{StaticResource ResultBackgroundError}"
+                                             FalseBrush="{StaticResource ResultBackgroundSuccess}"/>
+            <Converters:BoolToBrushConverter x:Key="BoolToForegroundConverter"
+                                             TrueBrush="{StaticResource ResultForegroundError}"
+                                             FalseBrush="{StaticResource ResultForegroundSuccess}"/>
+
+        </ResourceDictionary>
+    </Application.Resources>
 
 </Application>
