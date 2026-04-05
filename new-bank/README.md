@@ -1,6 +1,6 @@
 # Internet Bank – Case Study
 
-A full-stack containerised application demonstrating real-world Docker and Kubernetes patterns: a Spring Boot API, an Uno Platform WebAssembly client, a PostgreSQL database, and a complete observability stack (Prometheus, Loki, Grafana).
+A full-stack containerised application demonstrating real-world Docker and Kubernetes patterns: a Spring Boot API, an Uno Platform WebAssembly client, a PostgreSQL database, a Redis cache, and a complete observability stack covering all three pillars — metrics (Prometheus), logs (Loki), and traces (Tempo) — visualised in Grafana.
 
 ---
 
@@ -21,58 +21,65 @@ A full-stack containerised application demonstrating real-world Docker and Kuber
 ## Architecture
 
 ```
-                        ┌─────────────────────────────────────────┐
-                        │              Docker Network              │
-                        │                                          │
-  Browser               │  ┌──────────────┐   /api/*              │
-  ──────────────────────┼─►│  web-client  ├──────────────────────►│──┐
-  :80 (Uno WASM + nginx)│  │  nginx :80   │                        │  │
-                        │  └──────────────┘                        │  ▼
-                        │                                          │  ┌────────────────┐
-                        │                                          │  │   api :8282    │
-                        │                                          │  │  Spring Boot   │
-                        │                                          │  │   Java 21      │
-                        │                                          │  └───────┬────────┘
-                        │                                          │          │ JPA/HikariCP
-                        │                                          │          ▼
-                        │  ┌──────────────────────────────────┐   │  ┌────────────────┐
-                        │  │       Observability Stack        │   │  │ postgres :5432 │
-                        │  │                                  │   │  │ PostgreSQL 17  │
-                        │  │  prometheus :9090 ◄── scrapes ───┼───┤  └───────┬────────┘
-                        │  │       │                          │   │          │
-                        │  │       │ metrics                  │   │  ┌───────▼────────┐
-                        │  │       ▼                          │   │  │postgres-exporter│
-                        │  │  grafana :3000                   │   │  │   :9187        │
-                        │  │       ▲                          │   │  └────────────────┘
-                        │  │       │ logs                     │   │
-                        │  │  loki :3100 ◄── promtail ────────┼── Docker socket / container logs
-                        │  └──────────────────────────────────┘   │
-                        └─────────────────────────────────────────┘
+                        ┌─────────────────────────────────────────────────────┐
+                        │                  Docker Network                     │
+                        │                                                     │
+  Browser               │  ┌──────────────┐   /api/*                         │
+  ──────────────────────┼─►│  web-client  ├─────────────────────────────►────┼──┐
+  :80 (Uno WASM + nginx)│  │  nginx :80   │                                  │  │
+                        │  └──────────────┘                                  │  ▼
+                        │                                                     │  ┌─────────────────┐
+                        │                                                     │  │   api :8282     │
+                        │                                                     │  │  Spring Boot    │
+                        │                                                     │  │  Java 21 + OTel │
+                        │                                                     │  └──┬──────┬───────┘
+                        │                                                     │     │      │
+                        │                                                     │ JPA/│   Redis│
+                        │                                                     │     ▼      ▼
+                        │                                                     │  ┌──────┐ ┌──────────────┐
+                        │                                                     │  │  pg  │ │ redis :6379  │
+                        │  ┌─────────────────────────────────────────────┐   │  │:5432 │ │  primes cache│
+                        │  │              Observability Stack             │   │  └──┬───┘ └──────────────┘
+                        │  │                                             │   │     │
+                        │  │  prometheus :9090 ◄─── scrapes ─────────────┼───┘  ┌──▼──────────────┐
+                        │  │       │                                     │      │postgres-exporter│
+                        │  │       │ metrics + span-metrics              │      │    :9187        │
+                        │  │       ▼                                     │      └─────────────────┘
+                        │  │  grafana :3000 ◄────────────────────────────┼── traces ── tempo :3200
+                        │  │       ▲                                     │                 ▲
+                        │  │       │ logs                                │  OTLP :4317 ───┘
+                        │  │  loki :3100 ◄── promtail ───────────────────┼── Docker socket
+                        │  └─────────────────────────────────────────────┘
+                        └─────────────────────────────────────────────────────┘
 ```
 
 ---
 
 ## Services
 
-| Container                         | Image                       | Port | Purpose                                         |
-| --------------------------------- | --------------------------- | ---- | ----------------------------------------------- |
-| `internet-bank-postgres`          | `postgres:17-alpine`        | 5432 | Primary database                                |
-| `internet-bank-api`               | _(built)_                   | 8282 | Spring Boot REST API                            |
-| `internet-bank-web`               | _(built)_                   | 80   | Uno WASM client + nginx reverse proxy           |
-| `internet-bank-postgres-exporter` | `postgres-exporter:v0.16.0` | 9187 | Exposes DB metrics to Prometheus                |
-| `internet-bank-prometheus`        | `prom/prometheus:v3.3.0`    | 9090 | Metrics collection & storage (15-day retention) |
-| `internet-bank-loki`              | `grafana/loki:3.4.2`        | 3100 | Log aggregation                                 |
-| `internet-bank-promtail`          | `grafana/promtail:3.4.2`    | —    | Ships container logs to Loki                    |
-| `internet-bank-grafana`           | `grafana/grafana:11.6.1`    | 3000 | Dashboards (metrics + logs)                     |
+| Container                         | Image                       | Port       | Purpose                                         |
+| --------------------------------- | --------------------------- | ---------- | ----------------------------------------------- |
+| `internet-bank-postgres`          | `postgres:17-alpine`        | 5432       | Primary database                                |
+| `internet-bank-redis`             | `redis:7-alpine`            | 6379       | Primes result cache (24 h TTL)                  |
+| `internet-bank-api`               | _(built)_                   | 8282       | Spring Boot REST API + OTel agent               |
+| `internet-bank-web`               | _(built)_                   | 80         | Uno WASM client + nginx reverse proxy           |
+| `internet-bank-postgres-exporter` | `postgres-exporter:v0.16.0` | 9187       | Exposes DB metrics to Prometheus                |
+| `internet-bank-prometheus`        | `prom/prometheus:v3.3.0`    | 9090       | Metrics collection & storage (15-day retention) |
+| `internet-bank-loki`              | `grafana/loki:3.4.2`        | 3100       | Log aggregation                                 |
+| `internet-bank-promtail`          | `grafana/promtail:3.4.2`    | —          | Ships container logs to Loki                    |
+| `internet-bank-tempo`             | `grafana/tempo:2.7.1`       | 3200, 4317 | Distributed trace storage (OTLP receiver)       |
+| `internet-bank-grafana`           | `grafana/grafana:11.6.1`    | 3000       | Dashboards — metrics, logs, and traces          |
 
 ### API (`api-application/`)
 
 - **Runtime**: Java 21, Spring Boot 3.5.1
 - **Virtual threads** enabled for async SSE streaming
 - **Persistence**: PostgreSQL via Spring Data JPA, HikariCP connection pool (max 10)
+- **Cache**: Redis (Spring Data Redis) — primes results stored with 24 h TTL; makes the API stateless and horizontally scalable
 - **Metrics**: Micrometer → `micrometer-registry-prometheus`
 - **Logging**: Structured JSON via `logstash-logback-encoder`
-- **Build**: Multi-stage Dockerfile — Maven build inside the container, no local JDK required
+- **Tracing**: OpenTelemetry Java agent (zero-code instrumentation) → Tempo via OTLP/gRPC `:4317`
+- **Build**: Three-stage Dockerfile — Maven build, OTel agent download, JRE runtime
 
 ### Web Client (`multi-client/`)
 
@@ -122,6 +129,7 @@ docker compose down
 | Prometheus UI            | http://localhost:9090                     | —                 |
 | Grafana                  | http://localhost:3000                     | `admin` / `admin` |
 | Loki (API)               | http://localhost:3100                     | —                 |
+| Tempo (API)              | http://localhost:3200                     | —                 |
 
 ---
 
@@ -166,7 +174,7 @@ GET /api/primes/sieve/{limit}
 Content-Type: text/event-stream
 ```
 
-Streams all prime numbers up to `limit` (2–10 000) using the Sieve of Eratosthenes via Server-Sent Events. Results are cached on disk; subsequent requests for the same limit stream from cache.
+Streams all prime numbers up to `limit` (2–10 000) using the Sieve of Eratosthenes via Server-Sent Events. Results are cached in Redis with a 24 h TTL; subsequent requests for the same limit stream directly from cache.
 
 **Example**:
 
@@ -272,7 +280,34 @@ Promtail discovers all running containers via the Docker socket and ships their 
 {container="internet-bank-api"} | json | line_format "{{.message}}"
 ```
 
-Grafana is pre-provisioned with both Prometheus and Loki datasources — no manual setup needed.
+Grafana is pre-provisioned with Prometheus, Loki, and Tempo datasources — no manual setup needed.
+
+### Traces (OpenTelemetry → Tempo → Grafana)
+
+The OTel Java agent is baked into the API image and activated via `JAVA_TOOL_OPTIONS`. It instruments every HTTP request, JDBC call, and Redis operation automatically — no application code changes needed.
+
+| Setting | Value |
+|---|---|
+| Exporter | OTLP/gRPC → `tempo:4317` |
+| Service name | `internet-bank-api` |
+| Metrics exporter | disabled (Micrometer handles metrics) |
+| Logs exporter | disabled (Loki handles logs) |
+
+Tempo also runs a **metrics generator** that derives `service_graph` and `span_metrics` series and remote-writes them to Prometheus, so you can query span-level latency histograms in Grafana without any additional setup.
+
+**In Grafana → Explore → Tempo** you can:
+- Search traces by service, operation name, duration, or status
+- Click a trace to see the full waterfall (HTTP handler → JDBC queries → Redis calls)
+- Jump from a trace directly to the correlated Loki log lines via the Tempo→Loki link
+- Jump from a Prometheus exemplar directly to the related trace
+
+**Useful TraceQL queries**:
+```
+{ .service.name = "internet-bank-api" && duration > 100ms }
+{ span.db.system = "postgresql" }
+{ span.db.system = "redis" }
+{ rootName =~ "GET /api/primes.*" }
+```
 
 ---
 
@@ -322,9 +357,10 @@ new-bank/
 │   └── Dockerfile          # dotnet publish + nginx
 ├── k8s/                    # Kubernetes manifests (Kustomize)
 ├── loki/                   # Loki & Promtail config
+├── tempo/                  # Grafana Tempo config
 ├── grafana/                # Grafana provisioning (datasources)
 ├── prometheus/             # Prometheus scrape config
-├── docker-compose.yml      # Full local stack (8 services)
+├── docker-compose.yml      # Full local stack (10 services)
 ├── init-db.sql             # DB schema + seed data
 └── deploy.sh               # Build + K8s deploy script
 ```
