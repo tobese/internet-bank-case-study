@@ -84,10 +84,54 @@ services:
     networks:
       - internet-bank
 
+  loki:
+    image: grafana/loki:3.4.2
+    container_name: internet-bank-loki
+    ports:
+      - "3100:3100"
+    volumes:
+      - ./loki/loki-config.yml:/etc/loki/loki-config.yml:ro
+      - loki_data:/loki
+    command: -config.file=/etc/loki/loki-config.yml
+    networks:
+      - internet-bank
+
+  promtail:
+    image: grafana/promtail:3.4.2
+    container_name: internet-bank-promtail
+    volumes:
+      - ./loki/promtail-config.yml:/etc/promtail/promtail-config.yml:ro
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    command: -config.file=/etc/promtail/promtail-config.yml
+    depends_on:
+      - loki
+    networks:
+      - internet-bank
+
+  grafana:
+    image: grafana/grafana:11.6.1
+    container_name: internet-bank-grafana
+    ports:
+      - "3000:3000"
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: admin
+      GF_USERS_ALLOW_SIGN_UP: "false"
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+    depends_on:
+      - prometheus
+      - loki
+    networks:
+      - internet-bank
+
 volumes:
   postgres_data:
   prometheus_data:
   primes_cache:
+  loki_data:
+  grafana_data:
 
 networks:
   internet-bank:
