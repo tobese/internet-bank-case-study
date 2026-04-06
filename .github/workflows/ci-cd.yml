@@ -57,7 +57,7 @@ jobs:
       - name: Setup .NET 10
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '10.0.x'
+          dotnet-version: "10.0.x"
 
       - name: Install wasm-tools workload
         run: dotnet workload install wasm-tools
@@ -66,7 +66,8 @@ jobs:
         working-directory: new-bank/multi-client/InternetBankCalculator
         run: |
           dotnet publish InternetBankCalculator/InternetBankCalculator.csproj \
-            -c Release -f net10.0-browserwasm
+            -c Release -f net10.0-browserwasm \
+            -p:TargetFrameworks=net10.0-browserwasm
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
