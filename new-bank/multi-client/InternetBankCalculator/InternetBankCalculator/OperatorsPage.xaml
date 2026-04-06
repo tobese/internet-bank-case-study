@@ -248,7 +248,7 @@
                                 Width="120">
                             <StackPanel Spacing="6"
                                     HorizontalAlignment="Center">
-                                <Image Source="ms-appx:///Assets/logo_kubernetes.png"
+                                <Image Source="ms-appx:///Assets/logo_kubernetes_spin.gif"
                                        Height="38"
                                         Stretch="Uniform"
                                        HorizontalAlignment="Center"/>
