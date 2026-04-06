@@ -5,7 +5,6 @@ metadata:
   namespace: internet-bank
 data:
   POSTGRES_DB: internet_bank
-  POSTGRES_USER: bankuser
   init.sql: |
     CREATE TABLE IF NOT EXISTS transactions (
       id SERIAL PRIMARY KEY,

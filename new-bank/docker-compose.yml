@@ -7,7 +7,7 @@ services:
     environment:
       POSTGRES_DB: internet_bank
       POSTGRES_USER: bankuser
-      POSTGRES_PASSWORD: bankpass123
+      POSTGRES_PASSWORD: pUQX0eja56l0bLBR8u9Wb3KOI43E1o5
     ports:
       - "5432:5432"
     volumes:
@@ -46,7 +46,7 @@ services:
       DB_PORT: 5432
       DB_NAME: internet_bank
       DB_USER: bankuser
-      DB_PASSWORD: bankpass123
+      DB_PASSWORD: pUQX0eja56l0bLBR8u9Wb3KOI43E1o5
       SERVER_PORT: 8282
       REDIS_HOST: redis
       REDIS_PORT: 6379
@@ -82,7 +82,7 @@ services:
     image: prometheuscommunity/postgres-exporter:v0.16.0
     container_name: internet-bank-postgres-exporter
     environment:
-      DATA_SOURCE_NAME: "postgresql://bankuser:bankpass123@postgres:5432/internet_bank?sslmode=disable"
+      DATA_SOURCE_NAME: "postgresql://bankuser:pUQX0eja56l0bLBR8u9Wb3KOI43E1o5@postgres:5432/internet_bank?sslmode=disable"
     depends_on:
       postgres:
         condition: service_healthy
