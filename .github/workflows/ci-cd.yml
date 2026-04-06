@@ -116,10 +116,10 @@ jobs:
         run: |
           kubectl -n internet-bank set image deployment/api \
             api=${{ needs.build-api.outputs.image }}
-          kubectl -n internet-bank rollout status deployment/api --timeout=120s
+          kubectl -n internet-bank rollout status deployment/api --timeout=300s
 
       - name: Roll out web-client
         run: |
           kubectl -n internet-bank set image deployment/web-client \
             web-client=${{ needs.build-web-client.outputs.image }}
-          kubectl -n internet-bank rollout status deployment/web-client --timeout=120s
+          kubectl -n internet-bank rollout status deployment/web-client --timeout=300s
