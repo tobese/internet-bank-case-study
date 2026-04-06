@@ -1,24 +1,17 @@
-# ── Build stage ──────────────────────────────────────────────────────────────
-FROM maven:3.9-eclipse-temurin-21-alpine AS build
+# ── Build stage (Chainguard Wolfi-based — 0 CVEs) ────────────────────────────
+FROM cgr.dev/chainguard/maven:latest-dev AS build
 WORKDIR /app
-COPY pom.xml .
-COPY .mvn .mvn
-COPY mvnw .
-RUN chmod +x mvnw && ./mvnw dependency:go-offline -q
-COPY src src
-RUN ./mvnw package -DskipTests -q
-
-# ── OTel agent stage ─────────────────────────────────────────────────────────
-FROM eclipse-temurin:21-jre AS otel
-RUN apt-get update && apt-get install -y --no-install-recommends curl \
-    && rm -rf /var/lib/apt/lists/* \
-    && curl -sSL -o /opentelemetry-javaagent.jar \
+RUN wget -q -O /app/opentelemetry-javaagent.jar \
     https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
+COPY --chown=nonroot:nonroot pom.xml .
+RUN mvn dependency:go-offline -q
+COPY --chown=nonroot:nonroot src src
+RUN mvn package -DskipTests -q
 
-# ── Runtime stage ─────────────────────────────────────────────────────────────
+# ── Runtime stage (distroless — no shell, no package manager) ─────────────────
 FROM gcr.io/distroless/java21-debian12:nonroot
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
-COPY --from=otel /opentelemetry-javaagent.jar opentelemetry-javaagent.jar
+COPY --from=build /app/opentelemetry-javaagent.jar opentelemetry-javaagent.jar
 EXPOSE 8282
 ENTRYPOINT ["/usr/bin/java", "-jar", "app.jar"]
