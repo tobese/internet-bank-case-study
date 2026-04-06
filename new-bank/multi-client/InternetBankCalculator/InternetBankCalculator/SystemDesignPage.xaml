@@ -337,6 +337,24 @@
                                LineHeight="22">
                         <Run>The pipeline then authenticates to the EKS cluster and issues a rolling update by patching the image on both Deployments. EKS performs the rollout gradually — new pods start, liveness and readiness probes pass, then old pods are terminated — keeping the application live throughout the deploy.</Run>
                     </TextBlock>
+                    <Button x:Name="BtnGitHubActions"
+                            Click="BtnGitHubActions_Click"
+                            Background="#24292F"
+                            Foreground="White"
+                            CornerRadius="8"
+                            Padding="18,10"
+                            FontSize="14"
+                            FontWeight="SemiBold"
+                            HorizontalAlignment="Left">
+                        <StackPanel Orientation="Horizontal"
+                                    Spacing="8">
+                            <TextBlock Text="⚙️"
+                                       FontSize="16"
+                                       VerticalAlignment="Center"/>
+                            <TextBlock Text="View Pipeline Runs"
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
                 </StackPanel>
             </Border>
 
