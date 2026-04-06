@@ -1,0 +1,124 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+env:
+  AWS_REGION: eu-central-1
+  ECR_REGISTRY: 395734437227.dkr.ecr.eu-central-1.amazonaws.com
+  EKS_CLUSTER: internet-bank
+
+jobs:
+  # ── Build & push API image ────────────────────────────────────────────────
+  build-api:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    outputs:
+      image: ${{ steps.meta.outputs.image }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to ECR
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build and push API image
+        id: meta
+        working-directory: new-bank/api-application
+        run: |
+          IMAGE=${{ env.ECR_REGISTRY }}/internet-bank/api:${{ github.sha }}
+          docker build -t "$IMAGE" .
+          docker push "$IMAGE"
+          docker tag "$IMAGE" ${{ env.ECR_REGISTRY }}/internet-bank/api:latest
+          docker push ${{ env.ECR_REGISTRY }}/internet-bank/api:latest
+          echo "image=$IMAGE" >> "$GITHUB_OUTPUT"
+
+  # ── Build WASM client & push web-client image ─────────────────────────────
+  build-web-client:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    outputs:
+      image: ${{ steps.meta.outputs.image }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Install wasm-tools workload
+        run: dotnet workload install wasm-tools
+
+      - name: Build Uno WASM client
+        working-directory: new-bank/multi-client/InternetBankCalculator
+        run: |
+          dotnet publish InternetBankCalculator/InternetBankCalculator.csproj \
+            -c Release -f net10.0-browserwasm
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to ECR
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build and push web-client image
+        id: meta
+        working-directory: new-bank/multi-client
+        run: |
+          IMAGE=${{ env.ECR_REGISTRY }}/internet-bank/web-client:${{ github.sha }}
+          docker build -t "$IMAGE" .
+          docker push "$IMAGE"
+          docker tag "$IMAGE" ${{ env.ECR_REGISTRY }}/internet-bank/web-client:latest
+          docker push ${{ env.ECR_REGISTRY }}/internet-bank/web-client:latest
+          echo "image=$IMAGE" >> "$GITHUB_OUTPUT"
+
+  # ── Deploy to EKS (master only) ───────────────────────────────────────────
+  deploy:
+    needs: [build-api, build-web-client]
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Update kubeconfig
+        run: aws eks update-kubeconfig --name ${{ env.EKS_CLUSTER }} --region ${{ env.AWS_REGION }}
+
+      - name: Apply k8s manifests
+        run: kubectl apply -f new-bank/k8s/
+
+      - name: Roll out API
+        run: |
+          kubectl -n internet-bank set image deployment/api \
+            api=${{ needs.build-api.outputs.image }}
+          kubectl -n internet-bank rollout status deployment/api --timeout=120s
+
+      - name: Roll out web-client
+        run: |
+          kubectl -n internet-bank set image deployment/web-client \
+            web-client=${{ needs.build-web-client.outputs.image }}
+          kubectl -n internet-bank rollout status deployment/web-client --timeout=120s
