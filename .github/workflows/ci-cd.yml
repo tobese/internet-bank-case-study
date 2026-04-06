@@ -123,3 +123,15 @@ jobs:
           kubectl -n internet-bank set image deployment/web-client \
             web-client=${{ needs.build-web-client.outputs.image }}
           kubectl -n internet-bank rollout status deployment/web-client --timeout=300s
+
+      - name: Deploy summary
+        run: |
+          echo "## ✅ Deploy complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**[https://doggerbank.online](https://doggerbank.online)**" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| | |" >> $GITHUB_STEP_SUMMARY
+          echo "|---|---|" >> $GITHUB_STEP_SUMMARY
+          echo "| Commit | \`${{ github.sha }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| API image | \`${{ needs.build-api.outputs.image }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| Web-client image | \`${{ needs.build-web-client.outputs.image }}\` |" >> $GITHUB_STEP_SUMMARY
