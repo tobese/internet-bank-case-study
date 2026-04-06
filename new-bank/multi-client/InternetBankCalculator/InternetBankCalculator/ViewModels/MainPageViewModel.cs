@@ -135,7 +135,7 @@ public class MainPageViewModel : INotifyPropertyChanged
         IsError = false;
         try
         {
-            var result = await _api.GetFactorialAsync(int.Parse(Expression), CancellationToken.None);
+            var result = await _api.GetFactorialAsync(int.Parse(Expression!), CancellationToken.None);
             Result = result;
             IsError = false;
             AddToHistory($"fac({Expression})", result);
@@ -162,7 +162,7 @@ public class MainPageViewModel : INotifyPropertyChanged
         IsError = false;
         try
         {
-            var result = await _api.GetFibonacciAsync(int.Parse(Expression), CancellationToken.None);
+            var result = await _api.GetFibonacciAsync(int.Parse(Expression!), CancellationToken.None);
             Result = result;
             IsError = false;
             AddToHistory($"fib({Expression})", result);
@@ -182,7 +182,7 @@ public class MainPageViewModel : INotifyPropertyChanged
             PrimesResult = "Enter a number for primes(n)";
             return;
         }
-        var limit = int.Parse(Expression);
+        var limit = int.Parse(Expression!);
         if (limit < 2 || limit > 10_000)
         {
             PrimesResult = "Limit must be between 2 and 10000";

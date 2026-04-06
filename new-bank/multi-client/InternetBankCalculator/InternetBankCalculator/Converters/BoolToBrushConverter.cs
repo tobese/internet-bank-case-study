@@ -12,9 +12,9 @@ public class BoolToBrushConverter : IValueConverter
     {
         if (value is bool b)
         {
-            return b ? TrueBrush : FalseBrush;
+            return (b ? TrueBrush : FalseBrush)!;
         }
-        return FalseBrush;
+        return FalseBrush!;
     }
 
     public object ConvertBack(object value, Type targetType, object parameter, string language)

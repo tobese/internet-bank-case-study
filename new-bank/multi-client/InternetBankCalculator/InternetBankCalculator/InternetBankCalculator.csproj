@@ -34,4 +34,10 @@
     <Content Include="Assets\doggerbank.png" />
   </ItemGroup>
 
+  <!-- IL2104: suppress "assembly produced trim warnings" from upstream Uno packages
+       that don't yet ship full trim annotations. Our own code is still analyzed. -->
+  <PropertyGroup>
+    <NoWarn>$(NoWarn);IL2104</NoWarn>
+  </PropertyGroup>
+
 </Project>
