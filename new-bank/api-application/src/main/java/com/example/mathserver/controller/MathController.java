@@ -1,6 +1,5 @@
 package com.example.mathserver.controller;
 
-import com.example.mathserver.model.Mathematician;
 import com.example.mathserver.service.MathematicianService;
 import com.example.mathserver.service.PrimeCacheService;
 import io.micrometer.core.instrument.MeterRegistry;

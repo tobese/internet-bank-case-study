@@ -1,7 +1,7 @@
 # ── Runtime stage (pre-built WASM artifacts) ───────────────────────────────
 # The WASM client is built locally via build-client.sh / dotnet publish.
 # Run build-client.sh before docker-compose up --build to refresh the output.
-FROM nginx:alpine
+FROM nginx:stable-alpine
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY InternetBankCalculator/InternetBankCalculator/bin/Release/net10.0-browserwasm/publish/wwwroot /usr/share/nginx/html
 # Override the Uno-generated service worker with a passthrough version.

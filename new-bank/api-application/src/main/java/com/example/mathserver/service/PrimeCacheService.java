@@ -34,6 +34,7 @@ public class PrimeCacheService {
         }
     }
 
+    @SuppressWarnings("null")
     public void save(int limit, List<Integer> primes) {
         try {
             String json = objectMapper.writeValueAsString(primes);
