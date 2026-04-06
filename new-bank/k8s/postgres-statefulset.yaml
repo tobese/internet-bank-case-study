@@ -23,9 +23,6 @@ spec:
           securityContext:
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: false # postgres writes to /var/run/postgresql and /tmp
-            capabilities:
-              drop:
-                - ALL
           ports:
             - containerPort: 5432
               name: postgres
