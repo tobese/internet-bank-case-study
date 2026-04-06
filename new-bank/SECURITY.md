@@ -18,10 +18,10 @@
 
 ## PostgreSQL hardening
 
-| File                              | Change                                                   | Security rationale                                                                         |
-| --------------------------------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| `k8s/postgres-secret.yaml`        | `bankpass123` → 32-char random password                  | Default/weak password trivially guessable; rotated to a cryptographically random credential |
-| `k8s/postgres-configmap.yaml`     | Removed `POSTGRES_USER` field                            | User was duplicated from Secret into ConfigMap (unencrypted); now sourced from Secret only  |
-| `k8s/postgres-statefulset.yaml`   | Added pod + container `securityContext`                  | `runAsNonRoot`, `allowPrivilegeEscalation: false`, `capabilities: drop: ALL` (uid 999)     |
-| `k8s/network-policy.yaml`         | Added `restrict-postgres` NetworkPolicy                  | Only `api` and `postgres-exporter` pods may reach port 5432; all other intra-cluster traffic blocked |
-| `docker-compose.yml`              | Rotated `bankpass123` in all three service env vars      | Matches k8s Secret; consistent across local dev and production                              |
+| File                            | Change                                              | Security rationale                                                                                   |
+| ------------------------------- | --------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `k8s/postgres-secret.yaml`      | `bankpass123` → 32-char random password             | Default/weak password trivially guessable; rotated to a cryptographically random credential          |
+| `k8s/postgres-configmap.yaml`   | Removed `POSTGRES_USER` field                       | User was duplicated from Secret into ConfigMap (unencrypted); now sourced from Secret only           |
+| `k8s/postgres-statefulset.yaml` | Added pod + container `securityContext`             | `runAsNonRoot`, `allowPrivilegeEscalation: false`, `capabilities: drop: ALL` (uid 999)               |
+| `k8s/network-policy.yaml`       | Added `restrict-postgres` NetworkPolicy             | Only `api` and `postgres-exporter` pods may reach port 5432; all other intra-cluster traffic blocked |
+| `docker-compose.yml`            | Rotated `bankpass123` in all three service env vars | Matches k8s Secret; consistent across local dev and production                                       |

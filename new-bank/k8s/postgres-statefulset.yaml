@@ -25,7 +25,7 @@ spec:
           imagePullPolicy: IfNotPresent
           securityContext:
             allowPrivilegeEscalation: false
-            readOnlyRootFilesystem: false  # postgres writes to /var/run/postgresql and /tmp
+            readOnlyRootFilesystem: false # postgres writes to /var/run/postgresql and /tmp
             capabilities:
               drop:
                 - ALL
