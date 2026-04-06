@@ -1,0 +1,39 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: k6-load-test
+  namespace: internet-bank
+spec:
+  # Never auto-restart; inspect logs after completion/failure
+  backoffLimit: 0
+  template:
+    metadata:
+      labels:
+        app: k6-load-test
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: k6
+          image: grafana/k6:latest
+          args:
+            - run
+            - /scripts/load-test.js
+          env:
+            - name: BASE_URL
+              # Hit the internal Service so traffic stays in-cluster.
+              # Remove or override to use the ALB URL for end-to-end testing.
+              value: "http://web-client.internet-bank.svc.cluster.local"
+          volumeMounts:
+            - name: scripts
+              mountPath: /scripts
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
+      volumes:
+        - name: scripts
+          configMap:
+            name: k6-load-test-script

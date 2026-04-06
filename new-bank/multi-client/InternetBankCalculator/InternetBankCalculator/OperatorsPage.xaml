@@ -1,0 +1,373 @@
+﻿<Page x:Class="InternetBankCalculator.OperatorsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="#F5F7FA">
+
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                  VerticalScrollBarVisibility="Auto">
+        <StackPanel MaxWidth="700"
+                    HorizontalAlignment="Center"
+                    Padding="24,60,24,60"
+                    Spacing="24">
+
+            <StackPanel Spacing="8">
+                <TextBlock Text="About This App"
+                           FontSize="30"
+                           FontWeight="Bold"
+                           Foreground="#1A1A1A"/>
+                <TextBlock Text="Everything in one place — all sections and the story behind doggerbank.online."
+                           FontSize="15"
+                           Foreground="#555555"
+                           TextWrapping="Wrap"/>
+            </StackPanel>
+
+            <!-- Card: Landing -->
+            <Border Background="White"
+                    CornerRadius="12"
+                    Padding="24"
+                    BorderBrush="#E0E0E0"
+                    BorderThickness="1">
+                <Border.Shadow>
+                    <ThemeShadow/>
+                </Border.Shadow>
+                <StackPanel Orientation="Horizontal"
+                            Spacing="20"
+                            VerticalAlignment="Center">
+                    <TextBlock Text="🏠"
+                               FontSize="36"
+                               VerticalAlignment="Center"/>
+                    <StackPanel Spacing="4">
+                        <TextBlock Text="Landing"
+                                   FontSize="17"
+                                   FontWeight="SemiBold"/>
+                        <TextBlock Text="The home page. Introduction to the app, with quick-access cards to every section."
+                                   FontSize="14"
+                                   Foreground="#555555"
+                                   TextWrapping="Wrap"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Card: Calculator -->
+            <Border Background="White"
+                    CornerRadius="12"
+                    Padding="24"
+                    BorderBrush="#E0E0E0"
+                    BorderThickness="1">
+                <Border.Shadow>
+                    <ThemeShadow/>
+                </Border.Shadow>
+                <StackPanel Orientation="Horizontal"
+                            Spacing="20"
+                            VerticalAlignment="Center">
+                    <TextBlock Text="🧮"
+                               FontSize="36"
+                               VerticalAlignment="Center"/>
+                    <StackPanel Spacing="4">
+                        <TextBlock Text="Calculator"
+                                   FontSize="17"
+                                   FontWeight="SemiBold"/>
+                        <TextBlock Text="An internet-connected floating-point calculator. Evaluates arithmetic, factorial and Fibonacci operations via a Spring Boot API backed by PostgreSQL and Redis."
+                                   FontSize="14"
+                                   Foreground="#555555"
+                                   TextWrapping="Wrap"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Card: Dogger Bank -->
+            <Border Background="White"
+                    CornerRadius="12"
+                    Padding="24"
+                    BorderBrush="#E0E0E0"
+                    BorderThickness="1">
+                <Border.Shadow>
+                    <ThemeShadow/>
+                </Border.Shadow>
+                <StackPanel Orientation="Horizontal"
+                            Spacing="20"
+                            VerticalAlignment="Center">
+                    <TextBlock Text="🌊"
+                               FontSize="36"
+                               VerticalAlignment="Center"/>
+                    <StackPanel Spacing="4">
+                        <TextBlock Text="Dogger Bank"
+                                   FontSize="17"
+                                   FontWeight="SemiBold"/>
+                        <TextBlock Text="The shallow North Sea sandbank that gives this app its name — a rich fishing ground, the site of three naval battles, and now the world's largest offshore wind farm."
+                                   FontSize="14"
+                                   Foreground="#555555"
+                                   TextWrapping="Wrap"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Card: Doggerland -->
+            <Border Background="White"
+                    CornerRadius="12"
+                    Padding="24"
+                    BorderBrush="#E0E0E0"
+                    BorderThickness="1">
+                <Border.Shadow>
+                    <ThemeShadow/>
+                </Border.Shadow>
+                <StackPanel Orientation="Horizontal"
+                            Spacing="20"
+                            VerticalAlignment="Center">
+                    <TextBlock Text="🦣"
+                               FontSize="36"
+                               VerticalAlignment="Center"/>
+                    <StackPanel Spacing="4">
+                        <TextBlock Text="Doggerland"
+                                   FontSize="17"
+                                   FontWeight="SemiBold"/>
+                        <TextBlock Text="The prehistoric land bridge between Britain and Europe that became the North Sea — home to Mesolithic hunter-gatherers until the Storegga tsunami around 6200 BCE."
+                                   FontSize="14"
+                                   Foreground="#555555"
+                                   TextWrapping="Wrap"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Tech stack -->
+            <Border Background="#1A1A2E"
+                    CornerRadius="12"
+                    Padding="28">
+                <StackPanel Spacing="20">
+                    <TextBlock Text="Tech Stack"
+                               FontSize="17"
+                               FontWeight="SemiBold"
+                               Foreground="White"/>
+
+                    <!-- Row 1: Uno + Spring Boot -->
+                    <StackPanel Orientation="Horizontal"
+                            Spacing="16">
+                        <Border Background="White"
+                                CornerRadius="8"
+                                Padding="10,8"
+                                Width="120">
+                            <StackPanel Spacing="6"
+                                    HorizontalAlignment="Center">
+                                <Image Source="ms-appx:///Assets/logo_uno.png"
+                                       Height="38"
+                                        Stretch="Uniform"
+                                       HorizontalAlignment="Center"/>
+                                <TextBlock Text="Uno Platform"
+                                           FontSize="11"
+                                        FontWeight="SemiBold"
+                                           Foreground="#1A1A1A"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"/>
+                                <TextBlock Text="WASM · C# / XAML"
+                                           FontSize="10"
+                                        Foreground="#555555"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"
+                                           TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Background="White"
+                                CornerRadius="8"
+                                Padding="10,8"
+                                Width="120">
+                            <StackPanel Spacing="6"
+                                    HorizontalAlignment="Center">
+                                <TextBlock Text="☕"
+                                        FontSize="36"
+                                           HorizontalAlignment="Center"/>
+                                <TextBlock Text="Spring Boot 3"
+                                           FontSize="11"
+                                        FontWeight="SemiBold"
+                                           Foreground="#1A1A1A"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"/>
+                                <TextBlock Text="Java 21 · REST API"
+                                           FontSize="10"
+                                        Foreground="#555555"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"
+                                           TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Background="White"
+                                CornerRadius="8"
+                                Padding="10,8"
+                                Width="120">
+                            <StackPanel Spacing="6"
+                                    HorizontalAlignment="Center">
+                                <Image Source="ms-appx:///Assets/logo_postgres.png"
+                                       Height="38"
+                                        Stretch="Uniform"
+                                       HorizontalAlignment="Center"/>
+                                <TextBlock Text="PostgreSQL 17"
+                                           FontSize="11"
+                                        FontWeight="SemiBold"
+                                           Foreground="#1A1A1A"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"/>
+                                <TextBlock Text="Primary database"
+                                           FontSize="10"
+                                        Foreground="#555555"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"
+                                           TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+
+                    <!-- Row 2: Docker + Kubernetes + Redis -->
+                    <StackPanel Orientation="Horizontal"
+                            Spacing="16">
+                        <Border Background="White"
+                                CornerRadius="8"
+                                Padding="10,8"
+                                Width="120">
+                            <StackPanel Spacing="6"
+                                    HorizontalAlignment="Center">
+                                <Image Source="ms-appx:///Assets/logo_docker.png"
+                                       Height="38"
+                                        Stretch="Uniform"
+                                       HorizontalAlignment="Center"/>
+                                <TextBlock Text="Docker"
+                                           FontSize="11"
+                                        FontWeight="SemiBold"
+                                           Foreground="#1A1A1A"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"/>
+                                <TextBlock Text="Local Compose stack"
+                                           FontSize="10"
+                                        Foreground="#555555"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"
+                                           TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Background="White"
+                                CornerRadius="8"
+                                Padding="10,8"
+                                Width="120">
+                            <StackPanel Spacing="6"
+                                    HorizontalAlignment="Center">
+                                <Image Source="ms-appx:///Assets/logo_kubernetes.png"
+                                       Height="38"
+                                        Stretch="Uniform"
+                                       HorizontalAlignment="Center"/>
+                                <TextBlock Text="Kubernetes"
+                                           FontSize="11"
+                                        FontWeight="SemiBold"
+                                           Foreground="#1A1A1A"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"/>
+                                <TextBlock Text="AWS EKS · HPA · PDB"
+                                           FontSize="10"
+                                        Foreground="#555555"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"
+                                           TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Background="White"
+                                CornerRadius="8"
+                                Padding="10,8"
+                                Width="120">
+                            <StackPanel Spacing="6"
+                                    HorizontalAlignment="Center">
+                                <TextBlock Text="⚡"
+                                        FontSize="36"
+                                           HorizontalAlignment="Center"/>
+                                <TextBlock Text="Redis 7"
+                                           FontSize="11"
+                                        FontWeight="SemiBold"
+                                           Foreground="#1A1A1A"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"/>
+                                <TextBlock Text="Primes cache · 24 h TTL"
+                                           FontSize="10"
+                                        Foreground="#555555"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"
+                                           TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+
+                    <!-- Row 3: Observability -->
+                    <StackPanel Orientation="Horizontal"
+                            Spacing="16">
+                        <Border Background="White"
+                                CornerRadius="8"
+                                Padding="10,8"
+                                Width="120">
+                            <StackPanel Spacing="6"
+                                    HorizontalAlignment="Center">
+                                <TextBlock Text="📊"
+                                        FontSize="36"
+                                           HorizontalAlignment="Center"/>
+                                <TextBlock Text="Prometheus"
+                                           FontSize="11"
+                                        FontWeight="SemiBold"
+                                           Foreground="#1A1A1A"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"/>
+                                <TextBlock Text="Metrics · PromQL"
+                                           FontSize="10"
+                                        Foreground="#555555"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"
+                                           TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Background="White"
+                                CornerRadius="8"
+                                Padding="10,8"
+                                Width="120">
+                            <StackPanel Spacing="6"
+                                    HorizontalAlignment="Center">
+                                <TextBlock Text="🔥"
+                                        FontSize="36"
+                                           HorizontalAlignment="Center"/>
+                                <TextBlock Text="Grafana"
+                                           FontSize="11"
+                                        FontWeight="SemiBold"
+                                           Foreground="#1A1A1A"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"/>
+                                <TextBlock Text="Dashboards · Loki · Tempo"
+                                           FontSize="10"
+                                        Foreground="#555555"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"
+                                           TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Background="White"
+                                CornerRadius="8"
+                                Padding="10,8"
+                                Width="120">
+                            <StackPanel Spacing="6"
+                                    HorizontalAlignment="Center">
+                                <TextBlock Text="🔭"
+                                        FontSize="36"
+                                           HorizontalAlignment="Center"/>
+                                <TextBlock Text="OpenTelemetry"
+                                           FontSize="11"
+                                        FontWeight="SemiBold"
+                                           Foreground="#1A1A1A"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"/>
+                                <TextBlock Text="Traces · Logs · Metrics"
+                                           FontSize="10"
+                                        Foreground="#555555"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"
+                                           TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+
+                </StackPanel>
+            </Border>
+
+        </StackPanel>
+    </ScrollViewer>
+</Page>

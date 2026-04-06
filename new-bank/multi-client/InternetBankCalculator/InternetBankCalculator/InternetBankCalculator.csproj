@@ -32,6 +32,12 @@
 
   <ItemGroup>
     <Content Include="Assets\doggerbank.png" />
+    <Content Include="Assets\dogger_bank_wind_farm.jpg" />
+    <Content Include="Assets\doggerland_map.svg" />
+    <Content Include="Assets\logo_docker.png" />
+    <Content Include="Assets\logo_kubernetes.png" />
+    <Content Include="Assets\logo_postgres.png" />
+    <Content Include="Assets\logo_uno.png" />
   </ItemGroup>
 
   <!-- IL2104: suppress "assembly produced trim warnings" from upstream Uno packages

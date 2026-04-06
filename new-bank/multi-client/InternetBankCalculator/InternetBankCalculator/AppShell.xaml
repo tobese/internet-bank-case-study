@@ -1,0 +1,83 @@
+﻿<Page x:Class="InternetBankCalculator.AppShell"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:InternetBankCalculator"
+      Background="#F5F7FA">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Top nav bar -->
+        <Border Grid.Row="0"
+                Background="#1A1A2E"
+                Padding="16,0,16,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Logo -->
+                <Button Grid.Column="0"
+                        x:Name="BtnHome"
+                        Click="BtnHome_Click"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Padding="0,12,24,12">
+                    <Image Source="ms-appx:///Assets/doggerbank.png"
+                           MaxHeight="28"
+                           Stretch="Uniform"/>
+                </Button>
+
+                <!-- Nav links -->
+                <Grid Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0"
+                                Orientation="Horizontal"
+                                Spacing="4"
+                                VerticalAlignment="Center">
+                        <Button x:Name="BtnCalc"
+                                Content="Calculator"
+                                Click="BtnCalc_Click"
+                                Style="{StaticResource NavButtonStyle}"/>
+                        <Button x:Name="BtnDoggerBank"
+                                Content="Dogger Bank"
+                                Click="BtnDoggerBank_Click"
+                                Style="{StaticResource NavButtonStyle}"/>
+                        <Button x:Name="BtnDoggerLand"
+                                Content="Doggerland"
+                                Click="BtnDoggerLand_Click"
+                                Style="{StaticResource NavButtonStyle}"/>
+                        <Button x:Name="BtnOperators"
+                                Content="About"
+                                Click="BtnOperators_Click"
+                                Style="{StaticResource NavButtonStyle}"/>
+                        <Button x:Name="BtnSystemDesign"
+                                Content="System Design"
+                                Click="BtnSystemDesign_Click"
+                                Style="{StaticResource NavButtonStyle}"/>
+                    </StackPanel>
+                    <!-- Reload button -->
+                    <Button Grid.Column="1"
+                            x:Name="BtnReload"
+                            Content="⟳"
+                            Click="BtnReload_Click"
+                            ToolTipService.ToolTip="Reload page"
+                            Style="{StaticResource NavButtonStyle}"
+                            FontSize="18"
+                            Padding="10,6"/>
+                </Grid>
+            </Grid>
+        </Border>
+
+        <!-- Content area -->
+        <Frame x:Name="ContentFrame"
+               Grid.Row="1"/>
+    </Grid>
+</Page>
