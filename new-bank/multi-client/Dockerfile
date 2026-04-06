@@ -8,6 +8,8 @@ COPY InternetBankCalculator/InternetBankCalculator/bin/Release/net10.0-browserwa
 # The generated SW caches aggressively and causes stale-asset issues in container deployments.
 COPY service-worker-passthrough.js /usr/share/nginx/html/service-worker.js
 COPY sw-reset.html /usr/share/nginx/html/sw-reset.html
+USER root
 RUN find /usr/share/nginx/html -type f -exec chmod 644 {} \; \
  && find /usr/share/nginx/html -type d -exec chmod 755 {} \;
+USER 101
 EXPOSE 8080
