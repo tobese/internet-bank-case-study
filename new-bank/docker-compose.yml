@@ -89,6 +89,17 @@ services:
     networks:
       - internet-bank
 
+  redis-exporter:
+    image: oliver006/redis_exporter:v1.67.0
+    container_name: internet-bank-redis-exporter
+    environment:
+      REDIS_ADDR: redis://redis:6379
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - internet-bank
+
   prometheus:
     image: prom/prometheus:v3.3.0
     container_name: internet-bank-prometheus
@@ -101,9 +112,11 @@ services:
       - "--config.file=/etc/prometheus/prometheus.yml"
       - "--storage.tsdb.path=/prometheus"
       - "--storage.tsdb.retention.time=15d"
+      - "--web.enable-remote-write-receiver"
     depends_on:
       - api
       - postgres-exporter
+      - redis-exporter
     networks:
       - internet-bank
 

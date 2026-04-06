@@ -39,3 +39,4 @@ resources:
   - grafana-configmap.yaml
   - grafana-deployment.yaml
   - grafana-service.yaml
+  - kube-state-metrics.yaml

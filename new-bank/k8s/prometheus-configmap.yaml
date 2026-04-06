@@ -28,3 +28,9 @@ data:
           - targets: ['tempo.internet-bank.svc.cluster.local:3200']
             labels:
               service: 'internet-bank-tempo'
+
+      - job_name: 'kube-state-metrics'
+        static_configs:
+          - targets: ['kube-state-metrics.internet-bank.svc.cluster.local:8080']
+            labels:
+              service: 'kube-state-metrics'
