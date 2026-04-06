@@ -14,11 +14,17 @@ data:
         metrics_path: '/actuator/prometheus'
         static_configs:
           - targets: ['api.internet-bank.svc.cluster.local:8282']
-        labels:
-          service: 'internet-bank-api'
+            labels:
+              service: 'internet-bank-api'
 
       - job_name: 'postgres'
         static_configs:
           - targets: ['postgres-exporter.internet-bank.svc.cluster.local:9187']
-        labels:
-          service: 'internet-bank-postgres'
+            labels:
+              service: 'internet-bank-postgres'
+
+      - job_name: 'tempo'
+        static_configs:
+          - targets: ['tempo.internet-bank.svc.cluster.local:3200']
+            labels:
+              service: 'internet-bank-tempo'

@@ -21,8 +21,8 @@ spec:
     spec:
       containers:
         - name: api
-          image: internet-bank/api-application:latest
-          imagePullPolicy: IfNotPresent
+          image: 395734437227.dkr.ecr.eu-central-1.amazonaws.com/internet-bank/api:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8282
           env:
@@ -44,29 +44,46 @@ spec:
                 secretKeyRef:
                   name: postgres-secret
                   key: POSTGRES_PASSWORD
+            - name: REDIS_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: api-config
+                  key: REDIS_HOST
+            - name: REDIS_PORT
+              value: "6379"
+            - name: OTEL_SERVICE_NAME
+              value: "internet-bank-api"
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: api-config
+                  key: OTEL_EXPORTER_OTLP_ENDPOINT
+            - name: OTEL_EXPORTER_OTLP_PROTOCOL
+              value: "grpc"
+            - name: OTEL_METRICS_EXPORTER
+              value: "none"
+            - name: OTEL_LOGS_EXPORTER
+              value: "none"
+            - name: JAVA_TOOL_OPTIONS
+              value: "-javaagent:/app/opentelemetry-javaagent.jar"
           resources:
             requests:
-              memory: "256Mi"
+              memory: "512Mi"
               cpu: "250m"
             limits:
-              memory: "512Mi"
+              memory: "1Gi"
               cpu: "500m"
           readinessProbe:
             httpGet:
-              path: /api/fac/1
+              path: /actuator/health
               port: 8282
-            initialDelaySeconds: 20
+            initialDelaySeconds: 90
             periodSeconds: 10
+            failureThreshold: 3
           livenessProbe:
             httpGet:
-              path: /api/fac/1
+              path: /actuator/health
               port: 8282
-            initialDelaySeconds: 30
+            initialDelaySeconds: 120
             periodSeconds: 15
-          volumeMounts:
-            - name: primes-cache
-              mountPath: /data/primes-cache
-      volumes:
-        - name: primes-cache
-          persistentVolumeClaim:
-            claimName: primes-cache
+            failureThreshold: 3

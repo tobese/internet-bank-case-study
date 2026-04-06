@@ -5,10 +5,13 @@ metadata:
   namespace: internet-bank
   labels:
     app: web-client
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
 spec:
   rules:
-    - host: web-client.local
-      http:
+    - http:
         paths:
           - path: /
             pathType: Prefix

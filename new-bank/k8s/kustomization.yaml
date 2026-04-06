@@ -5,7 +5,6 @@ namespace: internet-bank
 
 resources:
   - namespace.yaml
-  - primes-cache-pvc.yaml
   - postgres-service.yaml
   - postgres-statefulset.yaml
   - postgres-configmap.yaml
@@ -20,15 +19,23 @@ resources:
   - api-configmap.yaml
   - api-hpa.yaml
   - api-pdb.yaml
+  - redis-deployment.yaml
+  - redis-service.yaml
   - network-policy.yaml
   - prometheus-configmap.yaml
   - prometheus-deployment.yaml
   - prometheus-service.yaml
   - postgres-exporter-deployment.yaml
   - postgres-exporter-service.yaml
-
-images:
-  - name: internet-bank/web-client
-    newTag: latest
-  - name: internet-bank/api-application
-    newTag: latest
+  - tempo-configmap.yaml
+  - tempo-deployment.yaml
+  - tempo-service.yaml
+  - loki-configmap.yaml
+  - loki-deployment.yaml
+  - loki-service.yaml
+  - promtail-rbac.yaml
+  - promtail-configmap.yaml
+  - promtail-daemonset.yaml
+  - grafana-configmap.yaml
+  - grafana-deployment.yaml
+  - grafana-service.yaml

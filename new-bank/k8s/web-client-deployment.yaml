@@ -18,8 +18,8 @@ spec:
     spec:
       containers:
         - name: web-client
-          image: internet-bank/web-client:v1.0.0
-          imagePullPolicy: IfNotPresent
+          image: 395734437227.dkr.ecr.eu-central-1.amazonaws.com/internet-bank/web-client:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
           resources:

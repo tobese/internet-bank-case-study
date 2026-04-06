@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: promtail
+  namespace: internet-bank
+  labels:
+    app: promtail
+spec:
+  selector:
+    matchLabels:
+      app: promtail
+  template:
+    metadata:
+      labels:
+        app: promtail
+    spec:
+      serviceAccountName: promtail
+      tolerations:
+        - key: node-role.kubernetes.io/control-plane
+          operator: Exists
+          effect: NoSchedule
+      containers:
+        - name: promtail
+          image: grafana/promtail:3.4.2
+          args:
+            - -config.file=/etc/promtail/promtail-config.yml
+          ports:
+            - containerPort: 9080
+          volumeMounts:
+            - name: config
+              mountPath: /etc/promtail
+            - name: varlogpods
+              mountPath: /var/log/pods
+              readOnly: true
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "50m"
+            limits:
+              memory: "128Mi"
+              cpu: "200m"
+      volumes:
+        - name: config
+          configMap:
+            name: promtail-config
+        - name: varlogpods
+          hostPath:
+            path: /var/log/pods

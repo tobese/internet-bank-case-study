@@ -29,6 +29,7 @@ spec:
           volumeMounts:
             - name: postgres-storage
               mountPath: /var/lib/postgresql/data
+              subPath: pgdata
             - name: init-scripts
               mountPath: /docker-entrypoint-initdb.d
           resources:
@@ -58,6 +59,7 @@ spec:
         name: postgres-storage
       spec:
         accessModes: ["ReadWriteOnce"]
+        storageClassName: gp2-csi
         resources:
           requests:
             storage: 1Gi

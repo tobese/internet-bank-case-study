@@ -8,3 +8,5 @@ metadata:
 data:
   application.properties: |
     server.port=8282
+  REDIS_HOST: redis
+  OTEL_EXPORTER_OTLP_ENDPOINT: http://tempo:4317
