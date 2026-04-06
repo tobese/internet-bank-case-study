@@ -9,9 +9,23 @@ metadata:
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80,"HTTPS":443}]'
+    alb.ingress.kubernetes.io/ssl-redirect: "443"
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:eu-central-1:395734437227:certificate/d16bc570-c93f-4b01-9e8f-c50ee87e91e4
 spec:
   rules:
-    - http:
+    - host: doggerbank.online
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: web-client
+                port:
+                  number: 80
+    - host: www.doggerbank.online
+      http:
         paths:
           - path: /
             pathType: Prefix
