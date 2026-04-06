@@ -72,7 +72,7 @@ services:
       dockerfile: Dockerfile
     container_name: internet-bank-web
     ports:
-      - "80:80"
+      - "80:8080"
     depends_on:
       - api
     networks:

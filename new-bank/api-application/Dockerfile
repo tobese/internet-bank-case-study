@@ -1,5 +1,5 @@
 # ── Build stage ──────────────────────────────────────────────────────────────
-FROM maven:3.9-eclipse-temurin-21 AS build
+FROM maven:3.9-eclipse-temurin-21-alpine AS build
 WORKDIR /app
 COPY pom.xml .
 COPY .mvn .mvn
@@ -16,9 +16,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends curl \
     https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
 
 # ── Runtime stage ─────────────────────────────────────────────────────────────
-FROM eclipse-temurin:21-jre
+FROM gcr.io/distroless/java21-debian12:nonroot
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 COPY --from=otel /opentelemetry-javaagent.jar opentelemetry-javaagent.jar
 EXPOSE 8282
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["/usr/bin/java", "-jar", "app.jar"]
