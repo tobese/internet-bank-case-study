@@ -87,6 +87,7 @@ jobs:
           cp new-bank/k8s/api-deployment.yaml                 new-bank/multi-client/files/k8s-api-deployment.yaml
           cp new-bank/k8s/api-hpa.yaml                        new-bank/multi-client/files/k8s-api-hpa.yaml
           cp new-bank/k8s/postgres-statefulset.yaml           new-bank/multi-client/files/k8s-postgres-statefulset.yaml
+          python3 new-bank/multi-client/generate-file-viewers.py new-bank/multi-client/files
 
       - name: Build and push web-client image
         id: meta

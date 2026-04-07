@@ -441,7 +441,7 @@
                     </TextBlock>
                     <Button x:Name="BtnGitHubActions"
                             Click="BtnGitHubActions_Click"
-                            Background="#24292F"
+                            Background="#1F6FEB"
                             Foreground="White"
                             CornerRadius="8"
                             Padding="18,10"
@@ -683,15 +683,20 @@
                                Margin="0,0,0,12"/>
 
                     <!-- Uno Platform -->
-                    <StackPanel Orientation="Horizontal"
-                                Spacing="14"
-                                Padding="0,8">
-                        <Image Source="ms-appx:///Assets/logo_uno.png"
+                    <Grid Padding="0,8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="32"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0"
+                               Source="ms-appx:///Assets/logo_uno.png"
                                Height="32"
                                Width="32"
                                Stretch="Uniform"
                                VerticalAlignment="Center"/>
-                        <StackPanel Spacing="2"
+                        <StackPanel Grid.Column="1"
+                                    Spacing="2"
+                                    Margin="14,0,0,0"
                                     VerticalAlignment="Center">
                             <TextBlock Text="Uno Platform"
                                        FontSize="13"
@@ -702,20 +707,25 @@
                                        Foreground="#8899BB"
                                        TextWrapping="Wrap"/>
                         </StackPanel>
-                    </StackPanel>
+                    </Grid>
                     <Border Height="1"
                             Background="#2A2A4A"/>
 
                     <!-- Spring Boot -->
-                    <StackPanel Orientation="Horizontal"
-                                Spacing="14"
-                                Padding="0,8">
-                        <Image Source="ms-appx:///Assets/logo_springboot.png"
+                    <Grid Padding="0,8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="32"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0"
+                               Source="ms-appx:///Assets/logo_springboot.png"
                                Height="32"
                                Width="32"
                                Stretch="Uniform"
                                VerticalAlignment="Center"/>
-                        <StackPanel Spacing="2"
+                        <StackPanel Grid.Column="1"
+                                    Spacing="2"
+                                    Margin="14,0,0,0"
                                     VerticalAlignment="Center">
                             <TextBlock Text="Spring Boot 3"
                                        FontSize="13"
@@ -726,20 +736,25 @@
                                        Foreground="#8899BB"
                                        TextWrapping="Wrap"/>
                         </StackPanel>
-                    </StackPanel>
+                    </Grid>
                     <Border Height="1"
                             Background="#2A2A4A"/>
 
                     <!-- PostgreSQL -->
-                    <StackPanel Orientation="Horizontal"
-                                Spacing="14"
-                                Padding="0,8">
-                        <Image Source="ms-appx:///Assets/logo_postgres.png"
+                    <Grid Padding="0,8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="32"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0"
+                               Source="ms-appx:///Assets/logo_postgres.png"
                                Height="32"
                                Width="32"
                                Stretch="Uniform"
                                VerticalAlignment="Center"/>
-                        <StackPanel Spacing="2"
+                        <StackPanel Grid.Column="1"
+                                    Spacing="2"
+                                    Margin="14,0,0,0"
                                     VerticalAlignment="Center">
                             <TextBlock Text="PostgreSQL 17"
                                        FontSize="13"
@@ -750,20 +765,25 @@
                                        Foreground="#8899BB"
                                        TextWrapping="Wrap"/>
                         </StackPanel>
-                    </StackPanel>
+                    </Grid>
                     <Border Height="1"
                             Background="#2A2A4A"/>
 
                     <!-- Redis -->
-                    <StackPanel Orientation="Horizontal"
-                                Spacing="14"
-                                Padding="0,8">
-                        <Image Source="ms-appx:///Assets/logo_redis.png"
+                    <Grid Padding="0,8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="32"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0"
+                               Source="ms-appx:///Assets/logo_redis.png"
                                Height="32"
                                Width="32"
                                Stretch="Uniform"
                                VerticalAlignment="Center"/>
-                        <StackPanel Spacing="2"
+                        <StackPanel Grid.Column="1"
+                                    Spacing="2"
+                                    Margin="14,0,0,0"
                                     VerticalAlignment="Center">
                             <TextBlock Text="Redis 7"
                                        FontSize="13"
@@ -774,20 +794,25 @@
                                        Foreground="#8899BB"
                                        TextWrapping="Wrap"/>
                         </StackPanel>
-                    </StackPanel>
+                    </Grid>
                     <Border Height="1"
                             Background="#2A2A4A"/>
 
                     <!-- Docker -->
-                    <StackPanel Orientation="Horizontal"
-                                Spacing="14"
-                                Padding="0,8">
-                        <Image Source="ms-appx:///Assets/logo_docker.png"
+                    <Grid Padding="0,8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="32"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0"
+                               Source="ms-appx:///Assets/logo_docker.png"
                                Height="32"
                                Width="32"
                                Stretch="Uniform"
                                VerticalAlignment="Center"/>
-                        <StackPanel Spacing="2"
+                        <StackPanel Grid.Column="1"
+                                    Spacing="2"
+                                    Margin="14,0,0,0"
                                     VerticalAlignment="Center">
                             <TextBlock Text="Docker"
                                        FontSize="13"
@@ -798,20 +823,25 @@
                                        Foreground="#8899BB"
                                        TextWrapping="Wrap"/>
                         </StackPanel>
-                    </StackPanel>
+                    </Grid>
                     <Border Height="1"
                             Background="#2A2A4A"/>
 
                     <!-- Kubernetes -->
-                    <StackPanel Orientation="Horizontal"
-                                Spacing="14"
-                                Padding="0,8">
-                        <Image Source="ms-appx:///Assets/logo_kubernetes_spin.gif"
+                    <Grid Padding="0,8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="32"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0"
+                               Source="ms-appx:///Assets/logo_kubernetes_spin.gif"
                                Height="32"
                                Width="32"
                                Stretch="Uniform"
                                VerticalAlignment="Center"/>
-                        <StackPanel Spacing="2"
+                        <StackPanel Grid.Column="1"
+                                    Spacing="2"
+                                    Margin="14,0,0,0"
                                     VerticalAlignment="Center">
                             <TextBlock Text="Kubernetes"
                                        FontSize="13"
@@ -822,20 +852,25 @@
                                        Foreground="#8899BB"
                                        TextWrapping="Wrap"/>
                         </StackPanel>
-                    </StackPanel>
+                    </Grid>
                     <Border Height="1"
                             Background="#2A2A4A"/>
 
                     <!-- Prometheus -->
-                    <StackPanel Orientation="Horizontal"
-                                Spacing="14"
-                                Padding="0,8">
-                        <Image Source="ms-appx:///Assets/logo_prometheus.png"
+                    <Grid Padding="0,8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="32"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0"
+                               Source="ms-appx:///Assets/logo_prometheus.png"
                                Height="32"
                                Width="32"
                                Stretch="Uniform"
                                VerticalAlignment="Center"/>
-                        <StackPanel Spacing="2"
+                        <StackPanel Grid.Column="1"
+                                    Spacing="2"
+                                    Margin="14,0,0,0"
                                     VerticalAlignment="Center">
                             <TextBlock Text="Prometheus"
                                        FontSize="13"
@@ -846,20 +881,25 @@
                                        Foreground="#8899BB"
                                        TextWrapping="Wrap"/>
                         </StackPanel>
-                    </StackPanel>
+                    </Grid>
                     <Border Height="1"
                             Background="#2A2A4A"/>
 
                     <!-- Grafana -->
-                    <StackPanel Orientation="Horizontal"
-                                Spacing="14"
-                                Padding="0,8">
-                        <Image Source="ms-appx:///Assets/logo_grafana.png"
+                    <Grid Padding="0,8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="32"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0"
+                               Source="ms-appx:///Assets/logo_grafana.png"
                                Height="32"
                                Width="32"
                                Stretch="Uniform"
                                VerticalAlignment="Center"/>
-                        <StackPanel Spacing="2"
+                        <StackPanel Grid.Column="1"
+                                    Spacing="2"
+                                    Margin="14,0,0,0"
                                     VerticalAlignment="Center">
                             <TextBlock Text="Grafana"
                                        FontSize="13"
@@ -870,20 +910,25 @@
                                        Foreground="#8899BB"
                                        TextWrapping="Wrap"/>
                         </StackPanel>
-                    </StackPanel>
+                    </Grid>
                     <Border Height="1"
                             Background="#2A2A4A"/>
 
                     <!-- OpenTelemetry -->
-                    <StackPanel Orientation="Horizontal"
-                                Spacing="14"
-                                Padding="0,8">
-                        <Image Source="ms-appx:///Assets/logo_opentelemetry.png"
+                    <Grid Padding="0,8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="32"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0"
+                               Source="ms-appx:///Assets/logo_opentelemetry.png"
                                Height="32"
                                Width="32"
                                Stretch="Uniform"
                                VerticalAlignment="Center"/>
-                        <StackPanel Spacing="2"
+                        <StackPanel Grid.Column="1"
+                                    Spacing="2"
+                                    Margin="14,0,0,0"
                                     VerticalAlignment="Center">
                             <TextBlock Text="OpenTelemetry"
                                        FontSize="13"
@@ -894,15 +939,18 @@
                                        Foreground="#8899BB"
                                        TextWrapping="Wrap"/>
                         </StackPanel>
-                    </StackPanel>
+                    </Grid>
                     <Border Height="1"
                             Background="#2A2A4A"/>
 
                     <!-- Container Images -->
-                    <StackPanel Orientation="Horizontal"
-                                Spacing="14"
-                                Padding="0,8">
-                        <Border Width="32"
+                    <Grid Padding="0,8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="32"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0"
+                                Width="32"
                                 Height="32"
                                 Background="#3A3A5A"
                                 CornerRadius="6"
@@ -914,7 +962,9 @@
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"/>
                         </Border>
-                        <StackPanel Spacing="2"
+                        <StackPanel Grid.Column="1"
+                                    Spacing="2"
+                                    Margin="14,0,0,0"
                                     VerticalAlignment="Center">
                             <TextBlock Text="Container Images"
                                        FontSize="13"
@@ -925,7 +975,7 @@
                                        Foreground="#8899BB"
                                        TextWrapping="Wrap"/>
                         </StackPanel>
-                    </StackPanel>
+                    </Grid>
 
                 </StackPanel>
             </Border>
@@ -954,80 +1004,86 @@
                     <!-- Bullet list -->
                     <StackPanel Spacing="10">
 
-                        <StackPanel Orientation="Horizontal"
-                                    Spacing="10">
-                            <TextBlock Text="🔒"
-                                       FontSize="15"
-                                       VerticalAlignment="Top"
-                                       Margin="0,1,0,0"/>
-                            <TextBlock TextWrapping="Wrap"
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="16"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" Width="7" Height="7" Background="#4477CC" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,4,0,0"/>
+                            <TextBlock Grid.Column="1"
+                                       Margin="0,0,0,0"
+                                       TextWrapping="Wrap"
                                        FontSize="13"
                                        Foreground="#333333"
                                        LineHeight="20">
                                 <Run FontWeight="SemiBold">Hardened runtime images —</Run>
                                 <Run>API uses a Chainguard Wolfi build stage with a distroless Java 21 runtime (no shell, no package manager, 0 CVEs). Web client runs nginx-unprivileged so the process never needs root.</Run>
                             </TextBlock>
-                        </StackPanel>
+                        </Grid>
 
-                        <StackPanel Orientation="Horizontal"
-                                    Spacing="10">
-                            <TextBlock Text="📌"
-                                       FontSize="15"
-                                       VerticalAlignment="Top"
-                                       Margin="0,1,0,0"/>
-                            <TextBlock TextWrapping="Wrap"
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="16"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" Width="7" Height="7" Background="#4477CC" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,4,0,0"/>
+                            <TextBlock Grid.Column="1"
+                                       TextWrapping="Wrap"
                                        FontSize="13"
                                        Foreground="#333333"
                                        LineHeight="20">
                                 <Run FontWeight="SemiBold">LTS versions pinned throughout —</Run>
                                 <Run>Java 21 LTS, PostgreSQL 17, Redis 7, and Alpine LTS are all long-term-support releases, reducing the frequency of disruptive upgrades.</Run>
                             </TextBlock>
-                        </StackPanel>
+                        </Grid>
 
-                        <StackPanel Orientation="Horizontal"
-                                    Spacing="10">
-                            <TextBlock Text="⚖️"
-                                       FontSize="15"
-                                       VerticalAlignment="Top"
-                                       Margin="0,1,0,0"/>
-                            <TextBlock TextWrapping="Wrap"
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="16"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" Width="7" Height="7" Background="#4477CC" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,4,0,0"/>
+                            <TextBlock Grid.Column="1"
+                                       TextWrapping="Wrap"
                                        FontSize="13"
                                        Foreground="#333333"
                                        LineHeight="20">
                                 <Run FontWeight="SemiBold">Resource limits on every pod —</Run>
                                 <Run>CPU requests and limits are set on all Kubernetes workloads, preventing noisy-neighbour contention and making HPA scaling decisions predictable.</Run>
                             </TextBlock>
-                        </StackPanel>
+                        </Grid>
 
-                        <StackPanel Orientation="Horizontal"
-                                    Spacing="10">
-                            <TextBlock Text="📈"
-                                       FontSize="15"
-                                       VerticalAlignment="Top"
-                                       Margin="0,1,0,0"/>
-                            <TextBlock TextWrapping="Wrap"
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="16"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" Width="7" Height="7" Background="#4477CC" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,4,0,0"/>
+                            <TextBlock Grid.Column="1"
+                                       TextWrapping="Wrap"
                                        FontSize="13"
                                        Foreground="#333333"
                                        LineHeight="20">
                                 <Run FontWeight="SemiBold">HPA + PDB for resilience —</Run>
                                 <Run>The HorizontalPodAutoscaler scales the API between 2 and 10 replicas on CPU utilisation. A PodDisruptionBudget ensures at least one pod stays available during rolling updates or node drains.</Run>
                             </TextBlock>
-                        </StackPanel>
+                        </Grid>
 
-                        <StackPanel Orientation="Horizontal"
-                                    Spacing="10">
-                            <TextBlock Text="🛡️"
-                                       FontSize="15"
-                                       VerticalAlignment="Top"
-                                       Margin="0,1,0,0"/>
-                            <TextBlock TextWrapping="Wrap"
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="16"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" Width="7" Height="7" Background="#4477CC" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,4,0,0"/>
+                            <TextBlock Grid.Column="1"
+                                       TextWrapping="Wrap"
                                        FontSize="13"
                                        Foreground="#333333"
                                        LineHeight="20">
                                 <Run FontWeight="SemiBold">NetworkPolicy (zero-trust pod networking) —</Run>
                                 <Run>Ingress and egress rules restrict pod-to-pod traffic to only the paths that are needed, so a compromised container cannot reach unrelated services.</Run>
                             </TextBlock>
-                        </StackPanel>
+                        </Grid>
 
                     </StackPanel>
                 </StackPanel>
@@ -1048,38 +1104,38 @@
                                Foreground="#8899BB"
                                Margin="0,0,0,8"/>
 
-                    <HyperlinkButton NavigateUri="/files/api.Dockerfile"
-                                     Foreground="#6699CC"
+                    <HyperlinkButton NavigateUri="/files/api.Dockerfile.html"
+                                     Foreground="#99CCFF"
                                      FontSize="13"
                                      Padding="0,4">
                         api.Dockerfile — Spring Boot / distroless multi-stage build
                     </HyperlinkButton>
-                    <HyperlinkButton NavigateUri="/files/web-client.Dockerfile"
-                                     Foreground="#6699CC"
+                    <HyperlinkButton NavigateUri="/files/web-client.Dockerfile.html"
+                                     Foreground="#99CCFF"
                                      FontSize="13"
                                      Padding="0,4">
                         web-client.Dockerfile — nginx serving the WASM bundle
                     </HyperlinkButton>
-                    <HyperlinkButton NavigateUri="/files/docker-compose.yml"
-                                     Foreground="#6699CC"
+                    <HyperlinkButton NavigateUri="/files/docker-compose.yml.html"
+                                     Foreground="#99CCFF"
                                      FontSize="13"
                                      Padding="0,4">
                         docker-compose.yml — full local dev stack
                     </HyperlinkButton>
-                    <HyperlinkButton NavigateUri="/files/k8s-api-deployment.yaml"
-                                     Foreground="#6699CC"
+                    <HyperlinkButton NavigateUri="/files/k8s-api-deployment.yaml.html"
+                                     Foreground="#99CCFF"
                                      FontSize="13"
                                      Padding="0,4">
                         k8s-api-deployment.yaml — Kubernetes Deployment with resource limits
                     </HyperlinkButton>
-                    <HyperlinkButton NavigateUri="/files/k8s-api-hpa.yaml"
-                                     Foreground="#6699CC"
+                    <HyperlinkButton NavigateUri="/files/k8s-api-hpa.yaml.html"
+                                     Foreground="#99CCFF"
                                      FontSize="13"
                                      Padding="0,4">
                         k8s-api-hpa.yaml — HorizontalPodAutoscaler configuration
                     </HyperlinkButton>
-                    <HyperlinkButton NavigateUri="/files/k8s-postgres-statefulset.yaml"
-                                     Foreground="#6699CC"
+                    <HyperlinkButton NavigateUri="/files/k8s-postgres-statefulset.yaml.html"
+                                     Foreground="#99CCFF"
                                      FontSize="13"
                                      Padding="0,4">
                         k8s-postgres-statefulset.yaml — PostgreSQL StatefulSet
