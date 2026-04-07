@@ -63,6 +63,18 @@ if [[ ! -d "$WWWROOT" ]]; then
 fi
 
 echo -e "${GREEN}✅ Built: $WWWROOT${NC}"
+
+# ── Copy source files for display in the web client ─────────────────────────
+echo -e "${BLUE}── Copying source files for /files/ ───────────────────${NC}"
+FILES_DIR="$SCRIPT_DIR/multi-client/files"
+mkdir -p "$FILES_DIR"
+cp "$SCRIPT_DIR/api-application/Dockerfile"    "$FILES_DIR/api.Dockerfile"
+cp "$SCRIPT_DIR/multi-client/Dockerfile"       "$FILES_DIR/web-client.Dockerfile"
+cp "$SCRIPT_DIR/docker-compose.yml"            "$FILES_DIR/docker-compose.yml"
+cp "$SCRIPT_DIR/k8s/api-deployment.yaml"       "$FILES_DIR/k8s-api-deployment.yaml"
+cp "$SCRIPT_DIR/k8s/api-hpa.yaml"              "$FILES_DIR/k8s-api-hpa.yaml"
+cp "$SCRIPT_DIR/k8s/postgres-statefulset.yaml" "$FILES_DIR/k8s-postgres-statefulset.yaml"
+echo -e "${GREEN}✅ Source files ready in multi-client/files/${NC}"
 echo ""
 echo -e "${BLUE}Serve locally (requires .NET or any static file server):${NC}"
 echo "  cd \"$WWWROOT\" && python3 -m http.server 8080"

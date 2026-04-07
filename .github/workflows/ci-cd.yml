@@ -78,6 +78,16 @@ jobs:
       - name: Login to ECR
         uses: aws-actions/amazon-ecr-login@v2
 
+      - name: Copy source files for display in app
+        run: |
+          mkdir -p new-bank/multi-client/files
+          cp new-bank/api-application/Dockerfile              new-bank/multi-client/files/api.Dockerfile
+          cp new-bank/multi-client/Dockerfile                 new-bank/multi-client/files/web-client.Dockerfile
+          cp new-bank/docker-compose.yml                      new-bank/multi-client/files/docker-compose.yml
+          cp new-bank/k8s/api-deployment.yaml                 new-bank/multi-client/files/k8s-api-deployment.yaml
+          cp new-bank/k8s/api-hpa.yaml                        new-bank/multi-client/files/k8s-api-hpa.yaml
+          cp new-bank/k8s/postgres-statefulset.yaml           new-bank/multi-client/files/k8s-postgres-statefulset.yaml
+
       - name: Build and push web-client image
         id: meta
         working-directory: new-bank/multi-client
