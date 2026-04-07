@@ -12,58 +12,78 @@ import os
 import sys
 import html as html_lib
 
+
+# Map file extensions to Prism.js language classes and display labels
 LANG_LABELS = {
-    ".Dockerfile": "Dockerfile",
-    ".yml": "YAML",
-    ".yaml": "YAML",
-    ".sh": "Shell",
-    ".json": "JSON",
-    ".xml": "XML",
-    ".properties": "Properties",
+    ".Dockerfile": ("docker", "Dockerfile"),
+    ".dockerfile": ("docker", "Dockerfile"),
+    ".yml": ("yaml", "YAML"),
+    ".yaml": ("yaml", "YAML"),
+    ".sh": ("bash", "Shell"),
+    ".json": ("json", "JSON"),
+    ".xml": ("markup", "XML"),
+    ".properties": ("ini", "Properties"),
 }
 
 
-def _lang_label(filename: str) -> str:
+
+def _lang_info(filename: str):
     _, ext = os.path.splitext(filename)
-    return LANG_LABELS.get(ext, "Text")
+    return LANG_LABELS.get(ext, ("none", "Text"))
+
 
 
 def _render(filename: str, content: str) -> str:
-    safe_name = html_lib.escape(filename)
-    safe_body = html_lib.escape(content)
-    label = _lang_label(filename)
-    return f"""<!DOCTYPE html>
-<html lang="en">
+        safe_name = html_lib.escape(filename)
+        safe_body = html_lib.escape(content)
+        lang_class, label = _lang_info(filename)
+        # Prism.js CDN links (dark theme)
+        prism_css = "https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css"
+        prism_js = "https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"
+        # Add language plugins for yaml, docker, bash, ini
+        prism_plugins = [
+                "https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-yaml.min.js",
+                "https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-docker.min.js",
+                "https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js",
+                "https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-ini.min.js",
+        ]
+        plugin_scripts = "\n    ".join(f'<script src="{url}"></script>' for url in prism_plugins)
+        return f"""<!DOCTYPE html>
+<html lang=\"en\">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{safe_name}</title>
-  <style>
-    * {{ box-sizing: border-box; margin: 0; padding: 0; }}
-    body {{ background: #0d1117; color: #e6edf3;
-           font-family: 'Segoe UI', system-ui, sans-serif; min-height: 100vh; }}
-    .header {{ background: #161b22; border-bottom: 1px solid #30363d;
-               padding: 12px 20px; display: flex; align-items: center; gap: 12px; }}
-    .filename {{ font-size: 14px; font-weight: 600; color: #e6edf3; }}
-    .badge {{ font-size: 11px; background: #21262d; border: 1px solid #30363d;
-              color: #8b949e; padding: 2px 8px; border-radius: 12px; }}
-    .back {{ font-size: 13px; color: #58a6ff; text-decoration: none;
-             margin-left: auto; }}
-    .back:hover {{ text-decoration: underline; }}
-    .code-wrap {{ overflow-x: auto; }}
-    pre {{ margin: 0; padding: 20px;
-           font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
-           font-size: 13px; line-height: 1.6; color: #e6edf3;
-           white-space: pre; tab-size: 4; }}
-  </style>
+    <meta charset=\"UTF-8\">
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+    <title>{safe_name}</title>
+    <link rel=\"stylesheet\" href=\"{prism_css}\">
+    <style>
+        * {{ box-sizing: border-box; margin: 0; padding: 0; }}
+        body {{ background: #0d1117; color: #e6edf3;
+                     font-family: 'Segoe UI', system-ui, sans-serif; min-height: 100vh; }}
+        .header {{ background: #161b22; border-bottom: 1px solid #30363d;
+                             padding: 12px 20px; display: flex; align-items: center; gap: 12px; }}
+        .filename {{ font-size: 14px; font-weight: 600; color: #e6edf3; }}
+        .badge {{ font-size: 11px; background: #21262d; border: 1px solid #30363d;
+                            color: #8b949e; padding: 2px 8px; border-radius: 12px; }}
+        .back {{ font-size: 13px; color: #58a6ff; text-decoration: none;
+                         margin-left: auto; }}
+        .back:hover {{ text-decoration: underline; }}
+        .code-wrap {{ overflow-x: auto; }}
+        pre {{ margin: 0; padding: 20px;
+                     font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+                     font-size: 13px; line-height: 1.6; color: #e6edf3;
+                     white-space: pre; tab-size: 4; border-radius: 0 0 8px 8px; }}
+        code {{ background: none; color: inherit; }}
+    </style>
 </head>
 <body>
-  <div class="header">
-    <span class="filename">{safe_name}</span>
-    <span class="badge">{label}</span>
-    <a class="back" href="javascript:history.back()">&#8592; back</a>
-  </div>
-  <div class="code-wrap"><pre>{safe_body}</pre></div>
+    <div class=\"header\">
+        <span class=\"filename\">{safe_name}</span>
+        <span class=\"badge\">{label}</span>
+        <a class=\"back\" href=\"javascript:history.back()\">&#8592; back</a>
+    </div>
+    <div class=\"code-wrap\"><pre><code class=\"language-{lang_class}\">{safe_body}</code></pre></div>
+    <script src=\"{prism_js}\"></script>
+    {plugin_scripts}
 </body>
 </html>"""
 
