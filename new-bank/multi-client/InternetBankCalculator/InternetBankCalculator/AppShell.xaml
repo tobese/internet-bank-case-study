@@ -54,13 +54,13 @@
                                 Content="Doggerland"
                                 Click="BtnDoggerLand_Click"
                                 Style="{StaticResource NavButtonStyle}"/>
-                        <Button x:Name="BtnOperators"
-                                Content="About"
-                                Click="BtnOperators_Click"
-                                Style="{StaticResource NavButtonStyle}"/>
                         <Button x:Name="BtnSystemDesign"
                                 Content="System Design"
                                 Click="BtnSystemDesign_Click"
+                                Style="{StaticResource NavButtonStyle}"/>
+                        <Button x:Name="BtnOperators"
+                                Content="About"
+                                Click="BtnOperators_Click"
                                 Style="{StaticResource NavButtonStyle}"/>
                     </StackPanel>
                     <!-- Reload button -->

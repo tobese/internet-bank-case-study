@@ -11,123 +11,15 @@
                     Spacing="24">
 
             <StackPanel Spacing="8">
-                <TextBlock Text="About This App"
+                <TextBlock Text="About"
                            FontSize="30"
                            FontWeight="Bold"
                            Foreground="#1A1A1A"/>
-                <TextBlock Text="Everything in one place — all sections and the story behind doggerbank.online."
+                <TextBlock Text="Dogger Bank is a fictitious internet bank — a case study demonstrating the latest and greatest in cloud-native technology, from a C# / WebAssembly frontend to a Java API running on Kubernetes in the cloud."
                            FontSize="15"
                            Foreground="#555555"
                            TextWrapping="Wrap"/>
             </StackPanel>
-
-            <!-- Card: Landing -->
-            <Border Background="White"
-                    CornerRadius="12"
-                    Padding="24"
-                    BorderBrush="#E0E0E0"
-                    BorderThickness="1">
-                <Border.Shadow>
-                    <ThemeShadow/>
-                </Border.Shadow>
-                <StackPanel Orientation="Horizontal"
-                            Spacing="20"
-                            VerticalAlignment="Center">
-                    <TextBlock Text="🏠"
-                               FontSize="36"
-                               VerticalAlignment="Center"/>
-                    <StackPanel Spacing="4">
-                        <TextBlock Text="Landing"
-                                   FontSize="17"
-                                   FontWeight="SemiBold"/>
-                        <TextBlock Text="The home page. Introduction to the app, with quick-access cards to every section."
-                                   FontSize="14"
-                                   Foreground="#555555"
-                                   TextWrapping="Wrap"/>
-                    </StackPanel>
-                </StackPanel>
-            </Border>
-
-            <!-- Card: Calculator -->
-            <Border Background="White"
-                    CornerRadius="12"
-                    Padding="24"
-                    BorderBrush="#E0E0E0"
-                    BorderThickness="1">
-                <Border.Shadow>
-                    <ThemeShadow/>
-                </Border.Shadow>
-                <StackPanel Orientation="Horizontal"
-                            Spacing="20"
-                            VerticalAlignment="Center">
-                    <TextBlock Text="🧮"
-                               FontSize="36"
-                               VerticalAlignment="Center"/>
-                    <StackPanel Spacing="4">
-                        <TextBlock Text="Calculator"
-                                   FontSize="17"
-                                   FontWeight="SemiBold"/>
-                        <TextBlock Text="An internet-connected floating-point calculator. Evaluates arithmetic, factorial and Fibonacci operations via a Spring Boot API backed by PostgreSQL and Redis."
-                                   FontSize="14"
-                                   Foreground="#555555"
-                                   TextWrapping="Wrap"/>
-                    </StackPanel>
-                </StackPanel>
-            </Border>
-
-            <!-- Card: Dogger Bank -->
-            <Border Background="White"
-                    CornerRadius="12"
-                    Padding="24"
-                    BorderBrush="#E0E0E0"
-                    BorderThickness="1">
-                <Border.Shadow>
-                    <ThemeShadow/>
-                </Border.Shadow>
-                <StackPanel Orientation="Horizontal"
-                            Spacing="20"
-                            VerticalAlignment="Center">
-                    <TextBlock Text="🌊"
-                               FontSize="36"
-                               VerticalAlignment="Center"/>
-                    <StackPanel Spacing="4">
-                        <TextBlock Text="Dogger Bank"
-                                   FontSize="17"
-                                   FontWeight="SemiBold"/>
-                        <TextBlock Text="The shallow North Sea sandbank that gives this app its name — a rich fishing ground, the site of three naval battles, and now the world's largest offshore wind farm."
-                                   FontSize="14"
-                                   Foreground="#555555"
-                                   TextWrapping="Wrap"/>
-                    </StackPanel>
-                </StackPanel>
-            </Border>
-
-            <!-- Card: Doggerland -->
-            <Border Background="White"
-                    CornerRadius="12"
-                    Padding="24"
-                    BorderBrush="#E0E0E0"
-                    BorderThickness="1">
-                <Border.Shadow>
-                    <ThemeShadow/>
-                </Border.Shadow>
-                <StackPanel Orientation="Horizontal"
-                            Spacing="20"
-                            VerticalAlignment="Center">
-                    <TextBlock Text="🦣"
-                               FontSize="36"
-                               VerticalAlignment="Center"/>
-                    <StackPanel Spacing="4">
-                        <TextBlock Text="Doggerland"
-                                   FontSize="17"
-                                   FontWeight="SemiBold"/>
-                        <TextBlock Text="The prehistoric land bridge between Britain and Europe that became the North Sea — home to Mesolithic hunter-gatherers until the Storegga tsunami around 6200 BCE."
-                                   FontSize="14"
-                                   Foreground="#555555"
-                                   TextWrapping="Wrap"/>
-                    </StackPanel>
-                </StackPanel>
-            </Border>
 
             <!-- Tech stack -->
             <Border Background="#1A1A2E"

@@ -25,7 +25,7 @@
             <!-- Hero image: Doggerland map (CC BY-SA 3.0, Max Naylor) -->
             <Border CornerRadius="12"
                     Background="#1a3a5c">
-                <Image Source="ms-appx:///Assets/doggerland_map.png"
+                <Image Source="ms-appx:///Assets/doggerland_map.svg"
                        Height="320"
                        Stretch="Uniform"
                        HorizontalAlignment="Center"/>
