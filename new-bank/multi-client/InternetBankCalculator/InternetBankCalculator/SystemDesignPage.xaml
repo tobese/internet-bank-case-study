@@ -923,6 +923,109 @@
                 </StackPanel>
             </Border>
 
+            <!-- Configuration Highlights -->
+            <Border Background="White"
+                    CornerRadius="12"
+                    Padding="28"
+                    BorderBrush="#E0E0E0"
+                    BorderThickness="1">
+                <Border.Shadow>
+                    <ThemeShadow/>
+                </Border.Shadow>
+                <StackPanel Spacing="16">
+                    <TextBlock Text="Configuration Highlights"
+                               FontSize="17"
+                               FontWeight="SemiBold"
+                               Foreground="#1A1A2E"/>
+                    <TextBlock TextWrapping="Wrap"
+                               FontSize="13"
+                               Foreground="#555555"
+                               LineHeight="20">
+                        The source files below reflect a number of deliberate production-quality choices.
+                    </TextBlock>
+
+                    <!-- Bullet list -->
+                    <StackPanel Spacing="10">
+
+                        <StackPanel Orientation="Horizontal"
+                                Spacing="10">
+                            <TextBlock Text="🔒"
+                                    FontSize="15"
+                                    VerticalAlignment="Top"
+                                    Margin="0,1,0,0"/>
+                            <TextBlock TextWrapping="Wrap"
+                                    FontSize="13"
+                                    Foreground="#333333"
+                                    LineHeight="20">
+                                <Run FontWeight="SemiBold">Hardened runtime images —</Run>
+                                <Run>API uses a Chainguard Wolfi build stage with a distroless Java 21 runtime (no shell, no package manager, 0 CVEs). Web client runs nginx-unprivileged so the process never needs root.</Run>
+                            </TextBlock>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal"
+                                Spacing="10">
+                            <TextBlock Text="📌"
+                                    FontSize="15"
+                                    VerticalAlignment="Top"
+                                    Margin="0,1,0,0"/>
+                            <TextBlock TextWrapping="Wrap"
+                                    FontSize="13"
+                                    Foreground="#333333"
+                                    LineHeight="20">
+                                <Run FontWeight="SemiBold">LTS versions pinned throughout —</Run>
+                                <Run>Java 21 LTS, PostgreSQL 17, Redis 7, and Alpine LTS are all long-term-support releases, reducing the frequency of disruptive upgrades.</Run>
+                            </TextBlock>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal"
+                                Spacing="10">
+                            <TextBlock Text="⚖️"
+                                    FontSize="15"
+                                    VerticalAlignment="Top"
+                                    Margin="0,1,0,0"/>
+                            <TextBlock TextWrapping="Wrap"
+                                    FontSize="13"
+                                    Foreground="#333333"
+                                    LineHeight="20">
+                                <Run FontWeight="SemiBold">Resource limits on every pod —</Run>
+                                <Run>CPU requests and limits are set on all Kubernetes workloads, preventing noisy-neighbour contention and making HPA scaling decisions predictable.</Run>
+                            </TextBlock>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal"
+                                Spacing="10">
+                            <TextBlock Text="📈"
+                                    FontSize="15"
+                                    VerticalAlignment="Top"
+                                    Margin="0,1,0,0"/>
+                            <TextBlock TextWrapping="Wrap"
+                                    FontSize="13"
+                                    Foreground="#333333"
+                                    LineHeight="20">
+                                <Run FontWeight="SemiBold">HPA + PDB for resilience —</Run>
+                                <Run>The HorizontalPodAutoscaler scales the API between 2 and 10 replicas on CPU utilisation. A PodDisruptionBudget ensures at least one pod stays available during rolling updates or node drains.</Run>
+                            </TextBlock>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal"
+                                Spacing="10">
+                            <TextBlock Text="🛡️"
+                                    FontSize="15"
+                                    VerticalAlignment="Top"
+                                    Margin="0,1,0,0"/>
+                            <TextBlock TextWrapping="Wrap"
+                                    FontSize="13"
+                                    Foreground="#333333"
+                                    LineHeight="20">
+                                <Run FontWeight="SemiBold">NetworkPolicy (zero-trust pod networking) —</Run>
+                                <Run>Ingress and egress rules restrict pod-to-pod traffic to only the paths that are needed, so a compromised container cannot reach unrelated services.</Run>
+                            </TextBlock>
+                        </StackPanel>
+
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
             <!-- Source Files -->
             <Border Background="#1A1A2E"
                     CornerRadius="12"
