@@ -22,95 +22,197 @@
                            TextWrapping="Wrap"/>
             </StackPanel>
 
-            <!-- Architecture layers (dark code-style card) -->
+            <!-- Architecture Overview (visual flow) -->
             <Border Background="#1A1A2E"
                     CornerRadius="12"
                     Padding="28">
-                <StackPanel Spacing="10">
+                <StackPanel Spacing="0">
                     <TextBlock Text="Architecture Overview"
                                FontSize="17"
                                FontWeight="SemiBold"
-                               Foreground="White"/>
-                    <TextBlock TextWrapping="Wrap"
-                               FontSize="13"
-                               Foreground="#AAAACC"
-                               LineHeight="22">
-                        <Run>Browser  ──HTTPS──▶  AWS ALB (ACM TLS cert)</Run>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap"
-                               FontSize="13"
-                               Foreground="#AAAACC"
-                               LineHeight="22">
-                        <Run>                         │</Run>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap"
-                               FontSize="13"
-                               Foreground="#AAAACC"
-                               LineHeight="22">
-                        <Run>                         ▼</Run>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap"
-                               FontSize="13"
-                               Foreground="#AAAACC"
-                               LineHeight="22">
-                        <Run>             web-client pods  (nginx + Uno WASM)</Run>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap"
-                               FontSize="13"
-                               Foreground="#AAAACC"
-                               LineHeight="22">
-                        <Run>                    /api/*  │</Run>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap"
-                               FontSize="13"
-                               Foreground="#AAAACC"
-                               LineHeight="22">
-                        <Run>                         ▼</Run>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap"
-                               FontSize="13"
-                               Foreground="#AAAACC"
-                               LineHeight="22">
-                        <Run>               api pods  (Spring Boot · Java 21)</Run>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap"
-                               FontSize="13"
-                               Foreground="#AAAACC"
-                               LineHeight="22">
-                        <Run>               ┌──────────────┴──────────────┐</Run>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap"
-                               FontSize="13"
-                               Foreground="#AAAACC"
-                               LineHeight="22">
-                        <Run>               ▼                             ▼</Run>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap"
-                               FontSize="13"
-                               Foreground="#AAAACC"
-                               LineHeight="22">
-                        <Run>         PostgreSQL 17                  Redis 7</Run>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap"
-                               FontSize="13"
-                               Foreground="#AAAACC"
-                               LineHeight="22">
-                        <Run>         (StatefulSet)             (primes cache · 24 h TTL)</Run>
-                    </TextBlock>
-                    <TextBlock Text=" "
-                               FontSize="6"/>
-                    <TextBlock TextWrapping="Wrap"
-                               FontSize="13"
+                               Foreground="White"
+                               Margin="0,0,0,20"/>
+
+                    <!-- Browser -->
+                    <Border Background="#264060"
+                            CornerRadius="8"
+                            Padding="14,10">
+                        <TextBlock Text="🌐  Browser"
+                                   FontSize="14"
+                                   FontWeight="SemiBold"
+                                   Foreground="White"
+                                   HorizontalAlignment="Center"/>
+                    </Border>
+
+                    <StackPanel HorizontalAlignment="Center"
+                                Spacing="0"
+                                Margin="0,4,0,4">
+                        <TextBlock Text="HTTPS"
+                                   FontSize="11"
+                                   Foreground="#668899"
+                                   HorizontalAlignment="Center"/>
+                        <TextBlock Text="▼"
+                                   FontSize="14"
+                                   Foreground="#668899"
+                                   HorizontalAlignment="Center"/>
+                    </StackPanel>
+
+                    <!-- AWS ALB -->
+                    <Border Background="#264060"
+                            CornerRadius="8"
+                            Padding="14,10">
+                        <TextBlock Text="☁️  AWS ALB  ·  ACM TLS certificate"
+                                   FontSize="14"
+                                   FontWeight="SemiBold"
+                                   Foreground="White"
+                                   HorizontalAlignment="Center"/>
+                    </Border>
+
+                    <TextBlock Text="▼"
+                               FontSize="14"
                                Foreground="#668899"
-                               LineHeight="22">
-                        <Run>Observability:  Prometheus · Loki · Tempo  ──▶  Grafana</Run>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap"
-                               FontSize="13"
-                               Foreground="#668899"
-                               LineHeight="22">
-                        <Run>CI/CD:  GitHub Actions  ──▶  ECR  ──▶  EKS rolling deploy</Run>
-                    </TextBlock>
+                               HorizontalAlignment="Center"
+                               Margin="0,4,0,4"/>
+
+                    <!-- web-client pods -->
+                    <Border Background="#264060"
+                            CornerRadius="8"
+                            Padding="14,10">
+                        <StackPanel HorizontalAlignment="Center"
+                                    Spacing="2">
+                            <TextBlock Text="🖥️  web-client pods"
+                                       FontSize="14"
+                                       FontWeight="SemiBold"
+                                       Foreground="White"
+                                       HorizontalAlignment="Center"/>
+                            <TextBlock Text="nginx + Uno Platform WASM"
+                                       FontSize="12"
+                                       Foreground="#AAAACC"
+                                       HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+
+                    <StackPanel HorizontalAlignment="Center"
+                                Spacing="0"
+                                Margin="0,4,0,4">
+                        <TextBlock Text="/api/*"
+                                   FontSize="11"
+                                   Foreground="#668899"
+                                   HorizontalAlignment="Center"/>
+                        <TextBlock Text="▼"
+                                   FontSize="14"
+                                   Foreground="#668899"
+                                   HorizontalAlignment="Center"/>
+                    </StackPanel>
+
+                    <!-- api pods -->
+                    <Border Background="#264060"
+                            CornerRadius="8"
+                            Padding="14,10">
+                        <StackPanel HorizontalAlignment="Center"
+                                    Spacing="2">
+                            <TextBlock Text="☕  api pods"
+                                       FontSize="14"
+                                       FontWeight="SemiBold"
+                                       Foreground="White"
+                                       HorizontalAlignment="Center"/>
+                            <TextBlock Text="Spring Boot 3 · Java 21 · virtual threads"
+                                       FontSize="12"
+                                       Foreground="#AAAACC"
+                                       HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Split arrows to DB / Cache -->
+                    <Grid Margin="0,4,0,4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Text="▼"
+                                   FontSize="14"
+                                   Foreground="#668899"
+                                   HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="1"
+                                   Text="▼"
+                                   FontSize="14"
+                                   Foreground="#668899"
+                                   HorizontalAlignment="Center"/>
+                    </Grid>
+
+                    <!-- PostgreSQL + Redis side by side -->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="12"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0"
+                                Background="#264060"
+                                CornerRadius="8"
+                                Padding="12,10">
+                            <StackPanel HorizontalAlignment="Center"
+                                        Spacing="2">
+                                <TextBlock Text="🗄️  PostgreSQL 17"
+                                           FontSize="13"
+                                           FontWeight="SemiBold"
+                                           Foreground="White"
+                                           HorizontalAlignment="Center"/>
+                                <TextBlock Text="StatefulSet · persistent volume"
+                                           FontSize="11"
+                                           Foreground="#AAAACC"
+                                           HorizontalAlignment="Center"
+                                           TextWrapping="Wrap"
+                                           TextAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Grid.Column="2"
+                                Background="#264060"
+                                CornerRadius="8"
+                                Padding="12,10">
+                            <StackPanel HorizontalAlignment="Center"
+                                        Spacing="2">
+                                <TextBlock Text="⚡  Redis 7"
+                                           FontSize="13"
+                                           FontWeight="SemiBold"
+                                           Foreground="White"
+                                           HorizontalAlignment="Center"/>
+                                <TextBlock Text="primes cache · 24 h TTL"
+                                           FontSize="11"
+                                           Foreground="#AAAACC"
+                                           HorizontalAlignment="Center"
+                                           TextWrapping="Wrap"
+                                           TextAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+
+                    <!-- Observability row -->
+                    <Border Background="#1A3040"
+                            CornerRadius="8"
+                            Padding="14,10"
+                            Margin="0,16,0,0">
+                        <TextBlock Text="📊  Observability  ·  Prometheus · Loki · Tempo  ──▶  Grafana"
+                                   FontSize="13"
+                                   Foreground="#99BBCC"
+                                   HorizontalAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"/>
+                    </Border>
+
+                    <!-- CI/CD row -->
+                    <Border Background="#1A3020"
+                            CornerRadius="8"
+                            Padding="14,10"
+                            Margin="0,8,0,0">
+                        <TextBlock Text="🚀  CI/CD  ·  GitHub Actions  ──▶  ECR  ──▶  EKS rolling deploy"
+                                   FontSize="13"
+                                   Foreground="#99CC99"
+                                   HorizontalAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"/>
+                    </Border>
                 </StackPanel>
             </Border>
 
@@ -564,6 +666,245 @@
                                    LineHeight="22">
                             <Run>Uno Platform compiles a single C# / XAML codebase to WebAssembly, Android, iOS, macOS, Linux and Windows. Using WASM for this case study demonstrates that the same application logic and UI code can target the browser without JavaScript, and that a .NET developer can produce a deployable web frontend without switching language or framework. The Skia rendering backend ensures pixel-identical output across all platforms.</Run>
                         </TextBlock>
+                    </StackPanel>
+
+                </StackPanel>
+            </Border>
+
+            <!-- Tech Stack -->
+            <Border Background="#1A1A2E"
+                    CornerRadius="12"
+                    Padding="28">
+                <StackPanel Spacing="20">
+                    <TextBlock Text="Tech Stack"
+                               FontSize="17"
+                               FontWeight="SemiBold"
+                               Foreground="White"/>
+
+                    <!-- Row 1: Uno + Spring Boot + PostgreSQL -->
+                    <StackPanel Orientation="Horizontal"
+                                Spacing="16">
+                        <Border Background="White"
+                                CornerRadius="8"
+                                Padding="10,8"
+                                Width="120">
+                            <StackPanel Spacing="6"
+                                        HorizontalAlignment="Center">
+                                <Image Source="ms-appx:///Assets/logo_uno.png"
+                                       Height="38"
+                                       Stretch="Uniform"
+                                       HorizontalAlignment="Center"/>
+                                <TextBlock Text="Uno Platform"
+                                           FontSize="11"
+                                           FontWeight="SemiBold"
+                                           Foreground="#1A1A1A"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"/>
+                                <TextBlock Text="WASM · C# / XAML"
+                                           FontSize="10"
+                                           Foreground="#555555"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"
+                                           TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Background="White"
+                                CornerRadius="8"
+                                Padding="10,8"
+                                Width="120">
+                            <StackPanel Spacing="6"
+                                        HorizontalAlignment="Center">
+                                <TextBlock Text="&#x2615;"
+                                           FontSize="36"
+                                           HorizontalAlignment="Center"/>
+                                <TextBlock Text="Spring Boot 3"
+                                           FontSize="11"
+                                           FontWeight="SemiBold"
+                                           Foreground="#1A1A1A"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"/>
+                                <TextBlock Text="Java 21 · REST API"
+                                           FontSize="10"
+                                           Foreground="#555555"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"
+                                           TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Background="White"
+                                CornerRadius="8"
+                                Padding="10,8"
+                                Width="120">
+                            <StackPanel Spacing="6"
+                                        HorizontalAlignment="Center">
+                                <Image Source="ms-appx:///Assets/logo_postgres.png"
+                                       Height="38"
+                                       Stretch="Uniform"
+                                       HorizontalAlignment="Center"/>
+                                <TextBlock Text="PostgreSQL 17"
+                                           FontSize="11"
+                                           FontWeight="SemiBold"
+                                           Foreground="#1A1A1A"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"/>
+                                <TextBlock Text="Primary database"
+                                           FontSize="10"
+                                           Foreground="#555555"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"
+                                           TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+
+                    <!-- Row 2: Docker + Kubernetes + Redis -->
+                    <StackPanel Orientation="Horizontal"
+                                Spacing="16">
+                        <Border Background="White"
+                                CornerRadius="8"
+                                Padding="10,8"
+                                Width="120">
+                            <StackPanel Spacing="6"
+                                        HorizontalAlignment="Center">
+                                <Image Source="ms-appx:///Assets/logo_docker.png"
+                                       Height="38"
+                                       Stretch="Uniform"
+                                       HorizontalAlignment="Center"/>
+                                <TextBlock Text="Docker"
+                                           FontSize="11"
+                                           FontWeight="SemiBold"
+                                           Foreground="#1A1A1A"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"/>
+                                <TextBlock Text="Local Compose stack"
+                                           FontSize="10"
+                                           Foreground="#555555"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"
+                                           TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Background="White"
+                                CornerRadius="8"
+                                Padding="10,8"
+                                Width="120">
+                            <StackPanel Spacing="6"
+                                        HorizontalAlignment="Center">
+                                <Image Source="ms-appx:///Assets/logo_kubernetes_spin.gif"
+                                       Height="38"
+                                       Stretch="Uniform"
+                                       HorizontalAlignment="Center"/>
+                                <TextBlock Text="Kubernetes"
+                                           FontSize="11"
+                                           FontWeight="SemiBold"
+                                           Foreground="#1A1A1A"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"/>
+                                <TextBlock Text="AWS EKS · HPA · PDB"
+                                           FontSize="10"
+                                           Foreground="#555555"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"
+                                           TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Background="White"
+                                CornerRadius="8"
+                                Padding="10,8"
+                                Width="120">
+                            <StackPanel Spacing="6"
+                                        HorizontalAlignment="Center">
+                                <TextBlock Text="&#x26A1;"
+                                           FontSize="36"
+                                           HorizontalAlignment="Center"/>
+                                <TextBlock Text="Redis 7"
+                                           FontSize="11"
+                                           FontWeight="SemiBold"
+                                           Foreground="#1A1A1A"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"/>
+                                <TextBlock Text="Primes cache · 24 h TTL"
+                                           FontSize="10"
+                                           Foreground="#555555"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"
+                                           TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+
+                    <!-- Row 3: Observability -->
+                    <StackPanel Orientation="Horizontal"
+                                Spacing="16">
+                        <Border Background="White"
+                                CornerRadius="8"
+                                Padding="10,8"
+                                Width="120">
+                            <StackPanel Spacing="6"
+                                        HorizontalAlignment="Center">
+                                <TextBlock Text="&#x1F4CA;"
+                                           FontSize="36"
+                                           HorizontalAlignment="Center"/>
+                                <TextBlock Text="Prometheus"
+                                           FontSize="11"
+                                           FontWeight="SemiBold"
+                                           Foreground="#1A1A1A"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"/>
+                                <TextBlock Text="Metrics · PromQL"
+                                           FontSize="10"
+                                           Foreground="#555555"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"
+                                           TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Background="White"
+                                CornerRadius="8"
+                                Padding="10,8"
+                                Width="120">
+                            <StackPanel Spacing="6"
+                                        HorizontalAlignment="Center">
+                                <TextBlock Text="&#x1F525;"
+                                           FontSize="36"
+                                           HorizontalAlignment="Center"/>
+                                <TextBlock Text="Grafana"
+                                           FontSize="11"
+                                           FontWeight="SemiBold"
+                                           Foreground="#1A1A1A"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"/>
+                                <TextBlock Text="Dashboards · Loki · Tempo"
+                                           FontSize="10"
+                                           Foreground="#555555"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"
+                                           TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Background="White"
+                                CornerRadius="8"
+                                Padding="10,8"
+                                Width="120">
+                            <StackPanel Spacing="6"
+                                        HorizontalAlignment="Center">
+                                <TextBlock Text="&#x1F52D;"
+                                           FontSize="36"
+                                           HorizontalAlignment="Center"/>
+                                <TextBlock Text="OpenTelemetry"
+                                           FontSize="11"
+                                           FontWeight="SemiBold"
+                                           Foreground="#1A1A1A"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"/>
+                                <TextBlock Text="Traces · Logs · Metrics"
+                                           FontSize="10"
+                                           Foreground="#555555"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"
+                                           TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
                     </StackPanel>
 
                 </StackPanel>
