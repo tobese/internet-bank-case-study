@@ -44,9 +44,11 @@
                     <ThemeShadow/>
                 </Border.Shadow>
                 <StackPanel Spacing="12">
-                    <TextBlock Text="🧮"
-                               FontSize="36"
-                               HorizontalAlignment="Center"/>
+                    <Image Source="ms-appx:///Assets/abacus.png"
+                           MaxWidth="48"
+                           Stretch="Uniform"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,4"/>
                     <TextBlock Text="Calculator"
                                FontSize="18"
                                FontWeight="SemiBold"
