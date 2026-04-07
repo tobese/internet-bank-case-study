@@ -1,5 +1,5 @@
 var UnoAppManifest = {
-  displayName: "Dogger Bank",
+  displayName: "Doggerbank",
   splashScreenImage: "Assets/doggerbank.png",
   splashScreenColor: "#1A1A2E",
   faviconImageHtml:

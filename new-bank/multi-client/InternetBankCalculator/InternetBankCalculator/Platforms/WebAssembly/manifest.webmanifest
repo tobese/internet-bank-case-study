@@ -1,9 +1,9 @@
 {
   "background_color": "#1A1A2E",
-  "description": "Dogger Bank — a fictitious cloud-native internet bank case study",
+  "description": "Doggerbank — a fictitious cloud-native internet bank case study",
   "display": "standalone",
-  "name": "Dogger Bank",
-  "short_name": "Dogger Bank",
+  "name": "Doggerbank",
+  "short_name": "Doggerbank",
   "start_url": "/index.html",
   "theme_color": "#1A1A2E",
   "scope": "/",
