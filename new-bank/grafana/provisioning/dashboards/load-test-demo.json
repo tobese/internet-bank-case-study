@@ -159,13 +159,19 @@
             "properties": [
               { "id": "custom.axisPlacement", "value": "right" },
               { "id": "unit", "value": "reqps" },
-              { "id": "color", "value": { "mode": "fixed", "fixedColor": "orange" } }
+              {
+                "id": "color",
+                "value": { "mode": "fixed", "fixedColor": "orange" }
+              }
             ]
           },
           {
             "matcher": { "id": "byName", "options": "Virtual Users" },
             "properties": [
-              { "id": "color", "value": { "mode": "fixed", "fixedColor": "#5794F2" } },
+              {
+                "id": "color",
+                "value": { "mode": "fixed", "fixedColor": "#5794F2" }
+              },
               { "id": "custom.fillOpacity", "value": 20 }
             ]
           }
@@ -197,15 +203,30 @@
         "overrides": [
           {
             "matcher": { "id": "byName", "options": "p99" },
-            "properties": [{ "id": "color", "value": { "mode": "fixed", "fixedColor": "red" } }]
+            "properties": [
+              {
+                "id": "color",
+                "value": { "mode": "fixed", "fixedColor": "red" }
+              }
+            ]
           },
           {
             "matcher": { "id": "byName", "options": "p95" },
-            "properties": [{ "id": "color", "value": { "mode": "fixed", "fixedColor": "orange" } }]
+            "properties": [
+              {
+                "id": "color",
+                "value": { "mode": "fixed", "fixedColor": "orange" }
+              }
+            ]
           },
           {
             "matcher": { "id": "byName", "options": "p50" },
-            "properties": [{ "id": "color", "value": { "mode": "fixed", "fixedColor": "green" } }]
+            "properties": [
+              {
+                "id": "color",
+                "value": { "mode": "fixed", "fixedColor": "green" }
+              }
+            ]
           }
         ]
       },
@@ -238,7 +259,10 @@
           "color": { "mode": "fixed", "fixedColor": "red" },
           "thresholds": {
             "mode": "absolute",
-            "steps": [{ "value": null, "color": "green" }, { "value": 1, "color": "red" }]
+            "steps": [
+              { "value": null, "color": "green" },
+              { "value": 1, "color": "red" }
+            ]
           }
         }
       },
@@ -305,11 +329,26 @@
         "overrides": [
           {
             "matcher": { "id": "byName", "options": "used" },
-            "properties": [{ "id": "color", "value": { "mode": "fixed", "fixedColor": "#5794F2" } }, { "id": "custom.fillOpacity", "value": 20 }]
+            "properties": [
+              {
+                "id": "color",
+                "value": { "mode": "fixed", "fixedColor": "#5794F2" }
+              },
+              { "id": "custom.fillOpacity", "value": 20 }
+            ]
           },
           {
             "matcher": { "id": "byName", "options": "committed" },
-            "properties": [{ "id": "color", "value": { "mode": "fixed", "fixedColor": "gray" } }, { "id": "custom.lineStyle", "value": { "dash": [4, 4], "fill": "dash" } }]
+            "properties": [
+              {
+                "id": "color",
+                "value": { "mode": "fixed", "fixedColor": "gray" }
+              },
+              {
+                "id": "custom.lineStyle",
+                "value": { "dash": [4, 4], "fill": "dash" }
+              }
+            ]
           }
         ]
       },
@@ -335,15 +374,30 @@
         "overrides": [
           {
             "matcher": { "id": "byName", "options": "active" },
-            "properties": [{ "id": "color", "value": { "mode": "fixed", "fixedColor": "orange" } }]
+            "properties": [
+              {
+                "id": "color",
+                "value": { "mode": "fixed", "fixedColor": "orange" }
+              }
+            ]
           },
           {
             "matcher": { "id": "byName", "options": "pending" },
-            "properties": [{ "id": "color", "value": { "mode": "fixed", "fixedColor": "red" } }]
+            "properties": [
+              {
+                "id": "color",
+                "value": { "mode": "fixed", "fixedColor": "red" }
+              }
+            ]
           },
           {
             "matcher": { "id": "byName", "options": "idle" },
-            "properties": [{ "id": "color", "value": { "mode": "fixed", "fixedColor": "green" } }]
+            "properties": [
+              {
+                "id": "color",
+                "value": { "mode": "fixed", "fixedColor": "green" }
+              }
+            ]
           }
         ]
       },
@@ -393,7 +447,10 @@
       "gridPos": { "x": 0, "y": 39, "w": 12, "h": 8 },
       "datasource": { "type": "prometheus", "uid": "${datasource}" },
       "fieldConfig": {
-        "defaults": { "unit": "short", "custom": { "lineWidth": 2, "fillOpacity": 15 } }
+        "defaults": {
+          "unit": "short",
+          "custom": { "lineWidth": 2, "fillOpacity": 15 }
+        }
       },
       "targets": [
         {
@@ -478,14 +535,14 @@
     {
       "id": 21,
       "type": "row",
-      "title": "☸️ Kubernetes (k8s demo only)",
+      "title": "☸️ Kubernetes (k8s) / 🖥️ JVM (local)",
       "gridPos": { "x": 0, "y": 56, "w": 24, "h": 1 },
       "collapsed": false
     },
     {
       "id": 22,
       "type": "timeseries",
-      "title": "API Pod Count (HPA scaling)",
+      "title": "API Pod Count (HPA scaling) — k8s only",
       "gridPos": { "x": 0, "y": 57, "w": 12, "h": 8 },
       "datasource": { "type": "prometheus", "uid": "${datasource}" },
       "fieldConfig": {
@@ -497,11 +554,25 @@
         "overrides": [
           {
             "matcher": { "id": "byName", "options": "desired" },
-            "properties": [{ "id": "color", "value": { "mode": "fixed", "fixedColor": "orange" } }, { "id": "custom.lineStyle", "value": { "dash": [6, 3], "fill": "dash" } }]
+            "properties": [
+              {
+                "id": "color",
+                "value": { "mode": "fixed", "fixedColor": "orange" }
+              },
+              {
+                "id": "custom.lineStyle",
+                "value": { "dash": [6, 3], "fill": "dash" }
+              }
+            ]
           },
           {
             "matcher": { "id": "byName", "options": "ready" },
-            "properties": [{ "id": "color", "value": { "mode": "fixed", "fixedColor": "#5794F2" } }]
+            "properties": [
+              {
+                "id": "color",
+                "value": { "mode": "fixed", "fixedColor": "#5794F2" }
+              }
+            ]
           }
         ]
       },
@@ -520,7 +591,7 @@
     {
       "id": 23,
       "type": "timeseries",
-      "title": "Web-Client Pod Count",
+      "title": "Web-Client Pod Count — k8s only",
       "gridPos": { "x": 12, "y": 57, "w": 12, "h": 8 },
       "datasource": { "type": "prometheus", "uid": "${datasource}" },
       "fieldConfig": {
@@ -539,6 +610,110 @@
         {
           "expr": "kube_horizontalpodautoscaler_status_desired_replicas{horizontalpodautoscaler=\"web-client-hpa\",namespace=\"internet-bank\"}",
           "legendFormat": "desired"
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "type": "timeseries",
+      "title": "JVM CPU Usage",
+      "gridPos": { "x": 0, "y": 66, "w": 12, "h": 8 },
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percentunit",
+          "min": 0,
+          "max": 1,
+          "custom": { "lineWidth": 2, "fillOpacity": 10 }
+        },
+        "overrides": [
+          {
+            "matcher": { "id": "byName", "options": "process" },
+            "properties": [
+              {
+                "id": "color",
+                "value": { "mode": "fixed", "fixedColor": "#5794F2" }
+              }
+            ]
+          },
+          {
+            "matcher": { "id": "byName", "options": "system" },
+            "properties": [
+              {
+                "id": "color",
+                "value": { "mode": "fixed", "fixedColor": "orange" }
+              }
+            ]
+          }
+        ]
+      },
+      "options": { "tooltip": { "mode": "multi" } },
+      "targets": [
+        {
+          "expr": "process_cpu_usage{job=\"spring-boot-api\"}",
+          "legendFormat": "process"
+        },
+        {
+          "expr": "system_cpu_usage{job=\"spring-boot-api\"}",
+          "legendFormat": "system"
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "type": "timeseries",
+      "title": "JVM Threads",
+      "gridPos": { "x": 12, "y": 66, "w": 12, "h": 8 },
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "custom": { "lineWidth": 2, "fillOpacity": 10 },
+          "decimals": 0
+        },
+        "overrides": [
+          {
+            "matcher": { "id": "byName", "options": "live" },
+            "properties": [
+              {
+                "id": "color",
+                "value": { "mode": "fixed", "fixedColor": "#5794F2" }
+              }
+            ]
+          },
+          {
+            "matcher": { "id": "byName", "options": "peak" },
+            "properties": [
+              {
+                "id": "color",
+                "value": { "mode": "fixed", "fixedColor": "orange" }
+              }
+            ]
+          },
+          {
+            "matcher": { "id": "byName", "options": "daemon" },
+            "properties": [
+              {
+                "id": "color",
+                "value": { "mode": "fixed", "fixedColor": "green" }
+              }
+            ]
+          }
+        ]
+      },
+      "options": { "tooltip": { "mode": "multi" } },
+      "targets": [
+        {
+          "expr": "jvm_threads_live_threads{job=\"spring-boot-api\"}",
+          "legendFormat": "live"
+        },
+        {
+          "expr": "jvm_threads_peak_threads{job=\"spring-boot-api\"}",
+          "legendFormat": "peak"
+        },
+        {
+          "expr": "jvm_threads_daemon_threads{job=\"spring-boot-api\"}",
+          "legendFormat": "daemon"
         }
       ]
     }

@@ -28,7 +28,7 @@ spec:
             - name: K6_PROMETHEUS_RW_SERVER_URL
               value: "http://prometheus.internet-bank.svc.cluster.local:9090/api/v1/write"
             - name: K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM
-              value: "true"
+              value: "false"
           volumeMounts:
             - name: scripts
               mountPath: /scripts

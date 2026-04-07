@@ -11,11 +11,17 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 GRAFANA_URL="http://localhost:3000"
-DASHBOARD_URL="${GRAFANA_URL}/d/internet-bank-demo/internet-bank-live-load-test?refresh=5s&from=now-10m&to=now"
+DASHBOARD_URL="${GRAFANA_URL}/d/internet-bank-demo/internet-bank-e28094-live-load-test?refresh=5s&from=now-10m&to=now"
 API_HEALTH="http://localhost:8282/actuator/health"
 
 echo "==> Starting Internet Bank stack..."
 docker compose -f "${SCRIPT_DIR}/docker-compose.yml" up -d
+
+echo -n "==> Waiting for Prometheus"
+until curl -sf "http://localhost:9090/-/ready" > /dev/null 2>&1; do
+  sleep 2; printf "."
+done
+echo " ready"
 
 echo -n "==> Waiting for Grafana"
 until curl -sf "${GRAFANA_URL}/api/health" > /dev/null 2>&1; do
@@ -40,10 +46,11 @@ fi
 sleep 3
 
 echo "==> Running k6 load test (Ctrl-C to stop)..."
+K6_PROMETHEUS_RW_SERVER_URL="http://localhost:9090/api/v1/write" \
+K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM="false" \
+K6_PROMETHEUS_RW_PUSH_INTERVAL="10s" \
 k6 run \
   --out experimental-prometheus-rw \
-  -e K6_PROMETHEUS_RW_SERVER_URL=http://localhost:9090/api/v1/write \
-  -e K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM=true \
   -e BASE_URL=http://localhost:8282 \
   "${SCRIPT_DIR}/load-test.js"
 
