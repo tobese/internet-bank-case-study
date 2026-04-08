@@ -1,7 +1,3 @@
-using System;
-using System.Collections.ObjectModel;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using InternetBankCalculator.Services;
 using InternetBankCalculator.ViewModels;
 using Microsoft.UI.Xaml.Input;

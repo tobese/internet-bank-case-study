@@ -18,11 +18,6 @@
                        MaxWidth="320"
                        Stretch="Uniform"
                        HorizontalAlignment="Center"/>
-                <Image Source="https://static.wikia.nocookie.net/computerscience/images/c/cf/Abacus.jpg/revision/latest?cb=20140901191838"
-                       MaxWidth="48"
-                       Stretch="Uniform"
-                       HorizontalAlignment="Center"
-                       Margin="0,0,0,8"/>
                 <TextBlock Text="Welcome to Doggerbank"
                            FontSize="32"
                            FontWeight="Bold"
@@ -49,7 +44,11 @@
                     <ThemeShadow/>
                 </Border.Shadow>
                 <StackPanel Spacing="12">
-                    <!-- Abacus image moved to hero section above -->
+                    <Image Source="https://static.wikia.nocookie.net/computerscience/images/c/cf/Abacus.jpg/revision/latest?cb=20140901191838"
+                           MaxWidth="48"
+                           Stretch="Uniform"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,8"/>
                     <TextBlock Text="Calculator"
                                FontSize="18"
                                FontWeight="SemiBold"

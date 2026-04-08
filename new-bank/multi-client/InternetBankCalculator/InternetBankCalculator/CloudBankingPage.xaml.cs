@@ -1,12 +1,9 @@
-using Microsoft.UI.Xaml.Controls;
+namespace InternetBankCalculator;
 
-namespace InternetBankCalculator
+public sealed partial class CloudBankingPage : Page
 {
-    public sealed partial class CloudBankingPage : Page
+    public CloudBankingPage()
     {
-        public CloudBankingPage()
-        {
-            this.InitializeComponent();
-        }
+        this.InitializeComponent();
     }
 }

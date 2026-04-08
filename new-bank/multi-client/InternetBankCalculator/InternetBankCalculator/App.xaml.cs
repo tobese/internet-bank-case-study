@@ -1,7 +1,3 @@
-using System;
-using Microsoft.Extensions.Logging;
-using Uno.Resizetizer;
-
 namespace InternetBankCalculator;
 
 public partial class App : Application

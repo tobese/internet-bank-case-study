@@ -13,7 +13,7 @@ public sealed partial class AppShell : Page
 
     public void NavigateToCalc() => NavigateTo(typeof(MainPage), BtnCalc);
     private void BtnCalc_Click(object sender, RoutedEventArgs e) => NavigateTo(typeof(MainPage), BtnCalc);
-    private void BtnOperators_Click(object sender, RoutedEventArgs e) => NavigateTo(typeof(OperatorsPage), BtnOperators);
+    private void BtnAbout_Click(object sender, RoutedEventArgs e) => NavigateTo(typeof(AboutPage), BtnAbout);
     private void BtnSystemDesign_Click(object sender, RoutedEventArgs e) => NavigateTo(typeof(SystemDesignPage), BtnSystemDesign);
 
     private void BtnReload_Click(object sender, RoutedEventArgs e)
@@ -24,10 +24,10 @@ public sealed partial class AppShell : Page
     }
 
     public Frame ContentFramePublic => ContentFrame;
-    public Button BtnOperatorsPublic => BtnOperators;
+    public Button BtnAboutPublic => BtnAbout;
     public void UpdateNavHighlight(Button active)
     {
-        foreach (var btn in new[] { BtnCalc, BtnOperators, BtnSystemDesign })
+        foreach (var btn in new[] { BtnCalc, BtnAbout, BtnSystemDesign })
             btn.Opacity = 0.6;
         active.Opacity = 1.0;
     }

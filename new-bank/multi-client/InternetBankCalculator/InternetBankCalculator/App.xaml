@@ -10,6 +10,25 @@
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls"/>
             </ResourceDictionary.MergedDictionaries>
 
+            <Style x:Key="TitleTextBlockStyle"
+                    TargetType="TextBlock">
+                <Setter Property="FontSize"
+                        Value="24"/>
+                <Setter Property="FontWeight"
+                        Value="Bold"/>
+                <Setter Property="Foreground"
+                        Value="#1A1A1A"/>
+            </Style>
+            <Style x:Key="SubtitleTextBlockStyle"
+                    TargetType="TextBlock">
+                <Setter Property="FontSize"
+                        Value="18"/>
+                <Setter Property="FontWeight"
+                        Value="SemiBold"/>
+                <Setter Property="Foreground"
+                        Value="#333"/>
+            </Style>
+
             <!-- Add resources here -->
             <Converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
             <SolidColorBrush x:Key="ResultBackgroundSuccess"

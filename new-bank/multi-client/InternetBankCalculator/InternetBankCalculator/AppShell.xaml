@@ -45,15 +45,18 @@
                         <Button x:Name="BtnCalc"
                                 Content="Calculator"
                                 Click="BtnCalc_Click"
-                                Style="{StaticResource NavButtonStyle}"/>
+                                Style="{StaticResource NavButtonStyle}"
+                                ToolTipService.ToolTip="Go to Calculator page"/>
                         <Button x:Name="BtnSystemDesign"
                                 Content="System Design"
                                 Click="BtnSystemDesign_Click"
-                                Style="{StaticResource NavButtonStyle}"/>
-                        <Button x:Name="BtnOperators"
+                                Style="{StaticResource NavButtonStyle}"
+                                ToolTipService.ToolTip="View System Design"/>
+                        <Button x:Name="BtnAbout"
                                 Content="About"
-                                Click="BtnOperators_Click"
-                                Style="{StaticResource NavButtonStyle}"/>
+                                Click="BtnAbout_Click"
+                                Style="{StaticResource NavButtonStyle}"
+                                ToolTipService.ToolTip="About this app"/>
                     </StackPanel>
                     <!-- Reload button -->
                     <Button Grid.Column="1"

@@ -39,9 +39,15 @@
     <Content Include="Assets\logo_kubernetes_spin.gif" />
     <Content Include="Assets\logo_postgres.png" />
     <Content Include="Assets\logo_uno.png" />
+    <Content Include="Assets/BankLogos/CapitalOneHQ_body.jpg" />
+    <Content Include="Assets/BankLogos/Bilbao_-_BBVA_(ex_Banco_de_Comercio)_2.jpg" />
+    <Content Include="Assets/BankLogos/National_Australia_Bank_HQ_in_Melbourne_CBD.jpg" />
+    <Content Include="Assets/BankLogos/Deutsche_Bank_Taunusanlage.jpg" />
+    <Content Include="Assets/BankLogos/250px-ABN_AMRO4.jpg" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Svg.Skia" />
     <PackageReference Include="Uno.WinUI.Svg" />
   </ItemGroup>
 
