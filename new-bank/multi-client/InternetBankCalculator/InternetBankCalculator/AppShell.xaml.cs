@@ -23,6 +23,15 @@ public sealed partial class AppShell : Page
 #endif
     }
 
+    public Frame ContentFramePublic => ContentFrame;
+    public Button BtnOperatorsPublic => BtnOperators;
+    public void UpdateNavHighlight(Button active)
+    {
+        foreach (var btn in new[] { BtnCalc, BtnOperators, BtnSystemDesign })
+            btn.Opacity = 0.6;
+        active.Opacity = 1.0;
+    }
+
     private void NavigateTo(Type page, Button active)
     {
         if (ContentFrame.CurrentSourcePageType != page)
@@ -30,10 +39,5 @@ public sealed partial class AppShell : Page
         UpdateNavHighlight(active);
     }
 
-    private void UpdateNavHighlight(Button active)
-    {
-        foreach (var btn in new[] { BtnCalc, BtnOperators, BtnSystemDesign })
-            btn.Opacity = 0.6;
-        active.Opacity = 1.0;
-    }
+    // ...existing code...
 }
