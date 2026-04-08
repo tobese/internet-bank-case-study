@@ -46,14 +46,6 @@
                                 Content="Calculator"
                                 Click="BtnCalc_Click"
                                 Style="{StaticResource NavButtonStyle}"/>
-                        <Button x:Name="BtnDoggerBank"
-                                Content="Dogger Bank"
-                                Click="BtnDoggerBank_Click"
-                                Style="{StaticResource NavButtonStyle}"/>
-                        <Button x:Name="BtnDoggerLand"
-                                Content="Doggerland"
-                                Click="BtnDoggerLand_Click"
-                                Style="{StaticResource NavButtonStyle}"/>
                         <Button x:Name="BtnSystemDesign"
                                 Content="System Design"
                                 Click="BtnSystemDesign_Click"
