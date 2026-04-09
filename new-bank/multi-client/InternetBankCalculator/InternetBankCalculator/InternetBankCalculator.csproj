@@ -27,6 +27,7 @@
       MVUX;
       Http;
       Localization;
+      Toolkit;
     </UnoFeatures>
   </PropertyGroup>
 

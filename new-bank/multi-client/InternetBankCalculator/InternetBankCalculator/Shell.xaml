@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="InternetBankCalculator.Shell"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:InternetBankCalculator"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:utu="using:Uno.Toolkit.UI"
+             mc:Ignorable="d">
+
+    <utu:ExtendedSplashScreen x:Name="Splash">
+
+        <!-- Loading Content "layer" -->
+        <utu:ExtendedSplashScreen.LoadingContent>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+
+                <Image Grid.Row="1"
+                       Source="ms-appx:///Assets/logo_kubernetes_spin.gif"
+                       Width="96"
+                       Height="96"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Stretch="Uniform"/>
+
+                <TextBlock Text="Doggerbank is spinning up"
+                           Grid.Row="1"
+                           Margin="16"
+                           FontSize="16"
+                           VerticalAlignment="Bottom"
+                           HorizontalAlignment="Center"/>
+            </Grid>
+        </utu:ExtendedSplashScreen.LoadingContent>
+
+        <!-- App Content "layer" -->
+        <utu:ExtendedSplashScreen.Content>
+            <Frame x:Name="ShellFrame"/>
+        </utu:ExtendedSplashScreen.Content>
+
+    </utu:ExtendedSplashScreen>
+</UserControl>

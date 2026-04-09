@@ -21,29 +21,27 @@ public partial class App : Application
 #endif
 
 
-        // Do not repeat app initialization when the Window already has content,
-        // just ensure that the window is active
-        if (MainWindow.Content is not Frame rootFrame)
+        if (MainWindow.Content is not Shell shell)
         {
-            // Create a Frame to act as the navigation context and navigate to the first page
-            rootFrame = new Frame();
+            shell = new Shell();
 
-            // Place the frame in the current Window
-            MainWindow.Content = rootFrame;
+            MainWindow.Content = shell;
 
-            rootFrame.NavigationFailed += OnNavigationFailed;
+            shell.RootFrame.NavigationFailed += OnNavigationFailed;
         }
 
-        if (rootFrame.Content == null)
+        if (shell.RootFrame.Content == null)
         {
-            // When the navigation stack isn't restored navigate to the first page,
-            // configuring the new page by passing required information as a navigation
-            // parameter
-            rootFrame.Navigate(typeof(AppShell));
+            shell.LoadableSource.IsExecuting = true; // Show splash
+            shell.RootFrame.Navigate(typeof(MainPage), args.Arguments);
+            // Simulate loading for 2 seconds so splash is visible
+            System.Threading.Tasks.Task.Run(async () =>
+            {
+                await System.Threading.Tasks.Task.Delay(5000);
+                shell.LoadableSource.IsExecuting = false; // Hide splash after delay
+            });
         }
 
-        MainWindow.SetWindowIcon();
-        // Ensure the current window is active
         MainWindow.Activate();
     }
 
