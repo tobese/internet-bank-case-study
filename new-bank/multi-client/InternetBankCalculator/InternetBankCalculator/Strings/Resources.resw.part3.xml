@@ -1,0 +1,36 @@
+  <data name="SystemDesign_DataTierTitle" xml:space="preserve">
+    <value>🗄️  Data Tier — PostgreSQL &amp; Redis</value>
+  </data>
+  <data name="SystemDesign_DataTierDesc1" xml:space="preserve">
+    <value>PostgreSQL 17 runs as a Kubernetes StatefulSet with a persistent volume. The database is initialised on first start via an init SQL script that creates four tables: mathematicians (seeded with 10 entries), calculations, transactions, and audit_log. Indexes are created on all created_at columns and mathematicians.name.</value>
+  </data>
+  <data name="SystemDesign_DataTierDesc2" xml:space="preserve">
+    <value>Redis 7 runs as a Deployment (ephemeral cache — no persistent volume). It stores primes results keyed by the upper limit with a 24-hour TTL. A postgres-exporter sidecar exposes PostgreSQL statistics (connections, transactions, replication lag) on port 9187 for Prometheus to scrape.</value>
+  </data>
+  <data name="SystemDesign_ObservabilityTitle" xml:space="preserve">
+    <value>📊  Observability — Metrics · Logs · Traces</value>
+  </data>
+  <data name="SystemDesign_ObservabilityDesc1" xml:space="preserve">
+    <value>Three pillars of observability are covered by the same open-source stack used locally, now running inside the internet-bank Kubernetes namespace alongside the application.</value>
+  </data>
+  <data name="SystemDesign_ObservabilityDesc2" xml:space="preserve">
+    <value>Metrics: Prometheus v3 scrapes the api and postgres-exporter every 15 seconds. Custom application metrics track request counts, computation latency, and Redis cache hit/miss ratios per operation. Grafana visualises these with pre-provisioned dashboards.</value>
+  </data>
+  <data name="SystemDesign_ObservabilityDesc3" xml:space="preserve">
+    <value>Logs: Promtail runs as a DaemonSet, reading container logs from the Docker socket on each node and forwarding structured JSON to Loki. Log lines are queryable in Grafana using LogQL, correlated with traces via the trace ID injected into every log entry by the OTel agent.</value>
+  </data>
+  <data name="SystemDesign_ObservabilityDesc4" xml:space="preserve">
+    <value>Traces: The OTel Java agent auto-instruments all HTTP requests, JDBC calls, and Redis operations. Spans are sent to Tempo over OTLP/gRPC. From Grafana you can jump from a slow request in a dashboard directly to its full distributed trace.</value>
+  </data>
+  <data name="SystemDesign_InfrastructureTitle" xml:space="preserve">
+    <value>☁️  Infrastructure &amp; Auto-Scaling</value>
+  </data>
+  <data name="SystemDesign_InfrastructureDesc1" xml:space="preserve">
+    <value>The application runs in an Amazon EKS cluster in eu-central-1 (Frankfurt), inside a dedicated internet-bank namespace. Container images are stored in a private Amazon ECR repository.</value>
+  </data>
+  <data name="SystemDesign_InfrastructureDesc2" xml:space="preserve">
+    <value>Both the api and web-client Deployments start with three replicas and are covered by a HorizontalPodAutoscaler (HPA). The api HPA scales between 3 and 10 pods, targeting 70% CPU; scale-up adds two pods per minute and scale-down removes one pod per minute with a 5-minute stabilisation window to avoid flapping. The web-client HPA uses the same CPU threshold plus an 80% memory target.</value>
+  </data>
+  <data name="SystemDesign_InfrastructureDesc3" xml:space="preserve">
+    <value>PodDisruptionBudgets ensure at least two replicas of each service remain available during voluntary disruptions such as node drains or rolling updates. A NetworkPolicy restricts pod-to-pod traffic to only the paths required by the application.</value>
+  </data>

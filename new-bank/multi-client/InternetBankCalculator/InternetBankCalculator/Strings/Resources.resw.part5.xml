@@ -1,0 +1,48 @@
+  <data name="SystemDesign_FutureImprovementsTitle" xml:space="preserve">
+    <value>🔭  Future Improvements</value>
+  </data>
+  <data name="SystemDesign_FutureImprovementsDesc" xml:space="preserve">
+    <value>The next meaningful steps to make this a production-grade AWS deployment.</value>
+  </data>
+  <data name="SystemDesign_ImproveRdsTitle" xml:space="preserve">
+    <value>Replace the PostgreSQL StatefulSet with Amazon RDS</value>
+  </data>
+  <data name="SystemDesign_ImproveElastiCacheTitle" xml:space="preserve">
+    <value>Replace the Redis Deployment with Amazon ElastiCache</value>
+  </data>
+  <data name="SystemDesign_DesignDecisionsTitle" xml:space="preserve">
+    <value>🧠  Design Decisions</value>
+  </data>
+  <data name="SystemDesign_Decision1Title" xml:space="preserve">
+    <value>Redis + Server-Sent Events for primes, not a plain HTTP response</value>
+  </data>
+  <data name="SystemDesign_Decision2Title" xml:space="preserve">
+    <value>Java 21 virtual threads instead of reactive programming</value>
+  </data>
+  <data name="SystemDesign_Decision3Title" xml:space="preserve">
+    <value>StatefulSet for PostgreSQL, Deployment for Redis</value>
+  </data>
+  <data name="SystemDesign_Decision4Title" xml:space="preserve">
+    <value>AWS ALB Ingress Controller over nginx ingress</value>
+  </data>
+  <data name="SystemDesign_Decision5Title" xml:space="preserve">
+    <value>OTel zero-code Java agent instead of manual instrumentation</value>
+  </data>
+  <data name="SystemDesign_Decision6Title" xml:space="preserve">
+    <value>Uno Platform WASM for the frontend</value>
+  </data>
+  <data name="SystemDesign_TechnicalComponentsTitle" xml:space="preserve">
+    <value>Technical Components</value>
+  </data>
+  <data name="SystemDesign_ConfigHighlightsTitle" xml:space="preserve">
+    <value>Configuration Highlights</value>
+  </data>
+  <data name="SystemDesign_ConfigHighlightsDesc" xml:space="preserve">
+    <value>The source files below reflect a number of deliberate production-quality choices.</value>
+  </data>
+  <data name="SystemDesign_SourceFilesTitle" xml:space="preserve">
+    <value>Source Files</value>
+  </data>
+  <data name="SystemDesign_SourceFilesDesc" xml:space="preserve">
+    <value>Configuration files served directly — open in browser to view.</value>
+  </data>

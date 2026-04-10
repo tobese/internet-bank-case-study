@@ -1,21 +1,22 @@
 ﻿<Page
-    x:Class="InternetBankCalculator.Uprising.EndPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:InternetBankCalculator.Uprising">
-    <Grid>
-        <StackPanel HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Spacing="24">
-            <TextBlock Text="The End"
-                    FontSize="28"
-                    FontWeight="Bold"/>
-            <TextBlock Text="Thank you for viewing the Uprising Slideshow."
-                    FontSize="16"/>
-            <Button Content="Back to Start"
-                    Width="160"
-                    Height="40"
-                    Click="OnRestartClick"/>
-        </StackPanel>
-    </Grid>
+        x:Class="InternetBankCalculator.Uprising.EndPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="using:InternetBankCalculator.Uprising"
+        Background="{StaticResource BackgroundBrush}">
+        <Grid>
+                <StackPanel HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Spacing="24">
+                        <TextBlock Text="The End"
+                                   FontSize="{StaticResource TitleFontSize}"
+                                   FontWeight="Bold"/>
+                        <TextBlock Text="Thank you for viewing the Uprising Slideshow."
+                                   FontSize="{StaticResource BodyFontSize}"/>
+                        <Button Content="Back to Start"
+                                Width="160"
+                                Height="40"
+                                Click="OnRestartClick"/>
+                </StackPanel>
+        </Grid>
 </Page>
