@@ -10,6 +10,9 @@
       "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",
       "timeout": 30000,
       "preLaunchTask": "build-wasm",
+      "exceptionBreakpoints": {
+        "all": "uncaught"
+      },
       "server": {
         "runtimeExecutable": "dotnet",
         "program": "run",

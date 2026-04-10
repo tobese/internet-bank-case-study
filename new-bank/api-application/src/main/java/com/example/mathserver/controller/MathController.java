@@ -1,7 +1,6 @@
 package com.example.mathserver.controller;
 
 import com.example.mathserver.service.MathematicianService;
-import com.example.mathserver.service.PrimeCacheService;
 import io.micrometer.core.instrument.MeterRegistry;
 import io.micrometer.core.instrument.Timer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +23,6 @@ public class MathController {
     @Autowired
     private MathematicianService mathematicianService;
 
-    @Autowired
-    private PrimeCacheService primeCacheService;
 
     @Autowired
     private MeterRegistry meterRegistry;
@@ -95,30 +92,17 @@ public class MathController {
             long start = System.nanoTime();
             AtomicLong primeCount = new AtomicLong(0);
             try {
-                var cached = primeCacheService.load(limit);
-                if (cached.isPresent()) {
-                    meterRegistry.counter("math.primes.cache", "result", "hit").increment();
-                    for (int prime : cached.get()) {
-                        emitter.send(SseEmitter.event().data(prime));
+                // Always compute, no cache
+                boolean[] composite = new boolean[limit + 1];
+                for (int i = 2; i <= limit; i++) {
+                    if (!composite[i]) {
+                        emitter.send(SseEmitter.event().data(i));
                         primeCount.incrementAndGet();
                         Thread.sleep(50);
-                    }
-                } else {
-                    meterRegistry.counter("math.primes.cache", "result", "miss").increment();
-                    boolean[] composite = new boolean[limit + 1];
-                    var found = new java.util.ArrayList<Integer>();
-                    for (int i = 2; i <= limit; i++) {
-                        if (!composite[i]) {
-                            found.add(i);
-                            emitter.send(SseEmitter.event().data(i));
-                            primeCount.incrementAndGet();
-                            Thread.sleep(50);
-                            for (int j = i * 2; j <= limit; j += i) {
-                                composite[j] = true;
-                            }
+                        for (int j = i * 2; j <= limit; j += i) {
+                            composite[j] = true;
                         }
                     }
-                    primeCacheService.save(limit, found);
                 }
                 meterRegistry.timer("math.primes.duration").record(
                         System.nanoTime() - start, java.util.concurrent.TimeUnit.NANOSECONDS);

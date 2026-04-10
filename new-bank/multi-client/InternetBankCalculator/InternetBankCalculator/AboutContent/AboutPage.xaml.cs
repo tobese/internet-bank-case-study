@@ -1,10 +1,20 @@
-namespace InternetBankCalculator;
+
+#pragma warning disable
+namespace InternetBankCalculator.AboutContent;
 
 public sealed partial class AboutPage : Page
 {
     public AboutPage()
     {
         this.InitializeComponent();
+    }
+
+    private void FromJavaToCSharp_Click(object sender, RoutedEventArgs e)
+    {
+        if (this.Frame != null)
+        {
+            this.Frame.Navigate(typeof(AboutContent.FromJavaToCSharpPage));
+        }
     }
 
     private static AppShell? GetShell()
@@ -19,7 +29,7 @@ public sealed partial class AboutPage : Page
         var shell = GetShell();
         if (shell != null)
         {
-            shell.ContentFramePublic.Navigate(typeof(MainframeModernizationPage));
+            shell.ContentFramePublic.Navigate(typeof(AboutContent.MainframeModernizationPage));
             shell.UpdateNavHighlight(shell.BtnAboutPublic);
         }
     }
@@ -29,17 +39,26 @@ public sealed partial class AboutPage : Page
         var shell = GetShell();
         if (shell != null)
         {
-            shell.ContentFramePublic.Navigate(typeof(CloudBankingPage));
+            shell.ContentFramePublic.Navigate(typeof(AboutContent.CloudBankingPage));
             shell.UpdateNavHighlight(shell.BtnAboutPublic);
         }
     }
 
+    private void CobolToModern_Click(object sender, RoutedEventArgs e)
+    {
+        var shell = GetShell();
+        if (shell != null)
+        {
+            shell.ContentFramePublic.Navigate(typeof(AboutContent.CobolToModernPage));
+            shell.UpdateNavHighlight(shell.BtnAboutPublic);
+        }
+    }
 
     private void DoggerBank_Click(object sender, RoutedEventArgs e)
     {
         if (this.Frame != null)
         {
-            this.Frame.Navigate(typeof(DoggerBankPage));
+            this.Frame.Navigate(typeof(AboutContent.DoggerBankPage));
         }
     }
 
@@ -47,7 +66,7 @@ public sealed partial class AboutPage : Page
     {
         if (this.Frame != null)
         {
-            this.Frame.Navigate(typeof(DoggerLandPage));
+            this.Frame.Navigate(typeof(AboutContent.DoggerLandPage));
         }
     }
 }

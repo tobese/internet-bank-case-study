@@ -7,7 +7,7 @@ using InternetBankCalculator.Services;
 
 namespace InternetBankCalculator.ViewModels;
 
-public class MainPageViewModel : INotifyPropertyChanged
+public partial class CalculatorPageViewModel : INotifyPropertyChanged
 {
     private readonly MathApiService _api;
 
@@ -22,7 +22,7 @@ public class MainPageViewModel : INotifyPropertyChanged
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
-    public MainPageViewModel(MathApiService api)
+    public CalculatorPageViewModel(MathApiService api)
     {
         _api = api;
         Calculate = new AsyncCommand(ExecuteCalculateAsync);
@@ -91,8 +91,16 @@ public class MainPageViewModel : INotifyPropertyChanged
 
     private async Task LoadDailyMathematicianAsync()
     {
-        try { DailyMathematician = await _api.GetDailyMathematicianAsync(); }
-        catch { /* footer stays empty on failure */ }
+        try
+        {
+            var result = await _api.GetDailyMathematicianAsync();
+            DailyMathematician = result ?? new Models.MathematicianResponse();
+        }
+        catch
+        {
+            // Always provide a non-null object to prevent NullReferenceException in XAML
+            DailyMathematician = new Models.MathematicianResponse();
+        }
     }
 
     private async Task ExecuteCalculateAsync()

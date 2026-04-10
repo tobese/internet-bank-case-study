@@ -21,24 +21,20 @@ public partial class App : Application
 #endif
 
 
-        if (MainWindow.Content is not Shell shell)
+        if (MainWindow.Content is not AppShell shell)
         {
-            shell = new Shell();
-
+            shell = new AppShell();
             MainWindow.Content = shell;
-
-            shell.RootFrame.NavigationFailed += OnNavigationFailed;
         }
 
-        if (shell.RootFrame.Content == null)
+        // Show splash, then navigate
+        if (shell.LoadableSource.IsExecuting == false)
         {
-            shell.LoadableSource.IsExecuting = true; // Show splash
-            shell.RootFrame.Navigate(typeof(MainPage), args.Arguments);
-            // Simulate loading for 2 seconds so splash is visible
+            shell.LoadableSource.IsExecuting = true;
             System.Threading.Tasks.Task.Run(async () =>
             {
                 await System.Threading.Tasks.Task.Delay(5000);
-                shell.LoadableSource.IsExecuting = false; // Hide splash after delay
+                shell.LoadableSource.IsExecuting = false;
             });
         }
 

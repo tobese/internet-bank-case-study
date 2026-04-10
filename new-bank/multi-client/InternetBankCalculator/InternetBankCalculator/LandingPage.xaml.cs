@@ -7,13 +7,11 @@ public sealed partial class LandingPage : Page
         this.InitializeComponent();
     }
 
-    private void BtnToCalc_Click(object sender, RoutedEventArgs e) =>
-        GetShell()?.NavigateToCalc();
-
-    private static AppShell? GetShell()
+    private void BtnToCalc_Click(object sender, RoutedEventArgs e)
     {
-        if (App.Current is App app && app.MainWindow?.Content is Frame f && f.Content is AppShell shell)
-            return shell;
-        return null;
+        if (App.Current is App app && app.MainWindow?.Content is AppShell shell)
+        {
+            shell.NavigateToCalc();
+        }
     }
 }
