@@ -11,9 +11,11 @@ public sealed partial class AboutPage : Page
 
     private void FromJavaToCSharp_Click(object sender, RoutedEventArgs e)
     {
-        if (this.Frame != null)
+        var shell = GetShell();
+        if (shell != null)
         {
-            this.Frame.Navigate(typeof(AboutContent.FromJavaToCSharpPage));
+            shell.ContentFramePublic.Navigate(typeof(AboutContent.FromJavaToCSharpPage));
+            shell.UpdateNavHighlight(shell.BtnAboutPublic);
         }
     }
 
@@ -56,17 +58,21 @@ public sealed partial class AboutPage : Page
 
     private void DoggerBank_Click(object sender, RoutedEventArgs e)
     {
-        if (this.Frame != null)
+        var shell = GetShell();
+        if (shell != null)
         {
-            this.Frame.Navigate(typeof(AboutContent.DoggerBankPage));
+            shell.ContentFramePublic.Navigate(typeof(AboutContent.DoggerBankPage));
+            shell.UpdateNavHighlight(shell.BtnAboutPublic);
         }
     }
 
     private void DoggerLand_Click(object sender, RoutedEventArgs e)
     {
-        if (this.Frame != null)
+        var shell = GetShell();
+        if (shell != null)
         {
-            this.Frame.Navigate(typeof(AboutContent.DoggerLandPage));
+            shell.ContentFramePublic.Navigate(typeof(AboutContent.DoggerLandPage));
+            shell.UpdateNavHighlight(shell.BtnAboutPublic);
         }
     }
 }
