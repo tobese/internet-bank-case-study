@@ -14,6 +14,8 @@ public sealed partial class AppShell : Page
         {
             splash.Source = LoadableSource;
         }
+        // Set up NavigationService singleton
+        NavigationService.Instance.Initialize(ContentFrame, this);
         ContentFrame.Navigate(typeof(Pages.LandingPage));
         UpdateNavHighlight(BtnHome);
         if (Window.Current?.CoreWindow != null)
