@@ -1,25 +1,26 @@
 ﻿<Page
-    x:Class="InternetBankCalculator.Uprising.Slide8Page"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:InternetBankCalculator.Uprising">
-    <Grid>
-        <StackPanel HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Spacing="24">
-            <TextBlock Text="Slide 8: The Dawn"
-                    FontSize="24"
-                    FontWeight="Bold"/>
-            <TextBlock Text="A new era begins, shaped by the uprising."
-                    FontSize="16"/>
-            <Button Content="Back"
-                    Width="100"
-                    Height="40"
-                    Click="OnBackClick"/>
-            <Button Content="Next"
-                    Width="100"
-                    Height="40"
-                    Click="OnNextClick"/>
-        </StackPanel>
-    </Grid>
+        x:Class="InternetBankCalculator.Uprising.Slide8Page"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="using:InternetBankCalculator.Uprising"
+        Background="{StaticResource BackgroundBrush}">
+        <Grid>
+                <StackPanel HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Spacing="24">
+                        <TextBlock Text="Slide 8: The Dawn"
+                                   FontSize="{StaticResource TitleFontSize}"
+                                   FontWeight="Bold"/>
+                        <TextBlock Text="A new era begins, shaped by the uprising."
+                                   FontSize="{StaticResource BodyFontSize}"/>
+                        <Button Content="Back"
+                                Width="100"
+                                Height="40"
+                                Click="OnBackClick"/>
+                        <Button Content="Next"
+                                Width="100"
+                                Height="40"
+                                Click="OnNextClick"/>
+                </StackPanel>
+        </Grid>
 </Page>

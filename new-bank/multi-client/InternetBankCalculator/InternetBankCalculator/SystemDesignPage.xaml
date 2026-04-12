@@ -1,7 +1,7 @@
 ﻿<Page x:Class="InternetBankCalculator.SystemDesignPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      Background="#F5F7FA">
+      Background="{StaticResource BackgroundBrush}">
 
     <ScrollViewer HorizontalScrollBarVisibility="Disabled"
                   VerticalScrollBarVisibility="Auto">
@@ -12,23 +12,23 @@
 
             <!-- Header -->
             <StackPanel Spacing="12">
-                <TextBlock Text="⚙️ System Design"
-                           FontSize="30"
-                           FontWeight="Bold"
-                           Foreground="#1A1A1A"/>
-                <TextBlock Text="How doggerbank.online works — from a browser request to the database and back. A full-stack cloud-native application on AWS EKS."
-                           FontSize="15"
-                           Foreground="#555555"
+                <TextBlock x:Uid="SystemDesign_HeaderTitle"
+                           Style="{StaticResource TitleTextBlockStyle}"/>
+                <TextBlock x:Uid="SystemDesign_HeaderDescription"
+                           FontSize="{StaticResource BodyFontSize}"
+                           Foreground="{StaticResource TextSecondaryBrush}"
                            TextWrapping="Wrap"/>
             </StackPanel>
 
             <!-- Architecture Overview (visual flow) -->
-            <Border Background="#1A1A2E"
+            <Border Background="#F5F7FA"
                     CornerRadius="12"
-                    Padding="28">
+                    Padding="28"
+                    BorderBrush="#D0D7E2"
+                    BorderThickness="1">
                 <StackPanel Spacing="0">
-                    <TextBlock Text="Architecture Overview"
-                               FontSize="17"
+                    <TextBlock x:Uid="SystemDesign_ArchitectureOverviewTitle"
+                               FontSize="{StaticResource SubtitleFontSize}"
                                FontWeight="SemiBold"
                                Foreground="White"
                                Margin="0,0,0,20"/>
@@ -37,7 +37,7 @@
                     <Border Background="#264060"
                             CornerRadius="8"
                             Padding="14,10">
-                        <TextBlock Text="🌐  Browser"
+                        <TextBlock x:Uid="SystemDesign_BrowserLabel"
                                    FontSize="14"
                                    FontWeight="SemiBold"
                                    Foreground="White"
@@ -47,11 +47,11 @@
                     <StackPanel HorizontalAlignment="Center"
                                 Spacing="0"
                                 Margin="0,4,0,4">
-                        <TextBlock Text="HTTPS"
+                        <TextBlock x:Uid="SystemDesign_HTTPSLabel"
                                    FontSize="11"
                                    Foreground="#668899"
                                    HorizontalAlignment="Center"/>
-                        <TextBlock Text="▼"
+                        <TextBlock x:Uid="SystemDesign_ArrowDown1"
                                    FontSize="14"
                                    Foreground="#668899"
                                    HorizontalAlignment="Center"/>
@@ -61,14 +61,14 @@
                     <Border Background="#264060"
                             CornerRadius="8"
                             Padding="14,10">
-                        <TextBlock Text="☁️  AWS ALB  ·  ACM TLS certificate"
+                        <TextBlock x:Uid="SystemDesign_AwsAlbLabel"
                                    FontSize="14"
                                    FontWeight="SemiBold"
                                    Foreground="White"
                                    HorizontalAlignment="Center"/>
                     </Border>
 
-                    <TextBlock Text="▼"
+                    <TextBlock x:Uid="SystemDesign_ArrowDown2"
                                FontSize="14"
                                Foreground="#668899"
                                HorizontalAlignment="Center"
@@ -80,12 +80,12 @@
                             Padding="14,10">
                         <StackPanel HorizontalAlignment="Center"
                                     Spacing="2">
-                            <TextBlock Text="🖥️  web-client pods"
+                            <TextBlock x:Uid="SystemDesign_WebClientPodsLabel"
                                        FontSize="14"
                                        FontWeight="SemiBold"
                                        Foreground="White"
                                        HorizontalAlignment="Center"/>
-                            <TextBlock Text="nginx + Uno Platform WASM"
+                            <TextBlock x:Uid="SystemDesign_WebClientPodsDesc"
                                        FontSize="12"
                                        Foreground="#AAAACC"
                                        HorizontalAlignment="Center"/>
@@ -95,11 +95,11 @@
                     <StackPanel HorizontalAlignment="Center"
                                 Spacing="0"
                                 Margin="0,4,0,4">
-                        <TextBlock Text="/api/*"
+                        <TextBlock x:Uid="SystemDesign_ApiPathLabel"
                                    FontSize="11"
                                    Foreground="#668899"
                                    HorizontalAlignment="Center"/>
-                        <TextBlock Text="▼"
+                        <TextBlock x:Uid="SystemDesign_ArrowDown3"
                                    FontSize="14"
                                    Foreground="#668899"
                                    HorizontalAlignment="Center"/>
@@ -111,12 +111,12 @@
                             Padding="14,10">
                         <StackPanel HorizontalAlignment="Center"
                                     Spacing="2">
-                            <TextBlock Text="☕  api pods"
+                            <TextBlock x:Uid="SystemDesign_ApiPodsLabel"
                                        FontSize="14"
                                        FontWeight="SemiBold"
                                        Foreground="White"
                                        HorizontalAlignment="Center"/>
-                            <TextBlock Text="Spring Boot 3 · Java 21 · virtual threads"
+                            <TextBlock x:Uid="SystemDesign_ApiPodsDesc"
                                        FontSize="12"
                                        Foreground="#AAAACC"
                                        HorizontalAlignment="Center"/>
@@ -154,12 +154,12 @@
                                 Padding="12,10">
                             <StackPanel HorizontalAlignment="Center"
                                         Spacing="2">
-                                <TextBlock Text="🗄️  PostgreSQL 17"
+                                <TextBlock x:Uid="SystemDesign_PostgresLabel"
                                            FontSize="13"
                                            FontWeight="SemiBold"
                                            Foreground="White"
                                            HorizontalAlignment="Center"/>
-                                <TextBlock Text="StatefulSet · persistent volume"
+                                <TextBlock x:Uid="SystemDesign_PostgresDesc"
                                            FontSize="11"
                                            Foreground="#AAAACC"
                                            HorizontalAlignment="Center"
@@ -173,12 +173,12 @@
                                 Padding="12,10">
                             <StackPanel HorizontalAlignment="Center"
                                         Spacing="2">
-                                <TextBlock Text="⚡  Redis 7"
+                                <TextBlock x:Uid="SystemDesign_RedisLabel"
                                            FontSize="13"
                                            FontWeight="SemiBold"
                                            Foreground="White"
                                            HorizontalAlignment="Center"/>
-                                <TextBlock Text="primes cache · 24 h TTL"
+                                <TextBlock x:Uid="SystemDesign_RedisDesc"
                                            FontSize="11"
                                            Foreground="#AAAACC"
                                            HorizontalAlignment="Center"
@@ -193,7 +193,7 @@
                             CornerRadius="8"
                             Padding="14,10"
                             Margin="0,16,0,0">
-                        <TextBlock Text="📊  Observability  ·  Prometheus · Loki · Tempo  ──▶  Grafana"
+                        <TextBlock x:Uid="SystemDesign_ObservabilityRow"
                                    FontSize="13"
                                    Foreground="#99BBCC"
                                    HorizontalAlignment="Center"
@@ -206,7 +206,7 @@
                             CornerRadius="8"
                             Padding="14,10"
                             Margin="0,8,0,0">
-                        <TextBlock Text="🚀  CI/CD  ·  GitHub Actions  ──▶  ECR  ──▶  EKS rolling deploy"
+                        <TextBlock x:Uid="SystemDesign_CICDRow"
                                    FontSize="13"
                                    Foreground="#99CC99"
                                    HorizontalAlignment="Center"
@@ -226,21 +226,19 @@
                     <ThemeShadow/>
                 </Border.Shadow>
                 <StackPanel Spacing="12">
-                    <TextBlock Text="🌐  Request Flow"
+                    <TextBlock x:Uid="SystemDesign_RequestFlowTitle"
                                FontSize="18"
                                FontWeight="SemiBold"/>
-                    <TextBlock TextWrapping="Wrap"
+                    <TextBlock x:Uid="SystemDesign_RequestFlowDesc1"
+                               TextWrapping="Wrap"
                                Foreground="#333333"
                                FontSize="14"
-                               LineHeight="22">
-                        <Run>All traffic enters through an AWS Application Load Balancer. HTTP :80 is automatically redirected to HTTPS :443; TLS is terminated at the ALB using an ACM-managed certificate covering both doggerbank.online and www.doggerbank.online.</Run>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap"
+                               LineHeight="22"/>
+                    <TextBlock x:Uid="SystemDesign_RequestFlowDesc2"
+                               TextWrapping="Wrap"
                                Foreground="#333333"
                                FontSize="14"
-                               LineHeight="22">
-                        <Run>The ALB forwards requests to the web-client service, which is backed by three or more nginx pods. Static assets (the Uno WASM bundle, fonts, images) are served directly from nginx. API calls — any path matching /api/* — are proxied upstream to the api Kubernetes service on port 8282.</Run>
-                    </TextBlock>
+                               LineHeight="22"/>
                 </StackPanel>
             </Border>
 
@@ -254,27 +252,24 @@
                     <ThemeShadow/>
                 </Border.Shadow>
                 <StackPanel Spacing="12">
-                    <TextBlock Text="🖥️  Frontend — Uno Platform WebAssembly"
+                    <TextBlock x:Uid="SystemDesign_FrontendTitle"
                                FontSize="18"
                                FontWeight="SemiBold"/>
-                    <TextBlock TextWrapping="Wrap"
+                    <TextBlock x:Uid="SystemDesign_FrontendDesc1"
+                               TextWrapping="Wrap"
                                Foreground="#333333"
                                FontSize="14"
-                               LineHeight="22">
-                        <Run>The client is a C# / XAML application compiled to WebAssembly using Uno Platform (net10.0-browserwasm, Skia renderer). The entire application — runtime, fonts, assets — runs inside the browser's WASM sandbox with no server-side rendering.</Run>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap"
+                               LineHeight="22"/>
+                    <TextBlock x:Uid="SystemDesign_FrontendDesc2"
+                               TextWrapping="Wrap"
                                Foreground="#333333"
                                FontSize="14"
-                               LineHeight="22">
-                        <Run>nginx serves the WASM bundle with gzip compression. index.html, AppManifest.js and service-worker.js carry no-store cache directives so the browser always fetches the latest version on reload, while the large WASM binary and asset files are cached aggressively by the service worker.</Run>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap"
+                               LineHeight="22"/>
+                    <TextBlock x:Uid="SystemDesign_FrontendDesc3"
+                               TextWrapping="Wrap"
                                Foreground="#333333"
                                FontSize="14"
-                               LineHeight="22">
-                        <Run>The API base URL is resolved at runtime from window.location, so the same compiled binary works without modification behind any hostname — local Docker Compose or the cloud ALB.</Run>
-                    </TextBlock>
+                               LineHeight="22"/>
                 </StackPanel>
             </Border>
 
@@ -288,27 +283,24 @@
                     <ThemeShadow/>
                 </Border.Shadow>
                 <StackPanel Spacing="12">
-                    <TextBlock Text="☕  API — Spring Boot 3 · Java 21"
+                    <TextBlock x:Uid="SystemDesign_ApiTitle"
                                FontSize="18"
                                FontWeight="SemiBold"/>
-                    <TextBlock TextWrapping="Wrap"
+                    <TextBlock x:Uid="SystemDesign_ApiDesc1"
+                               TextWrapping="Wrap"
                                Foreground="#333333"
                                FontSize="14"
-                               LineHeight="22">
-                        <Run>The REST API is a Spring Boot 3.5.1 application running on Java 21 with virtual threads enabled for efficient async I/O. It exposes four operations under the /api prefix: factorial, fibonacci, streaming primes (Server-Sent Events), and mathematician of the day.</Run>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap"
+                               LineHeight="22"/>
+                    <TextBlock x:Uid="SystemDesign_ApiDesc2"
+                               TextWrapping="Wrap"
                                Foreground="#333333"
                                FontSize="14"
-                               LineHeight="22">
-                        <Run>Persistence uses Spring Data JPA with a HikariCP connection pool (max 10 connections). Primes results are cached in Redis with a 24-hour TTL — cache hits skip all computation and stream directly from the store, making the API stateless and safe to scale horizontally.</Run>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap"
+                               LineHeight="22"/>
+                    <TextBlock x:Uid="SystemDesign_ApiDesc3"
+                               TextWrapping="Wrap"
                                Foreground="#333333"
                                FontSize="14"
-                               LineHeight="22">
-                        <Run>Metrics are exposed on /actuator/prometheus via Micrometer with custom counters and timers for each math operation. Structured JSON logs are produced by logstash-logback-encoder. Distributed traces are emitted by the OpenTelemetry Java agent (zero-code instrumentation) to Tempo via OTLP/gRPC on port 4317.</Run>
-                    </TextBlock>
+                               LineHeight="22"/>
                 </StackPanel>
             </Border>
 
@@ -322,21 +314,19 @@
                     <ThemeShadow/>
                 </Border.Shadow>
                 <StackPanel Spacing="12">
-                    <TextBlock Text="🗄️  Data Tier — PostgreSQL &amp; Redis"
+                    <TextBlock x:Uid="SystemDesign_DataTierTitle"
                                FontSize="18"
                                FontWeight="SemiBold"/>
-                    <TextBlock TextWrapping="Wrap"
+                    <TextBlock x:Uid="SystemDesign_DataTierDesc1"
+                               TextWrapping="Wrap"
                                Foreground="#333333"
                                FontSize="14"
-                               LineHeight="22">
-                        <Run>PostgreSQL 17 runs as a Kubernetes StatefulSet with a persistent volume. The database is initialised on first start via an init SQL script that creates four tables: mathematicians (seeded with 10 entries), calculations, transactions, and audit_log. Indexes are created on all created_at columns and mathematicians.name.</Run>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap"
+                               LineHeight="22"/>
+                    <TextBlock x:Uid="SystemDesign_DataTierDesc2"
+                               TextWrapping="Wrap"
                                Foreground="#333333"
                                FontSize="14"
-                               LineHeight="22">
-                        <Run>Redis 7 runs as a Deployment (ephemeral cache — no persistent volume). It stores primes results keyed by the upper limit with a 24-hour TTL. A postgres-exporter sidecar exposes PostgreSQL statistics (connections, transactions, replication lag) on port 9187 for Prometheus to scrape.</Run>
-                    </TextBlock>
+                               LineHeight="22"/>
                 </StackPanel>
             </Border>
 
@@ -350,33 +340,29 @@
                     <ThemeShadow/>
                 </Border.Shadow>
                 <StackPanel Spacing="12">
-                    <TextBlock Text="📊  Observability — Metrics · Logs · Traces"
+                    <TextBlock x:Uid="SystemDesign_ObservabilityTitle"
                                FontSize="18"
                                FontWeight="SemiBold"/>
-                    <TextBlock TextWrapping="Wrap"
+                    <TextBlock x:Uid="SystemDesign_ObservabilityDesc1"
+                               TextWrapping="Wrap"
                                Foreground="#333333"
                                FontSize="14"
-                               LineHeight="22">
-                        <Run>Three pillars of observability are covered by the same open-source stack used locally, now running inside the internet-bank Kubernetes namespace alongside the application.</Run>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap"
+                               LineHeight="22"/>
+                    <TextBlock x:Uid="SystemDesign_ObservabilityDesc2"
+                               TextWrapping="Wrap"
                                Foreground="#333333"
                                FontSize="14"
-                               LineHeight="22">
-                        <Run>Metrics: Prometheus v3 scrapes the api and postgres-exporter every 15 seconds. Custom application metrics track request counts, computation latency, and Redis cache hit/miss ratios per operation. Grafana visualises these with pre-provisioned dashboards.</Run>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap"
+                               LineHeight="22"/>
+                    <TextBlock x:Uid="SystemDesign_ObservabilityDesc3"
+                               TextWrapping="Wrap"
                                Foreground="#333333"
                                FontSize="14"
-                               LineHeight="22">
-                        <Run>Logs: Promtail runs as a DaemonSet, reading container logs from the Docker socket on each node and forwarding structured JSON to Loki. Log lines are queryable in Grafana using LogQL, correlated with traces via the trace ID injected into every log entry by the OTel agent.</Run>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap"
+                               LineHeight="22"/>
+                    <TextBlock x:Uid="SystemDesign_ObservabilityDesc4"
+                               TextWrapping="Wrap"
                                Foreground="#333333"
                                FontSize="14"
-                               LineHeight="22">
-                        <Run>Traces: The OTel Java agent auto-instruments all HTTP requests, JDBC calls, and Redis operations. Spans are sent to Tempo over OTLP/gRPC. From Grafana you can jump from a slow request in a dashboard directly to its full distributed trace.</Run>
-                    </TextBlock>
+                               LineHeight="22"/>
                 </StackPanel>
             </Border>
 
@@ -390,27 +376,24 @@
                     <ThemeShadow/>
                 </Border.Shadow>
                 <StackPanel Spacing="12">
-                    <TextBlock Text="☁️  Infrastructure &amp; Auto-Scaling"
+                    <TextBlock x:Uid="SystemDesign_InfrastructureTitle"
                                FontSize="18"
                                FontWeight="SemiBold"/>
-                    <TextBlock TextWrapping="Wrap"
+                    <TextBlock x:Uid="SystemDesign_InfrastructureDesc1"
+                               TextWrapping="Wrap"
                                Foreground="#333333"
                                FontSize="14"
-                               LineHeight="22">
-                        <Run>The application runs in an Amazon EKS cluster in eu-central-1 (Frankfurt), inside a dedicated internet-bank namespace. Container images are stored in a private Amazon ECR repository.</Run>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap"
+                               LineHeight="22"/>
+                    <TextBlock x:Uid="SystemDesign_InfrastructureDesc2"
+                               TextWrapping="Wrap"
                                Foreground="#333333"
                                FontSize="14"
-                               LineHeight="22">
-                        <Run>Both the api and web-client Deployments start with three replicas and are covered by a HorizontalPodAutoscaler (HPA). The api HPA scales between 3 and 10 pods, targeting 70% CPU; scale-up adds two pods per minute and scale-down removes one pod per minute with a 5-minute stabilisation window to avoid flapping. The web-client HPA uses the same CPU threshold plus an 80% memory target.</Run>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap"
+                               LineHeight="22"/>
+                    <TextBlock x:Uid="SystemDesign_InfrastructureDesc3"
+                               TextWrapping="Wrap"
                                Foreground="#333333"
                                FontSize="14"
-                               LineHeight="22">
-                        <Run>PodDisruptionBudgets ensure at least two replicas of each service remain available during voluntary disruptions such as node drains or rolling updates. A NetworkPolicy restricts pod-to-pod traffic to only the paths required by the application.</Run>
-                    </TextBlock>
+                               LineHeight="22"/>
                 </StackPanel>
             </Border>
 
@@ -424,21 +407,19 @@
                     <ThemeShadow/>
                 </Border.Shadow>
                 <StackPanel Spacing="12">
-                    <TextBlock Text="🚀  CI/CD — GitHub Actions"
+                    <TextBlock x:Uid="SystemDesign_CICDTitle"
                                FontSize="18"
                                FontWeight="SemiBold"/>
-                    <TextBlock TextWrapping="Wrap"
+                    <TextBlock x:Uid="SystemDesign_CICDDesc1"
+                               TextWrapping="Wrap"
                                Foreground="#333333"
                                FontSize="14"
-                               LineHeight="22">
-                        <Run>Every push to the master branch triggers the CI/CD pipeline. The workflow builds the Uno WASM client with dotnet publish, runs the Spring Boot API build with Maven inside a multi-stage Docker build (compile → download OTel agent → JRE runtime image), and pushes both container images to ECR tagged as :latest.</Run>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap"
+                               LineHeight="22"/>
+                    <TextBlock x:Uid="SystemDesign_CICDDesc2"
+                               TextWrapping="Wrap"
                                Foreground="#333333"
                                FontSize="14"
-                               LineHeight="22">
-                        <Run>The pipeline then authenticates to the EKS cluster and issues a rolling update by patching the image on both Deployments. EKS performs the rollout gradually — new pods start, liveness and readiness probes pass, then old pods are terminated — keeping the application live throughout the deploy.</Run>
-                    </TextBlock>
+                               LineHeight="22"/>
                     <Button x:Name="BtnGitHubActions"
                             Click="BtnGitHubActions_Click"
                             Background="#1F6FEB"
@@ -450,10 +431,10 @@
                             HorizontalAlignment="Left">
                         <StackPanel Orientation="Horizontal"
                                     Spacing="8">
-                            <TextBlock Text="⚙️"
+                            <TextBlock x:Uid="SystemDesign_PipelineRunsIcon"
                                        FontSize="16"
                                        VerticalAlignment="Center"/>
-                            <TextBlock Text="View Pipeline Runs"
+                            <TextBlock x:Uid="SystemDesign_PipelineRunsLabel"
                                        VerticalAlignment="Center"/>
                         </StackPanel>
                     </Button>
@@ -471,10 +452,10 @@
                 </Border.Shadow>
                 <StackPanel Spacing="16">
                     <StackPanel Spacing="6">
-                        <TextBlock Text="🔍  Monitoring Tools"
+                        <TextBlock x:Uid="SystemDesign_MonitoringTitle"
                                    FontSize="18"
                                    FontWeight="SemiBold"/>
-                        <TextBlock Text="Available when running the local Docker Compose stack."
+                        <TextBlock x:Uid="SystemDesign_MonitoringDesc"
                                    FontSize="13"
                                    Foreground="#777777"
                                    TextWrapping="Wrap"/>
@@ -491,10 +472,10 @@
                                 FontWeight="SemiBold">
                             <StackPanel Orientation="Horizontal"
                                         Spacing="8">
-                                <TextBlock Text="📊"
+                                <TextBlock x:Uid="SystemDesign_GrafanaIcon"
                                            FontSize="16"
                                            VerticalAlignment="Center"/>
-                                <TextBlock Text="Open Grafana"
+                                <TextBlock x:Uid="SystemDesign_GrafanaLabel"
                                            VerticalAlignment="Center"/>
                             </StackPanel>
                         </Button>
@@ -508,10 +489,10 @@
                                 FontWeight="SemiBold">
                             <StackPanel Orientation="Horizontal"
                                         Spacing="8">
-                                <TextBlock Text="🔥"
+                                <TextBlock x:Uid="SystemDesign_PrometheusIcon"
                                            FontSize="16"
                                            VerticalAlignment="Center"/>
-                                <TextBlock Text="Open Prometheus"
+                                <TextBlock x:Uid="SystemDesign_PrometheusLabel"
                                            VerticalAlignment="Center"/>
                             </StackPanel>
                         </Button>
@@ -530,10 +511,10 @@
                 </Border.Shadow>
                 <StackPanel Spacing="20">
                     <StackPanel Spacing="6">
-                        <TextBlock Text="🔭  Future Improvements"
+                        <TextBlock x:Uid="SystemDesign_FutureImprovementsTitle"
                                    FontSize="18"
                                    FontWeight="SemiBold"/>
-                        <TextBlock Text="The next meaningful steps to make this a production-grade AWS deployment."
+                        <TextBlock x:Uid="SystemDesign_FutureImprovementsDesc"
                                    FontSize="13"
                                    Foreground="#777777"
                                    TextWrapping="Wrap"/>
@@ -541,7 +522,7 @@
 
                     <!-- RDS -->
                     <StackPanel Spacing="6">
-                        <TextBlock Text="Replace the PostgreSQL StatefulSet with Amazon RDS"
+                        <TextBlock x:Uid="SystemDesign_ImproveRdsTitle"
                                    FontSize="14"
                                    FontWeight="SemiBold"
                                    Foreground="#1A1A1A"/>
@@ -555,7 +536,7 @@
 
                     <!-- ElastiCache -->
                     <StackPanel Spacing="6">
-                        <TextBlock Text="Replace the Redis Deployment with Amazon ElastiCache"
+                        <TextBlock x:Uid="SystemDesign_ImproveElastiCacheTitle"
                                    FontSize="14"
                                    FontWeight="SemiBold"
                                    Foreground="#1A1A1A"/>
@@ -580,13 +561,13 @@
                     <ThemeShadow/>
                 </Border.Shadow>
                 <StackPanel Spacing="20">
-                    <TextBlock Text="🧠  Design Decisions"
+                    <TextBlock x:Uid="SystemDesign_DesignDecisionsTitle"
                                FontSize="18"
                                FontWeight="SemiBold"/>
 
                     <!-- Decision 1 -->
                     <StackPanel Spacing="6">
-                        <TextBlock Text="Redis + Server-Sent Events for primes, not a plain HTTP response"
+                        <TextBlock x:Uid="SystemDesign_Decision1Title"
                                    FontSize="14"
                                    FontWeight="SemiBold"
                                    Foreground="#1A1A1A"/>
@@ -600,7 +581,7 @@
 
                     <!-- Decision 2 -->
                     <StackPanel Spacing="6">
-                        <TextBlock Text="Java 21 virtual threads instead of reactive programming"
+                        <TextBlock x:Uid="SystemDesign_Decision2Title"
                                    FontSize="14"
                                    FontWeight="SemiBold"
                                    Foreground="#1A1A1A"/>
@@ -614,7 +595,7 @@
 
                     <!-- Decision 3 -->
                     <StackPanel Spacing="6">
-                        <TextBlock Text="StatefulSet for PostgreSQL, Deployment for Redis"
+                        <TextBlock x:Uid="SystemDesign_Decision3Title"
                                    FontSize="14"
                                    FontWeight="SemiBold"
                                    Foreground="#1A1A1A"/>
@@ -628,7 +609,7 @@
 
                     <!-- Decision 4 -->
                     <StackPanel Spacing="6">
-                        <TextBlock Text="AWS ALB Ingress Controller over nginx ingress"
+                        <TextBlock x:Uid="SystemDesign_Decision4Title"
                                    FontSize="14"
                                    FontWeight="SemiBold"
                                    Foreground="#1A1A1A"/>
@@ -642,7 +623,7 @@
 
                     <!-- Decision 5 -->
                     <StackPanel Spacing="6">
-                        <TextBlock Text="OTel zero-code Java agent instead of manual instrumentation"
+                        <TextBlock x:Uid="SystemDesign_Decision5Title"
                                    FontSize="14"
                                    FontWeight="SemiBold"
                                    Foreground="#1A1A1A"/>
@@ -656,7 +637,7 @@
 
                     <!-- Decision 6 -->
                     <StackPanel Spacing="6">
-                        <TextBlock Text="Uno Platform WASM for the frontend"
+                        <TextBlock x:Uid="SystemDesign_Decision6Title"
                                    FontSize="14"
                                    FontWeight="SemiBold"
                                    Foreground="#1A1A1A"/>
@@ -676,7 +657,7 @@
                     CornerRadius="12"
                     Padding="28">
                 <StackPanel Spacing="4">
-                    <TextBlock Text="Technical Components"
+                    <TextBlock x:Uid="SystemDesign_TechnicalComponentsTitle"
                                FontSize="17"
                                FontWeight="SemiBold"
                                Foreground="White"
@@ -990,16 +971,15 @@
                     <ThemeShadow/>
                 </Border.Shadow>
                 <StackPanel Spacing="16">
-                    <TextBlock Text="Configuration Highlights"
+                    <TextBlock x:Uid="SystemDesign_ConfigHighlightsTitle"
                                FontSize="17"
                                FontWeight="SemiBold"
                                Foreground="#1A1A2E"/>
-                    <TextBlock TextWrapping="Wrap"
+                    <TextBlock x:Uid="SystemDesign_ConfigHighlightsDesc"
+                               TextWrapping="Wrap"
                                FontSize="13"
                                Foreground="#555555"
-                               LineHeight="20">
-                        The source files below reflect a number of deliberate production-quality choices.
-                    </TextBlock>
+                               LineHeight="20"/>
 
                     <!-- Bullet list -->
                     <StackPanel Spacing="10">
@@ -1009,7 +989,14 @@
                                 <ColumnDefinition Width="16"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Border Grid.Column="0" Width="7" Height="7" Background="#4477CC" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,4,0,0"/>
+                            <Border Grid.Column="0"
+                                    Width="7"
+                                    Height="7"
+                                    Background="#4477CC"
+                                    CornerRadius="4"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Top"
+                                    Margin="0,4,0,0"/>
                             <TextBlock Grid.Column="1"
                                        Margin="0,0,0,0"
                                        TextWrapping="Wrap"
@@ -1026,7 +1013,14 @@
                                 <ColumnDefinition Width="16"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Border Grid.Column="0" Width="7" Height="7" Background="#4477CC" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,4,0,0"/>
+                            <Border Grid.Column="0"
+                                    Width="7"
+                                    Height="7"
+                                    Background="#4477CC"
+                                    CornerRadius="4"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Top"
+                                    Margin="0,4,0,0"/>
                             <TextBlock Grid.Column="1"
                                        TextWrapping="Wrap"
                                        FontSize="13"
@@ -1042,7 +1036,14 @@
                                 <ColumnDefinition Width="16"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Border Grid.Column="0" Width="7" Height="7" Background="#4477CC" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,4,0,0"/>
+                            <Border Grid.Column="0"
+                                    Width="7"
+                                    Height="7"
+                                    Background="#4477CC"
+                                    CornerRadius="4"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Top"
+                                    Margin="0,4,0,0"/>
                             <TextBlock Grid.Column="1"
                                        TextWrapping="Wrap"
                                        FontSize="13"
@@ -1058,7 +1059,14 @@
                                 <ColumnDefinition Width="16"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Border Grid.Column="0" Width="7" Height="7" Background="#4477CC" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,4,0,0"/>
+                            <Border Grid.Column="0"
+                                    Width="7"
+                                    Height="7"
+                                    Background="#4477CC"
+                                    CornerRadius="4"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Top"
+                                    Margin="0,4,0,0"/>
                             <TextBlock Grid.Column="1"
                                        TextWrapping="Wrap"
                                        FontSize="13"
@@ -1074,7 +1082,14 @@
                                 <ColumnDefinition Width="16"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Border Grid.Column="0" Width="7" Height="7" Background="#4477CC" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,4,0,0"/>
+                            <Border Grid.Column="0"
+                                    Width="7"
+                                    Height="7"
+                                    Background="#4477CC"
+                                    CornerRadius="4"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Top"
+                                    Margin="0,4,0,0"/>
                             <TextBlock Grid.Column="1"
                                        TextWrapping="Wrap"
                                        FontSize="13"
@@ -1094,12 +1109,12 @@
                     CornerRadius="12"
                     Padding="28">
                 <StackPanel Spacing="4">
-                    <TextBlock Text="Source Files"
+                    <TextBlock x:Uid="SystemDesign_SourceFilesTitle"
                                FontSize="17"
                                FontWeight="SemiBold"
                                Foreground="White"
                                Margin="0,0,0,12"/>
-                    <TextBlock Text="Configuration files served directly — open in browser to view."
+                    <TextBlock x:Uid="SystemDesign_SourceFilesDesc"
                                FontSize="12"
                                Foreground="#8899BB"
                                Margin="0,0,0,8"/>

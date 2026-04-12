@@ -1,0 +1,33 @@
+  <data name="SystemDesign_CICDTitle" xml:space="preserve">
+    <value>🚀  CI/CD — GitHub Actions</value>
+  </data>
+  <data name="SystemDesign_CICDDesc1" xml:space="preserve">
+    <value>Every push to the master branch triggers the CI/CD pipeline. The workflow builds the Uno WASM client with dotnet publish, runs the Spring Boot API build with Maven inside a multi-stage Docker build (compile → download OTel agent → JRE runtime image), and pushes both container images to ECR tagged as :latest.</value>
+  </data>
+  <data name="SystemDesign_CICDDesc2" xml:space="preserve">
+    <value>The pipeline then authenticates to the EKS cluster and issues a rolling update by patching the image on both Deployments. EKS performs the rollout gradually — new pods start, liveness and readiness probes pass, then old pods are terminated — keeping the application live throughout the deploy.</value>
+  </data>
+  <data name="SystemDesign_PipelineRunsIcon" xml:space="preserve">
+    <value>⚙️</value>
+  </data>
+  <data name="SystemDesign_PipelineRunsLabel" xml:space="preserve">
+    <value>View Pipeline Runs</value>
+  </data>
+  <data name="SystemDesign_MonitoringTitle" xml:space="preserve">
+    <value>🔍  Monitoring Tools</value>
+  </data>
+  <data name="SystemDesign_MonitoringDesc" xml:space="preserve">
+    <value>Available when running the local Docker Compose stack.</value>
+  </data>
+  <data name="SystemDesign_GrafanaIcon" xml:space="preserve">
+    <value>📊</value>
+  </data>
+  <data name="SystemDesign_GrafanaLabel" xml:space="preserve">
+    <value>Open Grafana</value>
+  </data>
+  <data name="SystemDesign_PrometheusIcon" xml:space="preserve">
+    <value>🔥</value>
+  </data>
+  <data name="SystemDesign_PrometheusLabel" xml:space="preserve">
+    <value>Open Prometheus</value>
+  </data>
