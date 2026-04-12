@@ -1,4 +1,4 @@
-namespace InternetBankCalculator;
+namespace InternetBankCalculator.Pages;
 
 public sealed partial class SystemDesignPage : Page
 {

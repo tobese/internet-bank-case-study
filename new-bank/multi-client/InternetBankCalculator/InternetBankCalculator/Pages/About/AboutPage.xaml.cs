@@ -1,6 +1,6 @@
 
 #pragma warning disable
-namespace InternetBankCalculator.AboutContent;
+namespace InternetBankCalculator.Pages.About;
 
 public sealed partial class AboutPage : Page
 {
@@ -14,7 +14,7 @@ public sealed partial class AboutPage : Page
         var shell = GetShell();
         if (shell != null)
         {
-            shell.ContentFramePublic.Navigate(typeof(AboutContent.FromJavaToCSharpPage));
+            shell.ContentFramePublic.Navigate(typeof(Pages.About.FromJavaToCSharpPage));
             shell.UpdateNavHighlight(shell.BtnAboutPublic);
         }
     }
@@ -31,7 +31,7 @@ public sealed partial class AboutPage : Page
         var shell = GetShell();
         if (shell != null)
         {
-            shell.ContentFramePublic.Navigate(typeof(AboutContent.MainframeModernizationPage));
+            shell.ContentFramePublic.Navigate(typeof(Pages.About.MainframeModernizationPage));
             shell.UpdateNavHighlight(shell.BtnAboutPublic);
         }
     }
@@ -41,7 +41,7 @@ public sealed partial class AboutPage : Page
         var shell = GetShell();
         if (shell != null)
         {
-            shell.ContentFramePublic.Navigate(typeof(AboutContent.CloudBankingPage));
+            shell.ContentFramePublic.Navigate(typeof(Pages.About.CloudBankingPage));
             shell.UpdateNavHighlight(shell.BtnAboutPublic);
         }
     }
@@ -51,7 +51,7 @@ public sealed partial class AboutPage : Page
         var shell = GetShell();
         if (shell != null)
         {
-            shell.ContentFramePublic.Navigate(typeof(AboutContent.CobolToModernPage));
+            shell.ContentFramePublic.Navigate(typeof(Pages.About.CobolToModernPage));
             shell.UpdateNavHighlight(shell.BtnAboutPublic);
         }
     }
@@ -61,7 +61,7 @@ public sealed partial class AboutPage : Page
         var shell = GetShell();
         if (shell != null)
         {
-            shell.ContentFramePublic.Navigate(typeof(AboutContent.DoggerBankPage));
+            shell.ContentFramePublic.Navigate(typeof(Pages.About.DoggerBankPage));
             shell.UpdateNavHighlight(shell.BtnAboutPublic);
         }
     }
@@ -71,7 +71,7 @@ public sealed partial class AboutPage : Page
         var shell = GetShell();
         if (shell != null)
         {
-            shell.ContentFramePublic.Navigate(typeof(AboutContent.DoggerLandPage));
+            shell.ContentFramePublic.Navigate(typeof(Pages.About.DoggerLandPage));
             shell.UpdateNavHighlight(shell.BtnAboutPublic);
         }
     }

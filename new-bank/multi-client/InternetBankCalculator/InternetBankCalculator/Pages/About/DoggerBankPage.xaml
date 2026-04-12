@@ -1,4 +1,4 @@
-﻿<Page x:Class="InternetBankCalculator.AboutContent.DoggerBankPage"
+﻿<Page x:Class="InternetBankCalculator.Pages.About.DoggerBankPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       Background="#F5F7FA">

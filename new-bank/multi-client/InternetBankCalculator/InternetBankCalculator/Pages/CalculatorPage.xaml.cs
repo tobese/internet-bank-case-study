@@ -2,7 +2,7 @@ using InternetBankCalculator.Services;
 using InternetBankCalculator.ViewModels;
 using Microsoft.UI.Xaml.Input;
 
-namespace InternetBankCalculator;
+namespace InternetBankCalculator.Pages;
 
 public sealed partial class CalculatorPage : Page
 {

@@ -1,10 +1,10 @@
-namespace InternetBankCalculator;
+namespace InternetBankCalculator.Pages;
 
 public sealed partial class LandingPage : Page
 {
     public LandingPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void BtnToCalc_Click(object sender, RoutedEventArgs e)

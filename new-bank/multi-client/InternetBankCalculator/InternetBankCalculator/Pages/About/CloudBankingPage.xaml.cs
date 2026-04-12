@@ -1,6 +1,6 @@
 
 #pragma warning disable
-namespace InternetBankCalculator.AboutContent;
+namespace InternetBankCalculator.Pages.About;
 
 public sealed partial class CloudBankingPage : Page
 {
