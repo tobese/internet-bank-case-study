@@ -21,7 +21,7 @@ public sealed partial class AboutPage : Page
 
     private static AppShell? GetShell()
     {
-        if (App.Current is App app && app.MainWindow?.Content is AppShell shell)
+        if (App.Current is App app && app.MainWindow?.Content is Frame f && f.Content is AppShell shell)
             return shell;
         return null;
     }

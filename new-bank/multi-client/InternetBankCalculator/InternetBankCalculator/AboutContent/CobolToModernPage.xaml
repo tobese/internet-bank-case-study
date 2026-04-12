@@ -5,23 +5,22 @@
     xmlns:local="using:InternetBankCalculator"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{StaticResource BackgroundBrush}">
+    mc:Ignorable="d">
 
     <ScrollViewer>
         <StackPanel Spacing="16"
                     Padding="24">
             <TextBlock Text="From COBOL to Java or C#"
-                       FontSize="{StaticResource TitleFontSize}"
+                       FontSize="28"
                        FontWeight="Bold"
                        Margin="0,0,0,16"/>
             <TextBlock Text="A quick guide for COBOL programmers transitioning to modern object-oriented languages: Java and C#."
-                       FontSize="{StaticResource BodyFontSize}"
+                       FontSize="16"
                        Margin="0,0,0,24"/>
 
             <TextBlock Text="1. Key Concepts"
                        FontWeight="Bold"
-                       FontSize="{StaticResource SubtitleFontSize}"/>
+                       FontSize="18"/>
             <StackPanel>
                 <TextBlock Text="Procedural vs Object-Oriented Programming"/>
                 <TextBlock Text="Data Division vs Classes/Objects"/>
@@ -34,7 +33,7 @@
 
             <TextBlock Text="2. Syntax Comparison"
                        FontWeight="Bold"
-                       FontSize="{StaticResource SubtitleFontSize}"/>
+                       FontSize="18"/>
             <StackPanel>
                 <TextBlock Text="Variable Declarations"/>
                 <TextBlock Text="COBOL: 01 CUSTOMER-NAME PIC X(30)."/>

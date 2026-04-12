@@ -3,130 +3,126 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:Converters="using:InternetBankCalculator.Converters">
 
-        <Application.Resources>
-                <ResourceDictionary>
-                        <ResourceDictionary.MergedDictionaries>
-                                <!-- Load WinUI resources -->
-                                <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls"/>
-                                <!-- App-wide theme resources -->
-                                <ResourceDictionary Source="Themes/Colors.xaml"/>
-                                <ResourceDictionary Source="Themes/Brushes.xaml"/>
-                                <ResourceDictionary Source="Themes/FontSizes.xaml"/>
-                        </ResourceDictionary.MergedDictionaries>
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Load WinUI resources -->
+                <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls"/>
+            </ResourceDictionary.MergedDictionaries>
 
-                        <Style x:Key="TitleTextBlockStyle"
-                                        TargetType="TextBlock">
-                                <Setter Property="FontSize"
-                                                Value="{StaticResource TitleFontSize}"/>
-                                <Setter Property="FontWeight"
-                                                Value="Bold"/>
-                                <Setter Property="Foreground"
-                                                Value="{StaticResource TextPrimaryBrush}"/>
-                        </Style>
-                        <Style x:Key="SubtitleTextBlockStyle"
-                                        TargetType="TextBlock">
-                                <Setter Property="FontSize"
-                                                Value="{StaticResource SubtitleFontSize}"/>
-                                <Setter Property="FontWeight"
-                                                Value="SemiBold"/>
-                                <Setter Property="Foreground"
-                                                Value="{StaticResource TextSecondaryBrush}"/>
-                        </Style>
+            <Style x:Key="TitleTextBlockStyle"
+                    TargetType="TextBlock">
+                <Setter Property="FontSize"
+                        Value="24"/>
+                <Setter Property="FontWeight"
+                        Value="Bold"/>
+                <Setter Property="Foreground"
+                        Value="#1A1A1A"/>
+            </Style>
+            <Style x:Key="SubtitleTextBlockStyle"
+                    TargetType="TextBlock">
+                <Setter Property="FontSize"
+                        Value="18"/>
+                <Setter Property="FontWeight"
+                        Value="SemiBold"/>
+                <Setter Property="Foreground"
+                        Value="#333"/>
+            </Style>
 
-                        <!-- Add resources here -->
-                        <Converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
-                        <SolidColorBrush x:Key="ResultBackgroundSuccess"
-                                        Color="{StaticResource BackgroundColor}"/>
-                        <SolidColorBrush x:Key="ResultBackgroundError"
-                                        Color="{StaticResource ErrorBackgroundColor}"/>
-                        <SolidColorBrush x:Key="ResultForegroundSuccess"
-                                        Color="{StaticResource SuccessColor}"/>
-                        <SolidColorBrush x:Key="ResultForegroundError"
-                                        Color="{StaticResource ErrorColor}"/>
+            <!-- Add resources here -->
+            <Converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+            <SolidColorBrush x:Key="ResultBackgroundSuccess"
+                             Color="#F0F4F8"/>
+            <SolidColorBrush x:Key="ResultBackgroundError"
+                             Color="#FDECEA"/>
+            <SolidColorBrush x:Key="ResultForegroundSuccess"
+                             Color="#1A1A1A"/>
+            <SolidColorBrush x:Key="ResultForegroundError"
+                             Color="#C62828"/>
 
-                        <SolidColorBrush x:Key="ButtonCalculateBackground"
-                                        Color="{StaticResource PrimaryColor}"/>
-                        <SolidColorBrush x:Key="ButtonFacBackground"
-                                        Color="{StaticResource SecondaryColor}"/>
-                        <SolidColorBrush x:Key="ButtonFibBackground"
-                                        Color="{StaticResource AccentColor}"/>
-                        <SolidColorBrush x:Key="ButtonForeground"
-                                        Color="White"/>
+            <SolidColorBrush x:Key="ButtonCalculateBackground"
+                             Color="#4A90D9"/>
+            <SolidColorBrush x:Key="ButtonFacBackground"
+                             Color="#34A853"/>
+            <SolidColorBrush x:Key="ButtonFibBackground"
+                             Color="#00838F"/>
+            <SolidColorBrush x:Key="ButtonForeground"
+                             Color="White"/>
 
-                        <Converters:BoolToBrushConverter x:Key="BoolToBackgroundConverter"
-                                                         TrueBrush="{StaticResource ResultBackgroundError}"
-                                                         FalseBrush="{StaticResource ResultBackgroundSuccess}"/>
-                        <Converters:BoolToBrushConverter x:Key="BoolToForegroundConverter"
-                                                         TrueBrush="{StaticResource ResultForegroundError}"
-                                                         FalseBrush="{StaticResource ResultForegroundSuccess}"/>
+            <Converters:BoolToBrushConverter x:Key="BoolToBackgroundConverter"
+                                             TrueBrush="{StaticResource ResultBackgroundError}"
+                                             FalseBrush="{StaticResource ResultBackgroundSuccess}"/>
+            <Converters:BoolToBrushConverter x:Key="BoolToForegroundConverter"
+                                             TrueBrush="{StaticResource ResultForegroundError}"
+                                             FalseBrush="{StaticResource ResultForegroundSuccess}"/>
 
-                        <!-- Default dark text for all TextBlocks so light-background pages are always readable -->
-                        <Style TargetType="TextBlock">
-                                <Setter Property="Foreground"
-                                                Value="{StaticResource TextPrimaryBrush}"/>
-                        </Style>
+            <!-- Default dark text for all TextBlocks so light-background pages are always readable -->
+            <Style TargetType="TextBlock">
+                <Setter Property="Foreground"
+                        Value="#1A1A1A"/>
+            </Style>
 
-                        <Style x:Key="NavButtonStyle"
-                                        TargetType="Button">
-                                <Setter Property="Background"
-                                                Value="Transparent"/>
-                                <Setter Property="Foreground"
-                                                Value="White"/>
-                                <Setter Property="BorderThickness"
-                                                Value="0"/>
-                                <Setter Property="Padding"
-                                                Value="12,8"/>
-                                <Setter Property="FontSize"
-                                                Value="{StaticResource BodyFontSize}"/>
-                                <Setter Property="CornerRadius"
-                                                Value="6"/>
-                                <Setter Property="Template">
-                                        <Setter.Value>
-                                                <ControlTemplate TargetType="Button">
-                                                        <ContentPresenter x:Name="ContentPresenter"
-                                                                          Background="{TemplateBinding Background}"
-                                                                          Foreground="{TemplateBinding Foreground}"
-                                                                          BorderBrush="{TemplateBinding BorderBrush}"
-                                                                          BorderThickness="{TemplateBinding BorderThickness}"
-                                                                          Content="{TemplateBinding Content}"
-                                                                          Padding="{TemplateBinding Padding}"
-                                                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                                                          CornerRadius="{TemplateBinding CornerRadius}">
-                                                                <VisualStateManager.VisualStateGroups>
-                                                                        <VisualStateGroup x:Name="CommonStates">
-                                                                                <VisualState x:Name="Normal"/>
-                                                                                <VisualState x:Name="PointerOver">
-                                                                                        <VisualState.Setters>
-                                                                                                <Setter Target="ContentPresenter.Background"
-                                                                                                                Value="{StaticResource NavButtonPointerOverBrush}"/>
-                                                                                                <Setter Target="ContentPresenter.Foreground"
-                                                                                                                Value="White"/>
-                                                                                        </VisualState.Setters>
-                                                                                </VisualState>
-                                                                                <VisualState x:Name="Pressed">
-                                                                                        <VisualState.Setters>
-                                                                                                <Setter Target="ContentPresenter.Background"
-                                                                                                                Value="{StaticResource NavButtonPressedBrush}"/>
-                                                                                                <Setter Target="ContentPresenter.Foreground"
-                                                                                                                Value="White"/>
-                                                                                        </VisualState.Setters>
-                                                                                </VisualState>
-                                                                                <VisualState x:Name="Disabled">
-                                                                                        <VisualState.Setters>
-                                                                                                <Setter Target="ContentPresenter.Foreground"
-                                                                                                                Value="{StaticResource DisabledTextBrush}"/>
-                                                                                        </VisualState.Setters>
-                                                                                </VisualState>
-                                                                        </VisualStateGroup>
-                                                                </VisualStateManager.VisualStateGroups>
-                                                        </ContentPresenter>
-                                                </ControlTemplate>
-                                        </Setter.Value>
-                                </Setter>
-                        </Style>
+            <Style x:Key="NavButtonStyle"
+                   TargetType="Button">
+                <Setter Property="Background"
+                        Value="Transparent"/>
+                <Setter Property="Foreground"
+                        Value="White"/>
+                <Setter Property="BorderThickness"
+                        Value="0"/>
+                <Setter Property="Padding"
+                        Value="12,8"/>
+                <Setter Property="FontSize"
+                        Value="14"/>
+                <Setter Property="CornerRadius"
+                        Value="6"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <ContentPresenter x:Name="ContentPresenter"
+                                              Background="{TemplateBinding Background}"
+                                              Foreground="{TemplateBinding Foreground}"
+                                              BorderBrush="{TemplateBinding BorderBrush}"
+                                              BorderThickness="{TemplateBinding BorderThickness}"
+                                              Content="{TemplateBinding Content}"
+                                              Padding="{TemplateBinding Padding}"
+                                              HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              CornerRadius="{TemplateBinding CornerRadius}">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal"/>
+                                        <VisualState x:Name="PointerOver">
+                                            <VisualState.Setters>
+                                                <Setter Target="ContentPresenter.Background"
+                                                        Value="#2E2E50"/>
+                                                <Setter Target="ContentPresenter.Foreground"
+                                                        Value="White"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="Pressed">
+                                            <VisualState.Setters>
+                                                <Setter Target="ContentPresenter.Background"
+                                                        Value="#3D3D6B"/>
+                                                <Setter Target="ContentPresenter.Foreground"
+                                                        Value="White"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="Disabled">
+                                            <VisualState.Setters>
+                                                <Setter Target="ContentPresenter.Foreground"
+                                                        Value="#666688"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                            </ContentPresenter>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
 
-                </ResourceDictionary>
-        </Application.Resources>
+        </ResourceDictionary>
+    </Application.Resources>
 
 </Application>

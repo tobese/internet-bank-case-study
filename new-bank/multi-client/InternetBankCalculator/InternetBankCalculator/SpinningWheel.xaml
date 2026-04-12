@@ -11,6 +11,6 @@
         <ProgressRing IsActive="True"
                       Width="48"
                       Height="48"
-                      Foreground="{StaticResource PrimaryBrush}"/>
+                      Foreground="#4A90D9"/>
     </Grid>
 </UserControl>
