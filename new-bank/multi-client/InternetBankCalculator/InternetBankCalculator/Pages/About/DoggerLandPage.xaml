@@ -10,7 +10,7 @@
                     Padding="24,60,24,60"
                     Spacing="32">
 
-            <!-- Header -->
+            <!-- Hero Header -->
             <StackPanel Spacing="12">
                 <TextBlock Text="🦣 Doggerland"
                            FontSize="30"
@@ -22,7 +22,7 @@
                            TextWrapping="Wrap"/>
             </StackPanel>
 
-            <!-- Hero image: Doggerland map (CC BY-SA 3.0, Max Naylor) -->
+            <!-- Hero Image -->
             <Border CornerRadius="12"
                     Background="#1a3a5c">
                 <Image Source="ms-appx:///Assets/doggerland_map.svg"
@@ -31,7 +31,7 @@
                        HorizontalAlignment="Center"/>
             </Border>
 
-            <!-- What was it -->
+            <!-- Main Content Card -->
             <Border Background="White"
                     CornerRadius="12"
                     Padding="28"

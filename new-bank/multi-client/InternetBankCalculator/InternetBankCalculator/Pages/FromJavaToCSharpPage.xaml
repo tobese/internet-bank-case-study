@@ -1,0 +1,41 @@
+﻿<Page x:Class="InternetBankCalculator.Pages.About.FromJavaToCSharpPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                  VerticalScrollBarVisibility="Auto">
+        <StackPanel MaxWidth="740"
+                    HorizontalAlignment="Center"
+                    Padding="24,60,24,60"
+                    Spacing="32">
+            <StackPanel Spacing="12">
+                <TextBlock Text="☕➡️💻 From Java to C#"
+                           FontSize="30"
+                           FontWeight="Bold"
+                           Foreground="#1A1A1A"/>
+                <TextBlock Text="A curated guide to help senior Java developers quickly become productive C# developers."
+                           FontSize="15"
+                           Foreground="#555555"
+                           TextWrapping="Wrap"/>
+            </StackPanel>
+            <Border CornerRadius="12">
+                <Image Source="ms-appx:///Assets/java_to_csharp_hero.jpg"
+                       Height="220"
+                       Stretch="UniformToFill"
+                       HorizontalAlignment="Stretch"/>
+            </Border>
+            <Border Background="White"
+                    CornerRadius="12"
+                    Padding="28"
+                    BorderBrush="#E0E0E0"
+                    BorderThickness="1">
+                <StackPanel>
+                    <TextBlock Text="From Java to C#: Key Concepts"
+                            FontWeight="Bold"
+                            FontSize="18"/>
+                    <TextBlock Text=".NET Types vs Java Types, LINQ vs Streams, Async/Await, etc."/>
+                    <TextBlock Text="See documentation for more details."/>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

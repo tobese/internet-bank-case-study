@@ -10,7 +10,7 @@
                     Padding="24,60,24,60"
                     Spacing="32">
 
-            <!-- Header -->
+            <!-- Hero Header -->
             <StackPanel Spacing="12">
                 <TextBlock Text="🌊 Dogger Bank"
                            FontSize="30"
@@ -22,7 +22,7 @@
                            TextWrapping="Wrap"/>
             </StackPanel>
 
-            <!-- Hero image: Dogger Bank Wind Farm substation (CC BY-SA 2.0, geograph.org.uk) -->
+            <!-- Hero Image -->
             <Border CornerRadius="12">
                 <Image Source="ms-appx:///Assets/dogger_bank_wind_farm.jpg"
                        Height="280"
@@ -30,7 +30,7 @@
                        HorizontalAlignment="Stretch"/>
             </Border>
 
-            <!-- Geography -->
+            <!-- Main Content Card -->
             <Border Background="White"
                     CornerRadius="12"
                     Padding="28"
