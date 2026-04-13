@@ -1,11 +1,12 @@
 using InternetBankCalculator.Services;
 using InternetBankCalculator.ViewModels;
+using InternetBankCalculator.Loadables;
 
 namespace InternetBankCalculator;
 
 public sealed partial class AppShell : Page
 {
-    public MyLoadableSource LoadableSource { get; } = new();
+    public SplashLoadable LoadableSource { get; } = new();
     // For browser navigation interop
     // For browser navigation interop
 #if __WASM__

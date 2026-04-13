@@ -1,6 +1,6 @@
-namespace InternetBankCalculator;
+namespace InternetBankCalculator.Loadables;
 
-public class MyLoadableSource : ILoadable
+public class SplashLoadable : ILoadable
 {
     public event EventHandler? IsExecutingChanged;
 
