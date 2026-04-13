@@ -1,10 +1,8 @@
 <Project Sdk="Uno.Sdk">
   <PropertyGroup>
     <TargetFrameworks>net10.0-browserwasm</TargetFrameworks>
-
     <OutputType>Exe</OutputType>
     <UnoSingleProject>true</UnoSingleProject>
-
     <!-- Display name -->
     <ApplicationTitle>InternetBankCalculator</ApplicationTitle>
     <!-- App Identifier -->
@@ -16,8 +14,7 @@
     <ApplicationPublisher>InternetBankCalculator</ApplicationPublisher>
     <!-- Package Description -->
     <Description>InternetBankCalculator powered by Uno Platform.</Description>
-
-    <!--
+    <!--    dotnet workload install wasm-tools-net9    dotnet workload install wasm-tools-net9    dotnet workload install wasm-tools-net9    dotnet workload install wasm-tools-net9    dotnet workload install wasm-tools-net9    dotnet workload install wasm-tools-net9
       UnoFeatures are used to quickly add and manage features enabled for your app.
       https://aka.platform.uno/singleproject-features
     -->
@@ -30,11 +27,10 @@
       Toolkit;
     </UnoFeatures>
   </PropertyGroup>
-
   <ItemGroup>
     <Content Include="Assets\doggerbank.png" />
     <Content Include="Assets\dogger_bank_wind_farm.jpg" />
-    <Content Include="Assets\doggerland_map.svg" />
+    <Content Include="Assets\Doggerland.png" />
     <Content Include="Assets\logo_docker.png" />
     <Content Include="Assets\logo_kubernetes.png" />
     <Content Include="Assets\logo_kubernetes_spin.gif" />
@@ -46,16 +42,13 @@
     <Content Include="Assets/BankLogos/Deutsche_Bank_Taunusanlage.jpg" />
     <Content Include="Assets/BankLogos/250px-ABN_AMRO4.jpg" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="Svg.Skia" />
     <PackageReference Include="Uno.WinUI.Svg" />
   </ItemGroup>
-
   <!-- IL2104: suppress "assembly produced trim warnings" from upstream Uno packages
        that don't yet ship full trim annotations. Our own code is still analyzed. -->
   <PropertyGroup>
     <NoWarn>$(NoWarn);IL2104</NoWarn>
   </PropertyGroup>
-
 </Project>

@@ -8,15 +8,21 @@
                     HorizontalAlignment="Center"
                     Padding="24,60,24,60"
                     Spacing="32">
+            <Border CornerRadius="12">
+                <Image Source="ms-appx:///Assets/AS400jpeg"
+                       Height="160"
+                       Stretch="Uniform"
+                       HorizontalAlignment="Center"/>
+            </Border>
             <StackPanel Spacing="12">
                 <TextBlock Text="Mainframe Modernization"
-                        FontSize="30"
-                        FontWeight="Bold"
-                        Foreground="#1A1A1A"/>
+                           FontSize="30"
+                           FontWeight="Bold"
+                           Foreground="#1A1A1A"/>
                 <TextBlock Text="AS400 IBM i in the Cloud and COBOL Modernization"
-                        FontSize="15"
-                        Foreground="#555555"
-                        TextWrapping="Wrap"/>
+                           FontSize="15"
+                           Foreground="#555555"
+                           TextWrapping="Wrap"/>
             </StackPanel>
             <Border Background="White"
                     CornerRadius="12"
@@ -26,8 +32,8 @@
                 <StackPanel>
                     <StackPanel Spacing="12">
                         <TextBlock Text="Cloud Providers for AS400 IBM i"
-                                FontSize="22"
-                                FontWeight="SemiBold"/>
+                                   FontSize="22"
+                                   FontWeight="SemiBold"/>
                         <TextBlock TextWrapping="Wrap">IBM i and AS400 workloads can be hosted in the cloud using specialized offerings:</TextBlock>
                         <StackPanel Spacing="8">
                             <TextBlock Text="- IBM Cloud: IBM Power Systems Virtual Server runs IBM i, AIX, and Linux workloads natively."/>
@@ -36,10 +42,10 @@
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Spacing="12"
-                            Margin="0,24,0,0">
+                                Margin="0,24,0,0">
                         <TextBlock Text="Modernizing COBOL and AS400 Systems"
-                                FontSize="22"
-                                FontWeight="SemiBold"/>
+                                   FontSize="22"
+                                   FontWeight="SemiBold"/>
                         <TextBlock TextWrapping="Wrap">There are several strategies to modernize COBOL and AS400 workloads:</TextBlock>
                         <StackPanel Spacing="8">
                             <TextBlock Text="- Rehosting: Move existing workloads to cloud VMs or managed Power Systems IBM Cloud, Azure Skytap without code changes."/>

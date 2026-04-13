@@ -8,32 +8,24 @@
                     HorizontalAlignment="Center"
                     Padding="24,60,24,60"
                     Spacing="32">
-            <!-- Hero Header -->
             <StackPanel Spacing="12">
-                <TextBlock Text="🏦 About"
-                           FontSize="30"
-                           FontWeight="Bold"
-                           Foreground="#1A1A1A"/>
+
+                <Border CornerRadius="12">
+                    <Image Source="ms-appx:///Assets/About.png"
+                           Height="260"/>
+                </Border>
                 <TextBlock Text="Dogger Bank is a fictitious internet bank — a case study demonstrating the latest and greatest in cloud-native technology, from a C# / WebAssembly frontend to a Java API running on Kubernetes in the cloud."
                            FontSize="15"
                            Foreground="#555555"
                            TextWrapping="Wrap"/>
             </StackPanel>
-            <!-- Hero Image -->
-            <Border CornerRadius="12">
-                <Image Source="ms-appx:///Assets/about_hero.jpg"
-                       Height="260"
-                       Stretch="UniformToFill"
-                       HorizontalAlignment="Stretch"/>
-            </Border>
-            <!-- Main Content Card -->
             <Border Background="White"
                     CornerRadius="12"
                     Padding="28"
                     BorderBrush="#E0E0E0"
                     BorderThickness="1">
                 <StackPanel Spacing="8">
-                    <TextBlock Text="Explore the case study topics:"
+                    <TextBlock Text="Mainframe to Cloudframe?"
                                FontSize="18"
                                FontWeight="SemiBold"
                                Margin="0,0,0,12"/>
@@ -65,23 +57,23 @@
                         <Border Height="1"
                                 Background="#DDD"
                                 Margin="0,16,0,16"/>
-                        <TextBlock Text="Dogger Case Study"
+                        <TextBlock Text="Dogger - From Land to Bank"
                                    FontWeight="SemiBold"
                                    FontSize="14"
                                    Foreground="#888"
                                    Margin="0,0,0,8"/>
-                        <HyperlinkButton Content="Dogger Bank"
-                                         Click="DoggerBank_Click"
-                                         Margin="0,0,0,0"
-                                         FontSize="16"
-                                         Foreground="#0078D7"
-                                         ToolTipService.ToolTip="Go to Dogger Bank page"/>
                         <HyperlinkButton Content="Doggerland"
                                          Click="DoggerLand_Click"
                                          Margin="0,8,0,0"
                                          FontSize="16"
                                          Foreground="#0078D7"
                                          ToolTipService.ToolTip="Go to Doggerland page"/>
+                        <HyperlinkButton Content="Dogger Bank"
+                                         Click="DoggerBank_Click"
+                                         Margin="0,0,0,0"
+                                         FontSize="16"
+                                         Foreground="#0078D7"
+                                         ToolTipService.ToolTip="Go to Dogger Bank page"/>
                     </StackPanel>
                 </StackPanel>
             </Border>

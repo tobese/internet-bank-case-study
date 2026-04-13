@@ -12,7 +12,7 @@
                   HorizontalAlignment="Center"
                   Padding="24,60,24,60">
         <StackPanel MaxWidth="740"
-                    Spacing="12"
+                    Spacing="20"
                     HorizontalAlignment="Center">
             <TextBlock Text="💾➡️☕/💻 COBOL to Modern Languages"
                        FontSize="30"
@@ -23,8 +23,8 @@
                        Foreground="#555555"
                        TextWrapping="Wrap"/>
             <Border CornerRadius="12">
-                <Image Source="ms-appx:///Assets/cobol_modern_hero.jpg"
-                       Height="220"
+                <Image Source="ms-appx:///Assets/doggerbank.png"
+                       Height="180"
                        Stretch="UniformToFill"
                        HorizontalAlignment="Stretch"/>
             </Border>
@@ -33,14 +33,34 @@
                     Padding="28"
                     BorderBrush="#E0E0E0"
                     BorderThickness="1">
-                <StackPanel Spacing="8">
+                <StackPanel Spacing="12">
                     <TextBlock Text="COBOL to Modern: Key Concepts"
                                FontWeight="Bold"
                                FontSize="18"/>
-                    <TextBlock Text="Procedural vs Object-Oriented, Data Division vs Classes, PERFORM vs Loops, etc."/>
-                    <TextBlock Text="See documentation for more details."/>
+                    <TextBlock Text="• Procedural (COBOL) vs Object-Oriented (Java/C#)"
+                               TextWrapping="Wrap"/>
+                    <TextBlock Text="• Data Division (COBOL) → Classes/Fields (Java/C#)"
+                               TextWrapping="Wrap"/>
+                    <TextBlock Text="• PERFORM (COBOL) → for/while loops (Java/C#)"
+                               TextWrapping="Wrap"/>
+                    <TextBlock Text="• MOVE/ADD/COMPUTE → =, +, -, *, / operators"
+                               TextWrapping="Wrap"/>
+                    <TextBlock Text="• IF/ELSE, EVALUATE → if/else, switch"
+                               TextWrapping="Wrap"/>
+                    <TextBlock Text="• File I/O → Streams, File APIs"
+                               TextWrapping="Wrap"/>
+                    <TextBlock Text="• Error handling: GOTO/STOP RUN → try/catch/finally"
+                               TextWrapping="Wrap"/>
+                    <TextBlock Text="• Batch jobs → Scheduled tasks, async methods"
+                               TextWrapping="Wrap"/>
+                    <TextBlock Text="• Mainframe DB (VSAM, IMS) → Relational DB (JPA, Entity Framework)"
+                               TextWrapping="Wrap"/>
                 </StackPanel>
             </Border>
+            <TextBlock Text="See documentation or onboarding guides for more details and code examples."
+                       FontSize="13"
+                       Foreground="#888"
+                       Margin="0,16,0,0"/>
         </StackPanel>
     </ScrollViewer>
 </Page>

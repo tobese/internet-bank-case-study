@@ -1,0 +1,39 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Uno Platform: Skia (WebAssembly)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/bin/Debug/net10.0-browserwasm/InternetBankCalculator.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "stopAtEntry": false,
+      "console": "internalConsole"
+    },
+    {
+      "name": "Uno Platform: Skia (macOS standalone)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/bin/Debug/net10.0-macos/InternetBankCalculator.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "stopAtEntry": false,
+      "console": "internalConsole"
+    },
+    {
+      "name": "Uno Platform: Android",
+      "type": "Uno",
+      "request": "launch",
+      "preLaunchTask": "Uno: net10.0-android | Debug | android-x64"
+    },
+    {
+      "name": "Uno Platform: iOS",
+      "type": "Uno",
+      "request": "launch",
+      "preLaunchTask": "Uno: net10.0-ios | Debug | iossimulator-x64"
+    }
+  ]
+}

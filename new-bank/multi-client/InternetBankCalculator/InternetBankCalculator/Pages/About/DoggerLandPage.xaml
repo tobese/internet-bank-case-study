@@ -25,7 +25,7 @@
             <!-- Hero Image -->
             <Border CornerRadius="12"
                     Background="#1a3a5c">
-                <Image Source="ms-appx:///Assets/doggerland_map.svg"
+                <Image Source="ms-appx:///Assets/Doggerland.png"
                        Height="320"
                        Stretch="Uniform"
                        HorizontalAlignment="Center"/>
