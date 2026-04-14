@@ -1,11 +1,12 @@
 using Microsoft.UI.Xaml.Controls;
+using InternetBankCalculator.Loadables;
 
 namespace InternetBankCalculator;
 
 public sealed partial class Shell : UserControl
 {
     public Frame RootFrame => ShellFrame;
-    public MyLoadableSource LoadableSource { get; } = new();
+    public SplashLoadable LoadableSource { get; } = new();
 
     public Shell()
     {

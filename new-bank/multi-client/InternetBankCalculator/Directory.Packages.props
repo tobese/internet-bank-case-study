@@ -6,9 +6,9 @@
     See https://aka.platform.uno/using-uno-sdk#implicit-packages for more information regarding the Implicit Packages.
   -->
   <ItemGroup>
-    <PackageVersion Include="Svg.Skia" Version="3.7.0" />
+    <PackageVersion Include="Svg.Skia" Version="4.2.0" />
   </ItemGroup>
   <ItemGroup>
-    <PackageVersion Include="Uno.WinUI.Svg" Version="5.0.19" />
+    <PackageVersion Include="Uno.WinUI.Svg" Version="6.5.153" />
   </ItemGroup>
 </Project>

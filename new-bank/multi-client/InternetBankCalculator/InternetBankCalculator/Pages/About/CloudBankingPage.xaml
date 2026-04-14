@@ -4,125 +4,133 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Background="#F5F7FA">
 
-    <ScrollViewer>
-        <StackPanel Spacing="24"
-                    Margin="24">
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                  VerticalScrollBarVisibility="Auto">
+        <StackPanel MaxWidth="740"
+                    HorizontalAlignment="Center"
+                    Padding="24,60,24,60"
+                    Spacing="32">
             <TextBlock Text="Cloud Banking: Real-World Bank Cloud Migrations"
-                       Style="{StaticResource TitleTextBlockStyle}"/>
-
-            <!-- Bank Table -->
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="140"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <!-- Capital One -->
-                <Image Grid.Row="0"
-                       Grid.Column="0"
-                       Source="Assets/BankLogos/CapitalOneHQ_body.jpg"
-                       Height="48"
-                       Width="120"
-                       Stretch="Uniform"
-                       VerticalAlignment="Top"
-                       Margin="0,8,8,8"/>
-                <StackPanel Grid.Row="0"
-                            Grid.Column="1"
-                            VerticalAlignment="Center">
-                    <TextBlock Text="Capital One"
-                               Style="{StaticResource SubtitleTextBlockStyle}"/>
-                    <TextBlock Text="Cloud Provider: AWS"/>
-                    <TextBlock Text="Capital One was one of the first major U.S. banks to go all-in on AWS, migrating core workloads and closing data centers to improve agility, security, and innovation."
-                               TextWrapping="Wrap"/>
+                       FontSize="28"
+                       FontWeight="Bold"
+                       Margin="0,0,0,12"/>
+            <TextBlock Text="This page highlights real banks that have successfully migrated to the cloud, with brief summaries and company logos for quick reference."
+                       FontSize="15"
+                       Foreground="#555"
+                       TextWrapping="Wrap"
+                       Margin="0,0,0,24"/>
+            <Border Background="White"
+                    CornerRadius="12"
+                    Padding="24"
+                    BorderBrush="#E0E0E0"
+                    BorderThickness="1">
+                <StackPanel Spacing="24">
+                    <!-- Capital One -->
+                    <StackPanel Orientation="Horizontal"
+                                Spacing="20"
+                                VerticalAlignment="Center">
+                        <Image Source="ms-appx:///Assets/BankLogos/CapitalOneHQ_body.jpg"
+                               Height="48"
+                               Width="120"
+                               Stretch="Uniform"
+                               VerticalAlignment="Center"/>
+                        <StackPanel>
+                            <TextBlock Text="Capital One"
+                                       FontWeight="SemiBold"
+                                       FontSize="18"/>
+                            <TextBlock Text="Cloud Provider: AWS"/>
+                            <TextBlock Text="Capital One was one of the first major U.S. banks to go all-in on AWS, migrating core workloads and closing data centers to improve agility, security, and innovation."
+                                       TextWrapping="Wrap"/>
+                            <HyperlinkButton Content="AWS Case Study"
+                                             NavigateUri="https://aws.amazon.com/solutions/case-studies/capital-one/"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <!-- BBVA -->
+                    <StackPanel Orientation="Horizontal"
+                                Spacing="20"
+                                VerticalAlignment="Center">
+                        <Image Source="ms-appx:///Assets/BankLogos/Bilbao_-_BBVA_(ex_Banco_de_Comercio)_2.jpg"
+                               Height="48"
+                               Width="120"
+                               Stretch="Uniform"
+                               VerticalAlignment="Center"/>
+                        <StackPanel>
+                            <TextBlock Text="BBVA"
+                                       FontWeight="SemiBold"
+                                       FontSize="18"/>
+                            <TextBlock Text="Cloud Providers: Azure, AWS"/>
+                            <TextBlock Text="BBVA adopted cloud solutions to accelerate digital transformation, enhance customer experience, and drive innovation in financial services."
+                                       TextWrapping="Wrap"/>
+                            <HyperlinkButton Content="Microsoft Case Study"
+                                             NavigateUri="https://customers.microsoft.com/en-us/story/bbva-banking-azure"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <!-- NAB -->
+                    <StackPanel Orientation="Horizontal"
+                                Spacing="20"
+                                VerticalAlignment="Center">
+                        <Image Source="ms-appx:///Assets/BankLogos/National_Australia_Bank_HQ_in_Melbourne_CBD.jpg"
+                               Height="48"
+                               Width="120"
+                               Stretch="Uniform"
+                               VerticalAlignment="Center"/>
+                        <StackPanel>
+                            <TextBlock Text="National Australia Bank (NAB)"
+                                       FontWeight="SemiBold"
+                                       FontSize="18"/>
+                            <TextBlock Text="Cloud Provider: AWS"/>
+                            <TextBlock Text="NAB moved core banking services to AWS, enabling faster product development and improved operational resilience."
+                                       TextWrapping="Wrap"/>
+                            <HyperlinkButton Content="AWS Case Study"
+                                             NavigateUri="https://aws.amazon.com/solutions/case-studies/nab/"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <!-- Deutsche Bank -->
+                    <StackPanel Orientation="Horizontal"
+                                Spacing="20"
+                                VerticalAlignment="Center">
+                        <Image Source="ms-appx:///Assets/BankLogos/Deutsche_Bank_Taunusanlage.jpg"
+                               Height="48"
+                               Width="120"
+                               Stretch="Uniform"
+                               VerticalAlignment="Center"/>
+                        <StackPanel>
+                            <TextBlock Text="Deutsche Bank"
+                                       FontWeight="SemiBold"
+                                       FontSize="18"/>
+                            <TextBlock Text="Cloud Provider: Google Cloud"/>
+                            <TextBlock Text="Deutsche Bank partnered with Google Cloud to modernize IT infrastructure and co-innovate new financial products and services."
+                                       TextWrapping="Wrap"/>
+                            <HyperlinkButton Content="Google Cloud Case Study"
+                                             NavigateUri="https://cloud.google.com/customers/deutsche-bank"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <!-- ABN AMRO -->
+                    <StackPanel Orientation="Horizontal"
+                                Spacing="20"
+                                VerticalAlignment="Center">
+                        <Image Source="ms-appx:///Assets/BankLogos/250px-ABN_AMRO4.jpg"
+                               Height="48"
+                               Width="120"
+                               Stretch="Uniform"
+                               VerticalAlignment="Center"/>
+                        <StackPanel>
+                            <TextBlock Text="ABN AMRO"
+                                       FontWeight="SemiBold"
+                                       FontSize="18"/>
+                            <TextBlock Text="Cloud Provider: Azure"/>
+                            <TextBlock Text="ABN AMRO uses Azure for analytics, digital banking, and to accelerate its cloud-first strategy."
+                                       TextWrapping="Wrap"/>
+                            <HyperlinkButton Content="Microsoft Case Study"
+                                             NavigateUri="https://customers.microsoft.com/en-us/story/abn-amro-banking-azure"/>
+                        </StackPanel>
+                    </StackPanel>
                 </StackPanel>
-
-                <!-- BBVA -->
-                <Image Grid.Row="1"
-                       Grid.Column="0"
-                       Source="Assets/BankLogos/Bilbao_-_BBVA_(ex_Banco_de_Comercio)_2.jpg"
-                       Height="48"
-                       Width="120"
-                       Stretch="Uniform"
-                       VerticalAlignment="Top"
-                       Margin="0,8,8,8"/>
-                <StackPanel Grid.Row="1"
-                            Grid.Column="1"
-                            VerticalAlignment="Center">
-                    <TextBlock Text="BBVA"
-                               Style="{StaticResource SubtitleTextBlockStyle}"/>
-                    <TextBlock Text="Cloud Providers: Azure, AWS"/>
-                    <TextBlock Text="BBVA adopted cloud solutions to accelerate digital transformation, enhance customer experience, and drive innovation in financial services."
-                               TextWrapping="Wrap"/>
-                </StackPanel>
-
-                <!-- NAB -->
-                <Image Grid.Row="2"
-                       Grid.Column="0"
-                       Source="Assets/BankLogos/National_Australia_Bank_HQ_in_Melbourne_CBD.jpg"
-                       Height="48"
-                       Width="120"
-                       Stretch="Uniform"
-                       VerticalAlignment="Top"
-                       Margin="0,8,8,8"/>
-                <StackPanel Grid.Row="2"
-                            Grid.Column="1"
-                            VerticalAlignment="Center">
-                    <TextBlock Text="National Australia Bank (NAB)"
-                               Style="{StaticResource SubtitleTextBlockStyle}"/>
-                    <TextBlock Text="Cloud Provider: AWS"/>
-                    <TextBlock Text="NAB moved core banking services to AWS, enabling faster product development and improved operational resilience."
-                               TextWrapping="Wrap"/>
-                </StackPanel>
-
-                <!-- Deutsche Bank -->
-                <Image Grid.Row="3"
-                       Grid.Column="0"
-                       Source="Assets/BankLogos/Deutsche_Bank_Taunusanlage.jpg"
-                       Height="48"
-                       Width="48"
-                       Stretch="Uniform"
-                       VerticalAlignment="Top"
-                       Margin="0,8,8,8"/>
-                <StackPanel Grid.Row="3"
-                            Grid.Column="1"
-                            VerticalAlignment="Center">
-                    <TextBlock Text="Deutsche Bank"
-                               Style="{StaticResource SubtitleTextBlockStyle}"/>
-                    <TextBlock Text="Cloud Provider: Google Cloud"/>
-                    <TextBlock Text="Deutsche Bank partnered with Google Cloud to modernize IT infrastructure and co-innovate new financial products and services."
-                               TextWrapping="Wrap"/>
-                </StackPanel>
-
-                <!-- ABN AMRO -->
-                <Image Grid.Row="4"
-                       Grid.Column="0"
-                       Source="Assets/BankLogos/250px-ABN_AMRO4.jpg"
-                       Height="48"
-                       Width="48"
-                       Stretch="Uniform"
-                       VerticalAlignment="Top"
-                       Margin="0,8,8,8"/>
-                <StackPanel Grid.Row="4"
-                            Grid.Column="1"
-                            VerticalAlignment="Center">
-                    <TextBlock Text="ABN AMRO"
-                               Style="{StaticResource SubtitleTextBlockStyle}"/>
-                    <TextBlock Text="Cloud Provider: Azure"/>
-                    <TextBlock Text="ABN AMRO uses Azure for analytics, digital banking, and to accelerate its cloud-first strategy."
-                               TextWrapping="Wrap"/>
-                </StackPanel>
-            </Grid>
-
+            </Border>
             <TextBlock Text="Logos are property of their respective companies and used here for informational purposes only."
-                       FontStyle="Italic"
-                       FontSize="12"/>
+                       FontSize="12"
+                       Foreground="#888"
+                       Margin="0,24,0,0"/>
         </StackPanel>
     </ScrollViewer>
 </Page>

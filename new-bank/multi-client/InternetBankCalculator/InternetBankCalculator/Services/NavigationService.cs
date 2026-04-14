@@ -26,7 +26,11 @@ public class NavigationService
     {
         if (Shell != null)
         {
-            Shell.ContentFramePublic.Navigate(pageType);
+            var frame = Shell.ContentFramePublic;
+            if (frame.CurrentSourcePageType != pageType)
+            {
+                frame.Navigate(pageType);
+            }
             shellAction?.Invoke(Shell);
         }
     }

@@ -7,7 +7,30 @@ public sealed partial class AboutPage : Page
     public AboutPage()
     {
         this.InitializeComponent();
+#if !WINDOWS
+        Loaded += OnLoaded;
+        Unloaded += OnUnloaded;
+#endif
     }
+
+#if !WINDOWS
+    private void OnLoaded(object sender, RoutedEventArgs e)
+    {
+        Windows.UI.Core.SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
+    }
+    private void OnUnloaded(object sender, RoutedEventArgs e)
+    {
+        Windows.UI.Core.SystemNavigationManager.GetForCurrentView().BackRequested -= OnBackRequested;
+    }
+    private void OnBackRequested(object sender, Windows.UI.Core.BackRequestedEventArgs e)
+    {
+        // Always navigate back to LandingPage instead of Frame.GoBack
+        NavigationService.Instance.NavigateInShell(
+            typeof(Pages.LandingPage),
+            shell => shell.UpdateNavHighlight(shell.BtnHome));
+        e.Handled = true;
+    }
+#endif
 
     private void FromJavaToCSharp_Click(object sender, RoutedEventArgs e)
     {

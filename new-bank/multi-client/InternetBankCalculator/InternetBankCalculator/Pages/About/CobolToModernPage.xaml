@@ -7,99 +7,60 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <ScrollViewer>
-        <StackPanel Spacing="16"
-                    Padding="24">
-            <TextBlock Text="From COBOL to Java or C#"
-                       FontSize="28"
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                  VerticalScrollBarVisibility="Auto"
+                  HorizontalAlignment="Center"
+                  Padding="24,60,24,60">
+        <StackPanel MaxWidth="740"
+                    Spacing="20"
+                    HorizontalAlignment="Center">
+            <TextBlock Text="💾➡️☕/💻 COBOL to Modern Languages"
+                       FontSize="30"
                        FontWeight="Bold"
-                       Margin="0,0,0,16"/>
+                       Foreground="#1A1A1A"/>
             <TextBlock Text="A quick guide for COBOL programmers transitioning to modern object-oriented languages: Java and C#."
-                       FontSize="16"
-                       Margin="0,0,0,24"/>
-
-            <TextBlock Text="1. Key Concepts"
-                       FontWeight="Bold"
-                       FontSize="18"/>
-            <StackPanel>
-                <TextBlock Text="Procedural vs Object-Oriented Programming"/>
-                <TextBlock Text="Data Division vs Classes/Objects"/>
-                <TextBlock Text="PERFORM vs Loops (for, while)"/>
-                <TextBlock Text="IF/ELSE, EVALUATE vs if/else, switch/case"/>
-                <TextBlock Text="File I/O: Sequential Files vs Streams/APIs"/>
-                <TextBlock Text="Error Handling: RETURN-CODE vs Exceptions"/>
-                <TextBlock Text="Batch Processing vs Event-Driven/Interactive"/>
-            </StackPanel>
-
-            <TextBlock Text="2. Syntax Comparison"
-                       FontWeight="Bold"
-                       FontSize="18"/>
-            <StackPanel>
-                <TextBlock Text="Variable Declarations"/>
-                <TextBlock Text="COBOL: 01 CUSTOMER-NAME PIC X(30)."/>
-                <TextBlock Text="Java: String customerName;"/>
-                <TextBlock Text="C#: string customerName;"/>
-                <TextBlock Text=""/>
-                <TextBlock Text="Procedures/Methods"/>
-                <TextBlock Text="COBOL: PERFORM CALCULATE-TOTAL."/>
-                <TextBlock Text="Java: calculateTotal();"/>
-                <TextBlock Text="C#: CalculateTotal();"/>
-            </StackPanel>
-
-            <TextBlock Text="3. Data Structures"
-                       FontWeight="Bold"
-                       FontSize="18"/>
-            <StackPanel>
-                <TextBlock Text="COBOL: Arrays (OCCURS), Records (GROUP ITEMS)"/>
-                <TextBlock Text="Java/C#: Arrays, Lists, Classes"/>
-            </StackPanel>
-
-            <TextBlock Text="4. Modern Tools &amp; IDEs"
-                       FontWeight="Bold"
-                       FontSize="18"/>
-            <StackPanel>
-                <HyperlinkButton Content="IntelliJ IDEA (Java)"
-                                 NavigateUri="https://www.jetbrains.com/idea/"/>
-                <HyperlinkButton Content="Eclipse (Java)"
-                                 NavigateUri="https://www.eclipse.org/"/>
-                <HyperlinkButton Content="Visual Studio (C#)"
-                                 NavigateUri="https://visualstudio.microsoft.com/"/>
-                <HyperlinkButton Content="VS Code (Java/C#)"
-                                 NavigateUri="https://code.visualstudio.com/"/>
-            </StackPanel>
-
-            <TextBlock Text="5. Migration Resources"
-                       FontWeight="Bold"
-                       FontSize="18"/>
-            <StackPanel>
-                <HyperlinkButton Content="Open Mainframe Project: COBOL Programming Course"
-                                 NavigateUri="https://www.openmainframeproject.org/projects/cobol-programming-course"/>
-                <HyperlinkButton Content="IBM: Modernizing with Java"
-                                 NavigateUri="https://www.ibm.com/cloud/learn/cobol-modernization"/>
-                <HyperlinkButton Content="Microsoft: Mainframe to Azure"
-                                 NavigateUri="https://learn.microsoft.com/en-us/azure/architecture/solution-ideas/articles/mainframe-migration"/>
-            </StackPanel>
-
-            <TextBlock Text="6. Sample Code Snippets"
-                       FontWeight="Bold"
-                       FontSize="18"/>
-            <StackPanel>
-                <TextBlock Text="COBOL: IF CUSTOMER-AGE > 18 THEN ..."/>
-                <TextBlock Text="Java: if (customerAge > 18) { ... }"/>
-                <TextBlock Text="C#: if (customerAge > 18) { ... }"/>
-            </StackPanel>
-
-            <TextBlock Text="7. Visual Reference"
-                       FontWeight="Bold"
-                       FontSize="18"/>
-            <StackPanel>
-                <Image Source="Assets/cobol_sample.png"
-                       Height="120"/>
-                <Image Source="Assets/java_sample.png"
-                       Height="120"/>
-                <Image Source="Assets/csharp_sample.png"
-                       Height="120"/>
-            </StackPanel>
+                       FontSize="15"
+                       Foreground="#555555"
+                       TextWrapping="Wrap"/>
+            <Border CornerRadius="12">
+                <Image Source="ms-appx:///Assets/doggerbank.png"
+                       Height="180"
+                       Stretch="UniformToFill"
+                       HorizontalAlignment="Stretch"/>
+            </Border>
+            <Border Background="White"
+                    CornerRadius="12"
+                    Padding="28"
+                    BorderBrush="#E0E0E0"
+                    BorderThickness="1">
+                <StackPanel Spacing="12">
+                    <TextBlock Text="COBOL to Modern: Key Concepts"
+                               FontWeight="Bold"
+                               FontSize="18"/>
+                    <TextBlock Text="• Procedural (COBOL) vs Object-Oriented (Java/C#)"
+                               TextWrapping="Wrap"/>
+                    <TextBlock Text="• Data Division (COBOL) → Classes/Fields (Java/C#)"
+                               TextWrapping="Wrap"/>
+                    <TextBlock Text="• PERFORM (COBOL) → for/while loops (Java/C#)"
+                               TextWrapping="Wrap"/>
+                    <TextBlock Text="• MOVE/ADD/COMPUTE → =, +, -, *, / operators"
+                               TextWrapping="Wrap"/>
+                    <TextBlock Text="• IF/ELSE, EVALUATE → if/else, switch"
+                               TextWrapping="Wrap"/>
+                    <TextBlock Text="• File I/O → Streams, File APIs"
+                               TextWrapping="Wrap"/>
+                    <TextBlock Text="• Error handling: GOTO/STOP RUN → try/catch/finally"
+                               TextWrapping="Wrap"/>
+                    <TextBlock Text="• Batch jobs → Scheduled tasks, async methods"
+                               TextWrapping="Wrap"/>
+                    <TextBlock Text="• Mainframe DB (VSAM, IMS) → Relational DB (JPA, Entity Framework)"
+                               TextWrapping="Wrap"/>
+                </StackPanel>
+            </Border>
+            <TextBlock Text="See documentation or onboarding guides for more details and code examples."
+                       FontSize="13"
+                       Foreground="#888"
+                       Margin="0,16,0,0"/>
         </StackPanel>
     </ScrollViewer>
 </Page>

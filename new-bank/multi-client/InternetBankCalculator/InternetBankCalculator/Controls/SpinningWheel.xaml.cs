@@ -1,6 +1,6 @@
 using Microsoft.UI.Xaml.Controls;
 
-namespace InternetBankCalculator;
+namespace InternetBankCalculator.Controls;
 
 public sealed partial class SpinningWheel : UserControl
 {

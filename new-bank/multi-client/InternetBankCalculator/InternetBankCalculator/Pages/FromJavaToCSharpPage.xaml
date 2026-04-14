@@ -1,0 +1,218 @@
+﻿<Page x:Class="InternetBankCalculator.Pages.About.FromJavaToCSharpPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                  VerticalScrollBarVisibility="Auto">
+        <StackPanel MaxWidth="740"
+                    HorizontalAlignment="Center"
+                    Padding="24,60,24,60"
+                    Spacing="32">
+            <StackPanel Spacing="12">
+                <TextBlock Text="From Java to C#"
+                           FontSize="30"
+                           FontWeight="Bold"
+                           Foreground="#1A1A1A"/>
+                <TextBlock Text="A curated guide to help senior Java developers quickly become productive C# developers. It focuses on practical resources, language comparisons, and essential tools for a smooth transition."
+                           FontSize="15"
+                           Foreground="#555555"
+                           TextWrapping="Wrap"/>
+            </StackPanel>
+            <StackPanel Spacing="8">
+                <Image Source="ms-appx:///Assets/java-to-csharp.jpeg"
+                       Height="180"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,8"/>
+                <HyperlinkButton Content="C# is just Java but cooler - Changed My Mind"
+                                 Click="OnExternalLinkClick"
+                                 NavigateUri="https://www.reddit.com/r/ProgrammerHumor/comments/pd84bb/c_is_just_java_but_cooler_change_my_mind/"
+                                 HorizontalAlignment="Center"
+                                 Padding="12,8"/>
+            </StackPanel>
+            <StackPanel Background="White"
+                        CornerRadius="12"
+                        Padding="28"
+                        BorderBrush="#E0E0E0"
+                        BorderThickness="1"
+                        Spacing="18">
+                <TextBlock Text="1. Official Documentation &amp; Guides"
+                           FontWeight="Bold"
+                           FontSize="18"/>
+                <TextBlock TextWrapping="Wrap">
+                    <Run Text="Microsoft C# Guide: "/>
+                    <Hyperlink Click="OnExternalLinkClick"
+                               NavigateUri="https://learn.microsoft.com/en-us/dotnet/csharp/">https://learn.microsoft.com/en-us/dotnet/csharp/</Hyperlink>
+                </TextBlock>
+                <TextBlock TextWrapping="Wrap">
+                    <Run Text=".NET Documentation: "/>
+                    <Hyperlink Click="OnExternalLinkClick"
+                               NavigateUri="https://learn.microsoft.com/en-us/dotnet/">https://learn.microsoft.com/en-us/dotnet/</Hyperlink>
+                </TextBlock>
+                <TextBlock TextWrapping="Wrap">
+                    <Run Text="C# for Java Developers (MSDN): "/>
+                    <Hyperlink Click="OnExternalLinkClick"
+                               NavigateUri="https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/csharp-for-java-developers">https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/csharp-for-java-developers</Hyperlink>
+                </TextBlock>
+                <TextBlock TextWrapping="Wrap">
+                    <Run Text=".NET Tour for Java Developers: "/>
+                    <Hyperlink Click="OnExternalLinkClick"
+                               NavigateUri="https://learn.microsoft.com/en-us/dotnet/core/tutorials/java-developers">https://learn.microsoft.com/en-us/dotnet/core/tutorials/java-developers</Hyperlink>
+                </TextBlock>
+                <TextBlock Text="2. Language Comparison Cheat Sheets"
+                           FontWeight="Bold"
+                           FontSize="18"
+                           Margin="0,12,0,0"/>
+                <TextBlock TextWrapping="Wrap">
+                    <Run Text="Java vs C# Syntax Cheat Sheet: "/>
+                    <Hyperlink Click="OnExternalLinkClick"
+                               NavigateUri="https://www.programmingnotes.org/684/java-vs-c-syntax-comparison-cheat-sheet/">https://www.programmingnotes.org/684/java-vs-c-syntax-comparison-cheat-sheet/</Hyperlink>
+                </TextBlock>
+                <TextBlock TextWrapping="Wrap">
+                    <Run Text="Rosetta Code: Java: "/>
+                    <Hyperlink Click="OnExternalLinkClick"
+                               NavigateUri="https://rosettacode.org/wiki/Java">https://rosettacode.org/wiki/Java</Hyperlink>
+                    <Run Text=", C#: "/>
+                    <Hyperlink Click="OnExternalLinkClick"
+                               NavigateUri="https://rosettacode.org/wiki/C_Sharp">https://rosettacode.org/wiki/C_Sharp</Hyperlink>
+                </TextBlock>
+                <TextBlock TextWrapping="Wrap">
+                    <Run Text="C# for Java Developers (Comparison Table): "/>
+                    <Hyperlink Click="OnExternalLinkClick"
+                               NavigateUri="https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/csharp-for-java-developers#comparison-of-java-and-c-features">https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/csharp-for-java-developers#comparison-of-java-and-c-features</Hyperlink>
+                </TextBlock>
+                <TextBlock Text="3. Key Concepts for Java Developers"
+                           FontWeight="Bold"
+                           FontSize="18"
+                           Margin="0,12,0,0"/>
+                <ItemsControl>
+                    <ItemsControl.Items>
+                        <TextBlock Text=".NET Types vs Java Types"/>
+                        <TextBlock Text="Memory Management (GC, value/reference types)"/>
+                        <TextBlock Text="LINQ (Language Integrated Query) vs Streams/Collections"/>
+                        <TextBlock Text="Async/Await vs Java Futures/CompletableFuture"/>
+                        <TextBlock Text="Events &amp; Delegates vs Listeners"/>
+                        <TextBlock Text="Properties vs Getters/Setters"/>
+                        <TextBlock Text="NuGet vs Maven/Gradle"/>
+                        <TextBlock Text=".NET Project Structure (csproj, sln) vs Maven/Gradle"/>
+                        <TextBlock Text="Dependency Injection (Microsoft.Extensions.DependencyInjection)"/>
+                    </ItemsControl.Items>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="• "
+                                           FontSize="16"/>
+                                <TextBlock Text="{Binding Text}"
+                                           FontSize="16"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <TextBlock Text="4. Tools &amp; IDEs"
+                           FontWeight="Bold"
+                           FontSize="18"
+                           Margin="0,12,0,0"/>
+                <TextBlock TextWrapping="Wrap">
+                    <Run Text="Visual Studio (Windows/macOS): "/>
+                    <Hyperlink Click="OnExternalLinkClick"
+                               NavigateUri="https://visualstudio.microsoft.com/">https://visualstudio.microsoft.com/</Hyperlink>
+                </TextBlock>
+                <TextBlock TextWrapping="Wrap">
+                    <Run Text="Visual Studio Code (Cross-platform): "/>
+                    <Hyperlink Click="OnExternalLinkClick"
+                               NavigateUri="https://code.visualstudio.com/">https://code.visualstudio.com/</Hyperlink>
+                </TextBlock>
+                <TextBlock TextWrapping="Wrap">
+                    <Run Text="JetBrains Rider: "/>
+                    <Hyperlink Click="OnExternalLinkClick"
+                               NavigateUri="https://www.jetbrains.com/rider/">https://www.jetbrains.com/rider/</Hyperlink>
+                </TextBlock>
+                <TextBlock TextWrapping="Wrap">
+                    <Run Text=".NET CLI: "/>
+                    <Hyperlink Click="OnExternalLinkClick"
+                               NavigateUri="https://learn.microsoft.com/en-us/dotnet/core/tools/">https://learn.microsoft.com/en-us/dotnet/core/tools/</Hyperlink>
+                </TextBlock>
+                <TextBlock Text="5. Tutorials &amp; Hands-On Labs"
+                           FontWeight="Bold"
+                           FontSize="18"
+                           Margin="0,12,0,0"/>
+                <TextBlock TextWrapping="Wrap">
+                    <Run Text="C# 101 (Microsoft Learn): "/>
+                    <Hyperlink Click="OnExternalLinkClick"
+                               NavigateUri="https://learn.microsoft.com/en-us/training/paths/csharp-first-steps/">https://learn.microsoft.com/en-us/training/paths/csharp-first-steps/</Hyperlink>
+                </TextBlock>
+                <TextBlock TextWrapping="Wrap">
+                    <Run Text=".NET 101 (Microsoft Learn): "/>
+                    <Hyperlink Click="OnExternalLinkClick"
+                               NavigateUri="https://learn.microsoft.com/en-us/training/paths/dotnet-beginner/">https://learn.microsoft.com/en-us/training/paths/dotnet-beginner/</Hyperlink>
+                </TextBlock>
+                <TextBlock TextWrapping="Wrap">
+                    <Run Text=".NET for Apache Spark (Big Data): "/>
+                    <Hyperlink Click="OnExternalLinkClick"
+                               NavigateUri="https://learn.microsoft.com/en-us/dotnet/spark/">https://learn.microsoft.com/en-us/dotnet/spark/</Hyperlink>
+                </TextBlock>
+                <TextBlock TextWrapping="Wrap">
+                    <Run Text=".NET Interactive Notebooks: "/>
+                    <Hyperlink Click="OnExternalLinkClick"
+                               NavigateUri="https://github.com/dotnet/interactive">https://github.com/dotnet/interactive</Hyperlink>
+                </TextBlock>
+                <TextBlock Text="6. Community &amp; Q&amp;A"
+                           FontWeight="Bold"
+                           FontSize="18"
+                           Margin="0,12,0,0"/>
+                <TextBlock TextWrapping="Wrap">
+                    <Run Text="Stack Overflow: "/>
+                    <Hyperlink Click="OnExternalLinkClick"
+                               NavigateUri="https://stackoverflow.com/questions/tagged/c%23">https://stackoverflow.com/questions/tagged/c%23</Hyperlink>
+                </TextBlock>
+                <TextBlock TextWrapping="Wrap">
+                    <Run Text=".NET Discord: "/>
+                    <Hyperlink Click="OnExternalLinkClick"
+                               NavigateUri="https://discord.com/invite/dotnet">https://discord.com/invite/dotnet</Hyperlink>
+                </TextBlock>
+                <TextBlock TextWrapping="Wrap">
+                    <Run Text=".NET Foundation: "/>
+                    <Hyperlink Click="OnExternalLinkClick"
+                               NavigateUri="https://dotnetfoundation.org/community">https://dotnetfoundation.org/community</Hyperlink>
+                </TextBlock>
+                <TextBlock Text="7. Books"
+                           FontWeight="Bold"
+                           FontSize="18"
+                           Margin="0,12,0,0"/>
+                <TextBlock TextWrapping="Wrap">C# 12 in a Nutshell (O'Reilly)</TextBlock>
+                <TextBlock TextWrapping="Wrap">Pro C# 12 with .NET 8 (Apress)</TextBlock>
+                <TextBlock TextWrapping="Wrap">C# 12 and .NET 8 – Modern Cross-Platform Development (Packt)</TextBlock>
+                <TextBlock Text="8. Migration &amp; Interop"
+                           FontWeight="Bold"
+                           FontSize="18"
+                           Margin="0,12,0,0"/>
+                <TextBlock TextWrapping="Wrap">Java to C# Code Conversion Tools:</TextBlock>
+                <TextBlock TextWrapping="Wrap">
+                    <Hyperlink Click="OnExternalLinkClick"
+                               NavigateUri="https://converter.telerik.com/">https://converter.telerik.com/</Hyperlink>
+                </TextBlock>
+                <TextBlock TextWrapping="Wrap">
+                    <Hyperlink Click="OnExternalLinkClick"
+                               NavigateUri="https://www.carlosag.net/tools/codetranslator/">https://www.carlosag.net/tools/codetranslator/</Hyperlink>
+                </TextBlock>
+                <TextBlock TextWrapping="Wrap">
+                    <Run Text="JNI/Interop: "/>
+                    <Hyperlink Click="OnExternalLinkClick"
+                               NavigateUri="https://learn.microsoft.com/en-us/dotnet/standard/native-interop/">https://learn.microsoft.com/en-us/dotnet/standard/native-interop/</Hyperlink>
+                </TextBlock>
+                <TextBlock Text="9. Videos &amp; Playlists"
+                           FontWeight="Bold"
+                           FontSize="18"
+                           Margin="0,12,0,0"/>
+                <TextBlock TextWrapping="Wrap">
+                    <Run Text="C# for Java Developers (YouTube): "/>
+                    <Hyperlink Click="OnExternalLinkClick"
+                               NavigateUri="https://www.youtube.com/">https://www.youtube.com/results?search_query=c%23+for+java+developers</Hyperlink>
+                </TextBlock>
+                <TextBlock TextWrapping="Wrap">
+                    <Run Text=".NET Conf Sessions: "/>
+                    <Hyperlink Click="OnExternalLinkClick"
+                               NavigateUri="https://www.dotnetconf.net/">https://www.dotnetconf.net/</Hyperlink>
+                </TextBlock>
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

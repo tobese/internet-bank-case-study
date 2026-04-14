@@ -1,14 +1,22 @@
 using InternetBankCalculator.Services;
 using InternetBankCalculator.ViewModels;
+using InternetBankCalculator.Loadables;
 
 namespace InternetBankCalculator;
 
 public sealed partial class AppShell : Page
 {
-    public MyLoadableSource LoadableSource { get; } = new();
+    public SplashLoadable LoadableSource { get; } = new();
+    // For browser navigation interop
+    // For browser navigation interop
+#if __WASM__
+    private static AppShell? _instanceForJs;
+#endif
     public AppShell()
     {
         this.InitializeComponent();
+        // Update back button visibility on navigation
+        ContentFrame.Navigated += (s, e) => UpdateBackButtonVisibility();
         // Bind splash state
         if (this.FindName("Splash") is Uno.Toolkit.UI.ExtendedSplashScreen splash)
         {
@@ -25,6 +33,21 @@ public sealed partial class AppShell : Page
         // Set DataContext for mathematician facts
         var api = new MathApiService(Pages.CalculatorPage.GetApiBaseUrl());
         DataContext = new CalculatorPageViewModel(api);
+
+        // Set initial back button visibility
+        UpdateBackButtonVisibility();
+
+        // Removed broken JS interop for browser back navigation (mono_bind_static_method)
+    }
+
+    private void UpdateBackButtonVisibility()
+    {
+#if !WINDOWS
+        Windows.UI.Core.SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
+            ContentFrame.CanGoBack
+                ? Windows.UI.Core.AppViewBackButtonVisibility.Visible
+                : Windows.UI.Core.AppViewBackButtonVisibility.Collapsed;
+#endif
     }
 
     private void CoreWindow_KeyDown(Windows.UI.Core.CoreWindow sender, Windows.UI.Core.KeyEventArgs args)
@@ -58,6 +81,16 @@ public sealed partial class AppShell : Page
         Uno.Foundation.WebAssemblyRuntime.InvokeJS("location.reload()");
 #endif
     }
+
+#if __WASM__
+    public static void OnBrowserBack()
+    {
+        if (_instanceForJs is { } shell && shell.ContentFrame.CanGoBack)
+        {
+            _ = shell.DispatcherQueue.TryEnqueue(() => shell.ContentFrame.GoBack());
+        }
+    }
+#endif
 
     public Frame ContentFramePublic => ContentFrame;
     public Button BtnAboutPublic => BtnAbout;
