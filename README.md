@@ -1,5 +1,12 @@
 # Internet Bank Case Study
 
+# New Bank
+
+The repo is built and deployed to AWS where you can find the details of the setup.
+https://doggerbank.online/
+
+# Old Bank
+
 Two-project setup: a **Java REST API** for factorial and Fibonacci, and a **Node.js CLI calculator** that consumes it.
 
 ## Java Server (`java-server/`)
