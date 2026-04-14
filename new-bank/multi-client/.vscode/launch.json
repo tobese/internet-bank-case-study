@@ -1,0 +1,21 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "comment1": "// name: unique name for the configuration, can be identical to preLaunchTask",
+      "name": "Uno: net8.0-android | Debug | android-x64",
+      "comment2": "// type: 'Uno' for mono-based SDK, 'coreclr' for macOS and Skia.Gtk",
+      "type": "Uno",
+      "request": "launch",
+      "comment3": "// preLaunchTask format is 'Uno: {tfm} | {config}[ | {rid]}]' where ",
+      "comment4": "// * {tfm} is the target framework moniker, e.g. net8.0-ios",
+      "comment5": "// * {config} is the build configuration, e.g. 'Debug' or 'Release'",
+      "comment6": "// * {rid} is the optional runtime identifier, e.g. 'osx-arm64'",
+      "comment7": "// E.g. 'Uno: net8.0-ios | Debug | iossimulator-x64', 'Uno: net8.0 | Debug' for Skia.Gtk",
+      "preLaunchTask": "Uno: net8.0-android | Debug | android-x64"
+    }
+  ]
+}

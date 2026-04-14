@@ -1,143 +1,163 @@
-﻿<Page x:Class="InternetBankCalculator.Pages.About.DoggerBankPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      Background="#F5F7FA">
+﻿<Page
+    x:Class="InternetBankCalculator.Pages.About.DoggerBankPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Background="#F5F7FA">
 
-    <ScrollViewer HorizontalScrollBarVisibility="Disabled"
-                  VerticalScrollBarVisibility="Auto">
-        <StackPanel MaxWidth="740"
-                    HorizontalAlignment="Center"
-                    Padding="24,60,24,60"
-                    Spacing="32">
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+        <StackPanel
+            MaxWidth="740"
+            Padding="24,60,24,60"
+            HorizontalAlignment="Center"
+            Spacing="32">
 
-            <!-- Hero Header -->
+            <!--  Hero Header  -->
             <StackPanel Spacing="12">
-                <TextBlock Text="🌊 Dogger Bank"
-                           FontSize="30"
-                           FontWeight="Bold"
-                           Foreground="#1A1A1A"/>
-                <TextBlock Text="A vast shallow sandbank in the southern North Sea — at once a rich fishing ground, a graveyard of empires, and the site of the world's largest offshore wind farm."
-                           FontSize="15"
-                           Foreground="#555555"
-                           TextWrapping="Wrap"/>
+                <TextBlock
+                    FontSize="30"
+                    FontWeight="Bold"
+                    Foreground="#1A1A1A"
+                    Text="Dogger Bank" />
+                <TextBlock
+                    FontSize="15"
+                    Foreground="#555555"
+                    Text="A vast shallow sandbank in the southern North Sea — at once a rich fishing ground, a graveyard of empires, and the site of the world's largest offshore wind farm."
+                    TextWrapping="Wrap" />
             </StackPanel>
 
-            <!-- Hero Image -->
+            <!--  Hero Image  -->
             <Border CornerRadius="12">
-                <Image Source="ms-appx:///Assets/dogger_bank_wind_farm.jpg"
-                       Height="280"
-                       Stretch="UniformToFill"
-                       HorizontalAlignment="Stretch"/>
+                <Image
+                    Height="200"
+                    HorizontalAlignment="Stretch"
+                    Source="ms-appx:///Assets/dogger_bank_wind_farm.jpg"
+                    Stretch="UniformToFill" />
             </Border>
 
-            <!-- Main Content Card -->
-            <Border Background="White"
-                    CornerRadius="12"
-                    Padding="28"
-                    BorderBrush="#E0E0E0"
-                    BorderThickness="1">
+            <!--  Main Content Card  -->
+            <Border
+                Padding="28"
+                Background="White"
+                BorderBrush="#E0E0E0"
+                BorderThickness="1"
+                CornerRadius="12">
                 <Border.Shadow>
-                    <ThemeShadow/>
+                    <ThemeShadow />
                 </Border.Shadow>
                 <StackPanel Spacing="12">
-                    <TextBlock Text="Geography"
-                               FontSize="18"
-                               FontWeight="SemiBold"/>
-                    <TextBlock TextWrapping="Wrap"
-                               Foreground="#333333"
-                               FontSize="14"
-                               LineHeight="22">
-            <Run>Dogger Bank is a large sandbank covering roughly 17,600 km² — about the size of Wales — at depths of 15 to 36 metres. It lies roughly 100 km off the coasts of England, Germany, Denmark and the Netherlands, straddling the boundary of the southern and central North Sea.</Run>
+                    <TextBlock
+                        FontSize="18"
+                        FontWeight="SemiBold"
+                        Text="Geography" />
+                    <TextBlock
+                        FontSize="14"
+                        Foreground="#333333"
+                        LineHeight="22"
+                        TextWrapping="Wrap">
+                        <Run>Dogger Bank is a large sandbank covering roughly 17,600 km² — about the size of Wales — at depths of 15 to 36 metres. It lies roughly 100 km off the coasts of England, Germany, Denmark and the Netherlands, straddling the boundary of the southern and central North Sea.</Run>
                     </TextBlock>
-                    <TextBlock TextWrapping="Wrap"
-                               Foreground="#333333"
-                               FontSize="14"
-                               LineHeight="22">
-            <Run>Its shallow, nutrient-rich waters were formed by glacial moraines left at the end of the last ice age. For most of its geological life, Dogger Bank was dry land — part of Doggerland — only being flooded as sea levels rose around 8,000 years ago.</Run>
+                    <TextBlock
+                        FontSize="14"
+                        Foreground="#333333"
+                        LineHeight="22"
+                        TextWrapping="Wrap">
+                        <Run>Its shallow, nutrient-rich waters were formed by glacial moraines left at the end of the last ice age. For most of its geological life, Dogger Bank was dry land — part of Doggerland — only being flooded as sea levels rose around 8,000 years ago.</Run>
                     </TextBlock>
                 </StackPanel>
             </Border>
 
-            <!-- Fishing -->
-            <Border Background="White"
-                    CornerRadius="12"
-                    Padding="28"
-                    BorderBrush="#E0E0E0"
-                    BorderThickness="1">
+            <!--  Fishing  -->
+            <Border
+                Padding="28"
+                Background="White"
+                BorderBrush="#E0E0E0"
+                BorderThickness="1"
+                CornerRadius="12">
                 <Border.Shadow>
-                    <ThemeShadow/>
+                    <ThemeShadow />
                 </Border.Shadow>
                 <StackPanel Spacing="12">
-                    <TextBlock Text="🎣  The Great Fishing Ground"
-                               FontSize="18"
-                               FontWeight="SemiBold"/>
-                    <TextBlock TextWrapping="Wrap"
-                               Foreground="#333333"
-                               FontSize="14"
-                               LineHeight="22">
-            <Run>For centuries, Dogger Bank was considered one of the most productive cod fisheries in the world. Dutch, English, and Scandinavian fishing fleets competed fiercely over it from the Middle Ages onward. The shallow, cold, well-oxygenated waters made ideal spawning and feeding grounds for cod, haddock, plaice and herring.</Run>
+                    <TextBlock
+                        FontSize="18"
+                        FontWeight="SemiBold"
+                        Text="The Great Fishing Ground" />
+                    <TextBlock
+                        FontSize="14"
+                        Foreground="#333333"
+                        LineHeight="22"
+                        TextWrapping="Wrap">
+                        <Run>For centuries, Dogger Bank was considered one of the most productive cod fisheries in the world. Dutch, English, and Scandinavian fishing fleets competed fiercely over it from the Middle Ages onward. The shallow, cold, well-oxygenated waters made ideal spawning and feeding grounds for cod, haddock, plaice and herring.</Run>
                     </TextBlock>
-                    <TextBlock TextWrapping="Wrap"
-                               Foreground="#333333"
-                               FontSize="14"
-                               LineHeight="22">
-            <Run>Overfishing through the 20th century dramatically depleted stocks. EU quotas and ongoing management efforts have achieved some recovery, though the ecosystem remains fragile.</Run>
+                    <TextBlock
+                        FontSize="14"
+                        Foreground="#333333"
+                        LineHeight="22"
+                        TextWrapping="Wrap">
+                        <Run>Overfishing through the 20th century dramatically depleted stocks. EU quotas and ongoing management efforts have achieved some recovery, though the ecosystem remains fragile.</Run>
                     </TextBlock>
                 </StackPanel>
             </Border>
 
-            <!-- Battles -->
-            <Border Background="White"
-                    CornerRadius="12"
-                    Padding="28"
-                    BorderBrush="#E0E0E0"
-                    BorderThickness="1">
+            <!--  Battles  -->
+            <Border
+                Padding="28"
+                Background="White"
+                BorderBrush="#E0E0E0"
+                BorderThickness="1"
+                CornerRadius="12">
                 <Border.Shadow>
-                    <ThemeShadow/>
+                    <ThemeShadow />
                 </Border.Shadow>
                 <StackPanel Spacing="12">
-                    <TextBlock Text="⚔️  Naval Battles"
-                               FontSize="18"
-                               FontWeight="SemiBold"/>
-                    <TextBlock TextWrapping="Wrap"
-                               Foreground="#333333"
-                               FontSize="14"
-                               LineHeight="22">
-            <Run>Three significant naval engagements were fought over or near Dogger Bank. The Battle of Dogger Bank (1781) saw the British and Dutch fleets clash during the Fourth Anglo-Dutch War. In 1904, the Russian Baltic Fleet infamously opened fire on British fishing trawlers, mistaking them for Japanese torpedo boats — the Dogger Bank incident nearly triggered a war between Russia and Britain.</Run>
+                    <TextBlock
+                        FontSize="18"
+                        FontWeight="SemiBold"
+                        Text="Naval Battles" />
+                    <TextBlock
+                        FontSize="14"
+                        Foreground="#333333"
+                        LineHeight="22"
+                        TextWrapping="Wrap">
+                        <Run>Three significant naval engagements were fought over or near Dogger Bank. The Battle of Dogger Bank (1781) saw the British and Dutch fleets clash during the Fourth Anglo-Dutch War. In 1904, the Russian Baltic Fleet infamously opened fire on British fishing trawlers, mistaking them for Japanese torpedo boats — the Dogger Bank incident nearly triggered a war between Russia and Britain.</Run>
                     </TextBlock>
-                    <TextBlock TextWrapping="Wrap"
-                               Foreground="#333333"
-                               FontSize="14"
-                               LineHeight="22">
-            <Run>In January 1915, during World War I, a British squadron intercepted a German raiding force at the Battle of Dogger Bank, sinking the armoured cruiser SMS Blücher and damaging several other ships.</Run>
+                    <TextBlock
+                        FontSize="14"
+                        Foreground="#333333"
+                        LineHeight="22"
+                        TextWrapping="Wrap">
+                        <Run>In January 1915, during World War I, a British squadron intercepted a German raiding force at the Battle of Dogger Bank, sinking the armoured cruiser SMS Blücher and damaging several other ships.</Run>
                     </TextBlock>
                 </StackPanel>
             </Border>
 
-            <!-- Wind farm -->
-            <Border Background="White"
-                    CornerRadius="12"
-                    Padding="28"
-                    BorderBrush="#E0E0E0"
-                    BorderThickness="1">
+            <!--  Wind farm  -->
+            <Border
+                Padding="28"
+                Background="White"
+                BorderBrush="#E0E0E0"
+                BorderThickness="1"
+                CornerRadius="12">
                 <Border.Shadow>
-                    <ThemeShadow/>
+                    <ThemeShadow />
                 </Border.Shadow>
                 <StackPanel Spacing="12">
-                    <TextBlock Text="💨  World's Largest Offshore Wind Farm"
-                               FontSize="18"
-                               FontWeight="SemiBold"/>
-                    <TextBlock TextWrapping="Wrap"
-                               Foreground="#333333"
-                               FontSize="14"
-                               LineHeight="22">
-            <Run>The Dogger Bank Wind Farm is being developed in three phases (A, B, and C) by Equinor, RWE and Vårgrønn about 130 km off the Yorkshire coast. When fully operational, it will have a total capacity of 3.6 GW — enough to power six million UK homes — making it the largest offshore wind farm in the world by a significant margin.</Run>
+                    <TextBlock
+                        FontSize="18"
+                        FontWeight="SemiBold"
+                        Text="World's Largest Offshore Wind Farm" />
+                    <TextBlock
+                        FontSize="14"
+                        Foreground="#333333"
+                        LineHeight="22"
+                        TextWrapping="Wrap">
+                        <Run>The Dogger Bank Wind Farm is being developed in three phases (A, B, and C) by Equinor, RWE and Vårgrønn about 130 km off the Yorkshire coast. When fully operational, it will have a total capacity of 3.6 GW — enough to power six million UK homes — making it the largest offshore wind farm in the world by a significant margin.</Run>
                     </TextBlock>
-                    <TextBlock TextWrapping="Wrap"
-                               Foreground="#333333"
-                               FontSize="14"
-                               LineHeight="22">
-            <Run>The first turbines began generating power in 2023. Each GE Haliade-X turbine stands 260 metres tall and has a rotor diameter of 220 metres. The shallow water (under 35 m) makes monopile foundations practical at this scale.</Run>
+                    <TextBlock
+                        FontSize="14"
+                        Foreground="#333333"
+                        LineHeight="22"
+                        TextWrapping="Wrap">
+                        <Run>The first turbines began generating power in 2023. Each GE Haliade-X turbine stands 260 metres tall and has a rotor diameter of 220 metres. The shallow water (under 35 m) makes monopile foundations practical at this scale.</Run>
                     </TextBlock>
                 </StackPanel>
             </Border>

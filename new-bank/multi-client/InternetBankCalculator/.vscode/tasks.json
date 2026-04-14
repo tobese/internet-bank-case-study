@@ -2,30 +2,12 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "build-wasm",
-      "command": "dotnet",
-      "type": "process",
-      "args": [
-        "build",
-        "${workspaceFolder}/InternetBankCalculator/InternetBankCalculator.csproj",
-        "/property:GenerateFullPaths=true",
-        "/property:TargetFramework=net10.0-browserwasm",
-        "/consoleloggerparameters:NoSummary"
-      ],
-      "problemMatcher": "$msCompile"
-    },
-    {
-      "label": "publish-wasm",
-      "command": "dotnet",
-      "type": "process",
-      "args": [
-        "publish",
-        "${workspaceFolder}/InternetBankCalculator/InternetBankCalculator.csproj",
-        "/property:GenerateFullPaths=true",
-        "/property:TargetFramework=net10.0-browserwasm",
-        "/consoleloggerparameters:NoSummary"
-      ],
-      "problemMatcher": "$msCompile"
-    },
+      "label": "build",
+      "type": "shell",
+      "command": "dotnet build",
+      "args": ["${workspaceFolder}/InternetBankCalculator.csproj"],
+      "problemMatcher": ["$msCompile"],
+      "group": "build"
+    }
   ]
 }
