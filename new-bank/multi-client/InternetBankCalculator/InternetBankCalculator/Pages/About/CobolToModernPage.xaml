@@ -17,11 +17,11 @@
             HorizontalAlignment="Center"
             Spacing="20">
             <TextBlock
-                Foreground="#1A1A1A"
+                Foreground="{ThemeResource OnSurfaceBrush}"
                 Style="{ThemeResource HeadlineLarge}"
                 Text="💾➡️☕/💻 COBOL to Modern Languages" />
             <TextBlock
-                Foreground="#555555"
+                Foreground="{ThemeResource OnSurfaceVariantBrush}"
                 Style="{ThemeResource BodyLarge}"
                 Text="A quick guide for COBOL programmers transitioning to modern object-oriented languages: Java and C#."
                 TextWrapping="Wrap" />
@@ -35,7 +35,7 @@
             <Border
                 Padding="28"
                 Background="{ThemeResource SurfaceBrush}"
-                BorderBrush="#E0E0E0"
+                BorderBrush="{ThemeResource OutlineVariantBrush}"
                 BorderThickness="1"
                 CornerRadius="12">
                 <StackPanel Spacing="12">

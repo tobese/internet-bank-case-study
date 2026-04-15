@@ -2,7 +2,7 @@
     x:Class="InternetBankCalculator.Pages.About.AboutPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Background="#F5F7FA">
+    Background="{ThemeResource BackgroundBrush}">
     <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
         <StackPanel
             MaxWidth="740"
@@ -15,7 +15,7 @@
                     <Image Height="200" Source="ms-appx:///Assets/About.png" />
                 </Border>
                 <TextBlock
-                    Foreground="#555555"
+                    Foreground="{ThemeResource OnSurfaceVariantBrush}"
                     Style="{ThemeResource BodyLarge}"
                     Text="Dogger Bank is a fictitious internet bank — a case study demonstrating the latest and greatest in cloud-native technology, from a C# / WebAssembly frontend to a Java API running on Kubernetes in the cloud."
                     TextWrapping="Wrap" />
@@ -25,7 +25,7 @@
                 <Border
                     Padding="28"
                     Background="{ThemeResource SurfaceBrush}"
-                    BorderBrush="#E0E0E0"
+                    BorderBrush="{ThemeResource OutlineVariantBrush}"
                     BorderThickness="1"
                     CornerRadius="12">
                     <StackPanel Spacing="8">
@@ -55,7 +55,7 @@
                 <Border
                     Padding="28"
                     Background="{ThemeResource SurfaceBrush}"
-                    BorderBrush="#E0E0E0"
+                    BorderBrush="{ThemeResource OutlineVariantBrush}"
                     BorderThickness="1"
                     CornerRadius="12">
                     <StackPanel Spacing="8">
@@ -85,7 +85,7 @@
                 <Border
                     Padding="28"
                     Background="{ThemeResource SurfaceBrush}"
-                    BorderBrush="#E0E0E0"
+                    BorderBrush="{ThemeResource OutlineVariantBrush}"
                     BorderThickness="1"
                     CornerRadius="12">
                     <StackPanel Spacing="8">

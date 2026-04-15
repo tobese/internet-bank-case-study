@@ -12,11 +12,11 @@
                 <TextBlock
                     FontSize="30"
                     FontWeight="Bold"
-                    Foreground="#1A1A1A"
+                    Foreground="{ThemeResource OnSurfaceBrush}"
                     Text="From Java to C#" />
                 <TextBlock
                     FontSize="15"
-                    Foreground="#555555"
+                    Foreground="{ThemeResource OnSurfaceVariantBrush}"
                     Text="A curated guide to help senior Java developers quickly become productive C# developers. It focuses on practical resources, language comparisons, and essential tools for a smooth transition."
                     TextWrapping="Wrap" />
             </StackPanel>
@@ -36,7 +36,7 @@
             <StackPanel
                 Padding="28"
                 Background="{ThemeResource SurfaceBrush}"
-                BorderBrush="#E0E0E0"
+                BorderBrush="{ThemeResource OutlineVariantBrush}"
                 BorderThickness="1"
                 CornerRadius="12"
                 Spacing="18">

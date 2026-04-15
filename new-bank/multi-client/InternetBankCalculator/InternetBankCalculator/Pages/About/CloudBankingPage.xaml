@@ -2,7 +2,7 @@
     x:Class="InternetBankCalculator.Pages.About.CloudBankingPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Background="#F5F7FA">
+    Background="{ThemeResource BackgroundBrush}">
 
     <ScrollViewer HorizontalScrollBarVisibility="Disabled"
                   VerticalScrollBarVisibility="Auto">
@@ -22,7 +22,7 @@
             <Border Background="{ThemeResource SurfaceBrush}"
                     CornerRadius="12"
                     Padding="24"
-                    BorderBrush="#E0E0E0"
+                    BorderBrush="{ThemeResource OutlineVariantBrush}"
                     BorderThickness="1">
                 <StackPanel Spacing="24">
                     <!-- Capital One -->

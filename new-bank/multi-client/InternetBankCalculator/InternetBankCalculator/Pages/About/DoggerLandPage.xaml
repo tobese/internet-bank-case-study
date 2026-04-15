@@ -2,7 +2,7 @@
     x:Class="InternetBankCalculator.Pages.About.DoggerLandPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Background="#F5F7FA">
+    Background="{ThemeResource BackgroundBrush}">
 
     <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
         <StackPanel
@@ -14,11 +14,11 @@
             <!--  Hero Header  -->
             <StackPanel Spacing="12">
                 <TextBlock
-                    Foreground="#1A1A1A"
+                    Foreground="{ThemeResource OnSurfaceBrush}"
                     Style="{ThemeResource HeadlineLarge}"
                     Text="Doggerland" />
                 <TextBlock
-                    Foreground="#555555"
+                    Foreground="{ThemeResource OnSurfaceVariantBrush}"
                     Style="{ThemeResource BodyLarge}"
                     Text="A vast prehistoric landmass that once connected Britain to mainland Europe across what is now the North Sea — drowned by rising seas at the end of the last ice age."
                     TextWrapping="Wrap" />
@@ -37,7 +37,7 @@
             <Border
                 Padding="28"
                 Background="{ThemeResource SurfaceBrush}"
-                BorderBrush="#E0E0E0"
+                BorderBrush="{ThemeResource OutlineVariantBrush}"
                 BorderThickness="1"
                 CornerRadius="12">
                 <Border.Shadow>
@@ -47,14 +47,14 @@
                     <TextBlock Style="{ThemeResource TitleLarge}" Text="What Was Doggerland?" />
                     <TextBlock
                         FontSize="14"
-                        Foreground="#333333"
+                        Foreground="{ThemeResource OnSurfaceBrush}"
                         LineHeight="22"
                         TextWrapping="Wrap">
                         <Run>Doggerland was a landmass roughly the size of present-day France that stretched across what is now the southern and central North Sea. At its greatest extent, around 20,000 years ago during the Last Glacial Maximum, it formed a continuous land bridge between Britain and the European mainland.</Run>
                     </TextBlock>
                     <TextBlock
                         FontSize="14"
-                        Foreground="#333333"
+                        Foreground="{ThemeResource OnSurfaceBrush}"
                         LineHeight="22"
                         TextWrapping="Wrap">
                         <Run>The land was low-lying and broken by river systems — in particular a great river combining the Thames, Rhine, Meuse, and Scheldt, which drained southward into the Atlantic through what is now the English Channel. Forests of pine and birch, marshes, lagoons, and tundra plains covered the area, supporting rich megafauna.</Run>
@@ -66,7 +66,7 @@
             <Border
                 Padding="28"
                 Background="{ThemeResource SurfaceBrush}"
-                BorderBrush="#E0E0E0"
+                BorderBrush="{ThemeResource OutlineVariantBrush}"
                 BorderThickness="1"
                 CornerRadius="12">
                 <Border.Shadow>
@@ -76,14 +76,14 @@
                     <TextBlock Style="{ThemeResource TitleLarge}" Text="Mesolithic Inhabitants" />
                     <TextBlock
                         FontSize="14"
-                        Foreground="#333333"
+                        Foreground="{ThemeResource OnSurfaceBrush}"
                         LineHeight="22"
                         TextWrapping="Wrap">
                         <Run>Doggerland was home to Mesolithic hunter-gatherers from at least 12,000 BCE onward. They hunted mammoths, woolly rhinoceros, giant deer (Megaloceros), aurochs, horses and elk across the plains and river valleys. They fished and foraged in the rich wetlands and coastlines.</Run>
                     </TextBlock>
                     <TextBlock
                         FontSize="14"
-                        Foreground="#333333"
+                        Foreground="{ThemeResource OnSurfaceBrush}"
                         LineHeight="22"
                         TextWrapping="Wrap">
                         <Run>North Sea fishermen regularly trawl up their remains — stone tools, barbed antler spear-points, and occasionally human bones — from the seabed. A famous example is the Mesolithic barbed point found by the trawler Colinda in 1931, preserved in peat dredged up from 25 m depth.</Run>
@@ -95,7 +95,7 @@
             <Border
                 Padding="28"
                 Background="{ThemeResource SurfaceBrush}"
-                BorderBrush="#E0E0E0"
+                BorderBrush="{ThemeResource OutlineVariantBrush}"
                 BorderThickness="1"
                 CornerRadius="12">
                 <Border.Shadow>
@@ -105,14 +105,14 @@
                     <TextBlock Style="{ThemeResource TitleLarge}" Text="The Great Drowning" />
                     <TextBlock
                         FontSize="14"
-                        Foreground="#333333"
+                        Foreground="{ThemeResource OnSurfaceBrush}"
                         LineHeight="22"
                         TextWrapping="Wrap">
                         <Run>As the Laurentide and Fennoscandian ice sheets melted from around 15,000 BCE, global sea levels rose rapidly. Doggerland shrank progressively, first becoming a peninsula attached to continental Europe, then a series of islands and tidal marshes, and finally a shallow sandbank that is today known as Dogger Bank.</Run>
                     </TextBlock>
                     <TextBlock
                         FontSize="14"
-                        Foreground="#333333"
+                        Foreground="{ThemeResource OnSurfaceBrush}"
                         LineHeight="22"
                         TextWrapping="Wrap">
                         <Run>The final and catastrophic phase is thought to have been triggered by the Storegga Slide — a massive submarine landslide off the Norwegian coast around 6200 BCE that generated a tsunami reaching heights of 3–10 metres along the coasts of Doggerland. This event may have finally severed Britain from the continent and displaced thousands of Mesolithic people who had still been living on the remnant islands.</Run>
@@ -124,7 +124,7 @@
             <Border
                 Padding="28"
                 Background="{ThemeResource SurfaceBrush}"
-                BorderBrush="#E0E0E0"
+                BorderBrush="{ThemeResource OutlineVariantBrush}"
                 BorderThickness="1"
                 CornerRadius="12">
                 <Border.Shadow>
@@ -134,14 +134,14 @@
                     <TextBlock Style="{ThemeResource TitleLarge}" Text="Discovery and the Name" />
                     <TextBlock
                         FontSize="14"
-                        Foreground="#333333"
+                        Foreground="{ThemeResource OnSurfaceBrush}"
                         LineHeight="22"
                         TextWrapping="Wrap">
                         <Run>Geologists had long suspected a land connection from stratigraphy and fossil evidence, but the name "Doggerland" was coined by archaeologist Bryony Coles in 1998, who systematically mapped what the landscape would have looked like using bathymetric data and archaeological finds.</Run>
                     </TextBlock>
                     <TextBlock
                         FontSize="14"
-                        Foreground="#333333"
+                        Foreground="{ThemeResource OnSurfaceBrush}"
                         LineHeight="22"
                         TextWrapping="Wrap">
                         <Run>Modern seismic survey data collected by the oil and gas industry has allowed researchers to produce detailed 3D reconstructions of the river valleys, hills and coastlines. Projects such as the North Sea Palaeolandscapes Project continue to refine the picture through seabed core samples and acoustic mapping.</Run>
