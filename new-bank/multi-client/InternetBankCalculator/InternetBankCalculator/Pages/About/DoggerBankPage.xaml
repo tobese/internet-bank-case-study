@@ -37,7 +37,7 @@
             <!--  Main Content Card  -->
             <Border
                 Padding="28"
-                Background="White"
+                Background="{ThemeResource SurfaceBrush}"
                 BorderBrush="#E0E0E0"
                 BorderThickness="1"
                 CornerRadius="12">
@@ -69,7 +69,7 @@
             <!--  Fishing  -->
             <Border
                 Padding="28"
-                Background="White"
+                Background="{ThemeResource SurfaceBrush}"
                 BorderBrush="#E0E0E0"
                 BorderThickness="1"
                 CornerRadius="12">
@@ -101,7 +101,7 @@
             <!--  Battles  -->
             <Border
                 Padding="28"
-                Background="White"
+                Background="{ThemeResource SurfaceBrush}"
                 BorderBrush="#E0E0E0"
                 BorderThickness="1"
                 CornerRadius="12">
@@ -133,7 +133,7 @@
             <!--  Wind farm  -->
             <Border
                 Padding="28"
-                Background="White"
+                Background="{ThemeResource SurfaceBrush}"
                 BorderBrush="#E0E0E0"
                 BorderThickness="1"
                 CornerRadius="12">

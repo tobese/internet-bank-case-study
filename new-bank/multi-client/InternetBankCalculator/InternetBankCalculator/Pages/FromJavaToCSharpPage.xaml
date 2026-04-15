@@ -35,7 +35,7 @@
             </StackPanel>
             <StackPanel
                 Padding="28"
-                Background="White"
+                Background="{ThemeResource SurfaceBrush}"
                 BorderBrush="#E0E0E0"
                 BorderThickness="1"
                 CornerRadius="12"

@@ -26,7 +26,7 @@
                     <Border
                         Padding="32"
                         HorizontalAlignment="Stretch"
-                        Background="White"
+                        Background="{ThemeResource SurfaceBrush}"
                         BorderBrush="#E0E0E0"
                         BorderThickness="0"
                         CornerRadius="12">

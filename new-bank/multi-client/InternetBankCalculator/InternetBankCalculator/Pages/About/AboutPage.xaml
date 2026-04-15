@@ -24,7 +24,7 @@
             <StackPanel Margin="0,24,0,0">
                 <Border
                     Padding="28"
-                    Background="White"
+                    Background="{ThemeResource SurfaceBrush}"
                     BorderBrush="#E0E0E0"
                     BorderThickness="1"
                     CornerRadius="12">
@@ -54,7 +54,7 @@
             <StackPanel Margin="0,24,0,0">
                 <Border
                     Padding="28"
-                    Background="White"
+                    Background="{ThemeResource SurfaceBrush}"
                     BorderBrush="#E0E0E0"
                     BorderThickness="1"
                     CornerRadius="12">
@@ -84,7 +84,7 @@
             <StackPanel Margin="0,24,0,0">
                 <Border
                     Padding="28"
-                    Background="White"
+                    Background="{ThemeResource SurfaceBrush}"
                     BorderBrush="#E0E0E0"
                     BorderThickness="1"
                     CornerRadius="12">

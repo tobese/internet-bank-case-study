@@ -241,7 +241,7 @@
             <!--  Request Flow  -->
             <Border
                 Padding="28"
-                Background="White"
+                Background="{ThemeResource SurfaceBrush}"
                 BorderBrush="#E0E0E0"
                 BorderThickness="1"
                 CornerRadius="12">
@@ -270,7 +270,7 @@
             <!--  Frontend  -->
             <Border
                 Padding="28"
-                Background="White"
+                Background="{ThemeResource SurfaceBrush}"
                 BorderBrush="#E0E0E0"
                 BorderThickness="1"
                 CornerRadius="12">
@@ -306,7 +306,7 @@
             <!--  API  -->
             <Border
                 Padding="28"
-                Background="White"
+                Background="{ThemeResource SurfaceBrush}"
                 BorderBrush="#E0E0E0"
                 BorderThickness="1"
                 CornerRadius="12">
@@ -342,7 +342,7 @@
             <!--  Data Tier  -->
             <Border
                 Padding="28"
-                Background="White"
+                Background="{ThemeResource SurfaceBrush}"
                 BorderBrush="#E0E0E0"
                 BorderThickness="1"
                 CornerRadius="12">
@@ -371,7 +371,7 @@
             <!--  Observability  -->
             <Border
                 Padding="28"
-                Background="White"
+                Background="{ThemeResource SurfaceBrush}"
                 BorderBrush="#E0E0E0"
                 BorderThickness="1"
                 CornerRadius="12">
@@ -414,7 +414,7 @@
             <!--  Infrastructure & Scaling  -->
             <Border
                 Padding="28"
-                Background="White"
+                Background="{ThemeResource SurfaceBrush}"
                 BorderBrush="#E0E0E0"
                 BorderThickness="1"
                 CornerRadius="12">
@@ -450,7 +450,7 @@
             <!--  CI/CD  -->
             <Border
                 Padding="28"
-                Background="White"
+                Background="{ThemeResource SurfaceBrush}"
                 BorderBrush="#E0E0E0"
                 BorderThickness="1"
                 CornerRadius="12">
@@ -497,7 +497,7 @@
             <!--  Monitoring Tools  -->
             <Border
                 Padding="28"
-                Background="White"
+                Background="{ThemeResource SurfaceBrush}"
                 BorderBrush="#E0E0E0"
                 BorderThickness="1"
                 CornerRadius="12">
@@ -558,7 +558,7 @@
             <!--  Future Improvements  -->
             <Border
                 Padding="28"
-                Background="White"
+                Background="{ThemeResource SurfaceBrush}"
                 BorderBrush="#E0E0E0"
                 BorderThickness="1"
                 CornerRadius="12">
@@ -616,7 +616,7 @@
             <!--  Design Decisions  -->
             <Border
                 Padding="28"
-                Background="White"
+                Background="{ThemeResource SurfaceBrush}"
                 BorderBrush="#E0E0E0"
                 BorderThickness="1"
                 CornerRadius="12">
@@ -1074,7 +1074,7 @@
             <!--  Configuration Highlights  -->
             <Border
                 Padding="28"
-                Background="White"
+                Background="{ThemeResource SurfaceBrush}"
                 BorderBrush="#E0E0E0"
                 BorderThickness="1"
                 CornerRadius="12">

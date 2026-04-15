@@ -39,7 +39,7 @@
                 MaxWidth="340"
                 Padding="32"
                 HorizontalAlignment="Center"
-                Background="White"
+                Background="{ThemeResource SurfaceBrush}"
                 BorderBrush="#E0E0E0"
                 BorderThickness="1"
                 CornerRadius="12">
