@@ -129,6 +129,7 @@
                     Grid.Row="2"
                     Padding="20,14,20,14"
                     Background="{ThemeResource SurfaceInverseBrush}">
+                    <Grid>
                     <StackPanel
                         HorizontalAlignment="Center"
                         Orientation="Horizontal"
@@ -156,6 +157,14 @@
                             Text="{Binding DailyMathematician.Description}"
                             TextWrapping="Wrap" />
                     </StackPanel>
+                    <TextBlock
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Foreground="{ThemeResource OnSurfaceInverseBrush}"
+                        Opacity="0.5"
+                        Style="{ThemeResource LabelSmall}"
+                        Text="{x:Bind AppVersion}" />
+                    </Grid>
                 </Border>
             </Grid>
         </utu:ExtendedSplashScreen.Content>

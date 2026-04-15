@@ -7,6 +7,14 @@ namespace InternetBankCalculator;
 public sealed partial class AppShell : Page
 {
     public SplashLoadable LoadableSource { get; } = new();
+
+    public string AppVersion { get; } =
+        (typeof(AppShell).Assembly
+            .GetCustomAttributes(typeof(System.Reflection.AssemblyInformationalVersionAttribute), false)
+            .FirstOrDefault() as System.Reflection.AssemblyInformationalVersionAttribute)
+            ?.InformationalVersion?.Split('+')[0]
+        ?? typeof(AppShell).Assembly.GetName().Version?.ToString(2)
+        ?? "1.0";
     public AppShell()
     {
         this.InitializeComponent();
