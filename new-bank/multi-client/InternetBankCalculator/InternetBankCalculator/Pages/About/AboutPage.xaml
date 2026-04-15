@@ -38,14 +38,14 @@
                             Click="CloudBanking_Click"
                             Content="Cloud Banking: Real-World Bank Cloud Migrations"
                             FontSize="16"
-                            Foreground="#0078D7"
+                            Foreground="{ThemeResource PrimaryBrush}"
                             ToolTipService.ToolTip="Go to Cloud Banking: Real-World Bank Cloud Migrations page" />
                         <HyperlinkButton
                             Margin="0,8,0,0"
                             Click="MainframeModernization_Click"
                             Content="Mainframe Modernization"
                             FontSize="16"
-                            Foreground="#0078D7"
+                            Foreground="{ThemeResource PrimaryBrush}"
                             ToolTipService.ToolTip="Go to AS/400 &amp; COBOL Modernization page" />
                     </StackPanel>
                 </Border>
@@ -68,14 +68,14 @@
                             Click="CobolToModern_Click"
                             Content="COBOL to Modern Languages"
                             FontSize="16"
-                            Foreground="#0078D7"
+                            Foreground="{ThemeResource PrimaryBrush}"
                             ToolTipService.ToolTip="Go to COBOL to Java/C# quick guide page" />
                         <HyperlinkButton
                             Margin="0,8,0,0"
                             Click="FromJavaToCSharp_Click"
                             Content="From Java to C#"
                             FontSize="16"
-                            Foreground="#0078D7"
+                            Foreground="{ThemeResource PrimaryBrush}"
                             ToolTipService.ToolTip="Guide for Java developers transitioning to C#" />
                     </StackPanel>
                 </Border>
@@ -98,14 +98,14 @@
                             Click="DoggerLand_Click"
                             Content="Doggerland"
                             FontSize="16"
-                            Foreground="#0078D7"
+                            Foreground="{ThemeResource PrimaryBrush}"
                             ToolTipService.ToolTip="Go to Doggerland page" />
                         <HyperlinkButton
                             Margin="0,0,0,0"
                             Click="DoggerBank_Click"
                             Content="Dogger Bank"
                             FontSize="16"
-                            Foreground="#0078D7"
+                            Foreground="{ThemeResource PrimaryBrush}"
                             ToolTipService.ToolTip="Go to Dogger Bank page" />
                     </StackPanel>
                 </Border>

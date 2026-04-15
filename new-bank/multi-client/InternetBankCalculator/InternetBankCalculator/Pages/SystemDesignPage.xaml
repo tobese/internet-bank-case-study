@@ -512,7 +512,7 @@
                             Text="Monitoring Tools" />
                         <TextBlock
                             FontSize="13"
-                            Foreground="#777777"
+                            Foreground="{ThemeResource OnSurfaceVariantBrush}"
                             Text="Available when running the local Docker Compose stack."
                             TextWrapping="Wrap" />
                     </StackPanel>
@@ -573,7 +573,7 @@
                             Text="Future Improvements" />
                         <TextBlock
                             FontSize="13"
-                            Foreground="#777777"
+                            Foreground="{ThemeResource OnSurfaceVariantBrush}"
                             Text="The next meaningful steps to make this a production-grade AWS deployment."
                             TextWrapping="Wrap" />
                     </StackPanel>

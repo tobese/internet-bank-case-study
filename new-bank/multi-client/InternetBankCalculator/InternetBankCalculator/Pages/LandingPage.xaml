@@ -58,7 +58,7 @@
                         Style="{ThemeResource TitleLarge}"
                         Text="Calculator" />
                     <TextBlock
-                        Foreground="#444444"
+                        Foreground="{ThemeResource OnSurfaceBrush}"
                         Style="{ThemeResource BodySmall}"
                         Text="Arithmetic, factorial, Fibonacci and prime number streaming — all powered by the Java Math API."
                         TextAlignment="Center"

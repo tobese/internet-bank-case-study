@@ -76,7 +76,7 @@
                             <TextBox
                                 x:Name="ExpressionInput"
                                 Padding="10,10,10,10"
-                                BorderBrush="#CCCCCC"
+                                BorderBrush="{ThemeResource OutlineVariantBrush}"
                                 CornerRadius="8"
                                 FontSize="16"
                                 IsEnabled="{Binding IsInputEnabled}"
@@ -236,7 +236,7 @@
                             <Border
                                 Margin="0,24,0,0"
                                 Padding="0,16,0,0"
-                                BorderBrush="#EEEEEE"
+                                BorderBrush="{ThemeResource OutlineVariantBrush}"
                                 BorderThickness="0,1,0,0">
                                 <StackPanel>
                                     <TextBlock
@@ -254,7 +254,7 @@
                                                 <TextBlock
                                                     Padding="0,4,0,4"
                                                     FontSize="14"
-                                                    Foreground="#444444"
+                                                    Foreground="{ThemeResource OnSurfaceBrush}"
                                                     Text="{Binding}" />
                                             </DataTemplate>
                                         </ListView.ItemTemplate>
