@@ -7,11 +7,6 @@ namespace InternetBankCalculator;
 public sealed partial class AppShell : Page
 {
     public SplashLoadable LoadableSource { get; } = new();
-    // For browser navigation interop
-    // For browser navigation interop
-#if __WASM__
-    private static AppShell? _instanceForJs;
-#endif
     public AppShell()
     {
         this.InitializeComponent();
@@ -82,22 +77,13 @@ public sealed partial class AppShell : Page
 #endif
     }
 
-#if __WASM__
-    public static void OnBrowserBack()
-    {
-        if (_instanceForJs is { } shell && shell.ContentFrame.CanGoBack)
-        {
-            _ = shell.DispatcherQueue.TryEnqueue(() => shell.ContentFrame.GoBack());
-        }
-    }
-#endif
-
     public Frame ContentFramePublic => ContentFrame;
     public Button BtnAboutPublic => BtnAbout;
     public void UpdateNavHighlight(Button active)
     {
+        var inactiveOpacity = Application.Current.Resources.TryGetValue("MediumOpacity", out var o) ? (double)o : 0.64;
         foreach (var btn in new[] { BtnCalc, BtnAbout, BtnSystemDesign })
-            btn.Opacity = 0.6;
+            btn.Opacity = inactiveOpacity;
         active.Opacity = 1.0;
     }
 

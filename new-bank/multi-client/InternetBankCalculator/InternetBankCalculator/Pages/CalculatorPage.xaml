@@ -3,7 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:InternetBankCalculator"
-    Background="#F5F7FA">
+    Background="{ThemeResource BackgroundBrush}">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -26,8 +26,8 @@
                     <Border
                         Padding="32"
                         HorizontalAlignment="Stretch"
-                        Background="White"
-                        BorderBrush="#E0E0E0"
+                        Background="{ThemeResource SurfaceBrush}"
+                        BorderBrush="{ThemeResource OutlineVariantBrush}"
                         BorderThickness="0"
                         CornerRadius="12">
                         <Border.Shadow>
@@ -55,15 +55,14 @@
                             <!--  Title  -->
                             <TextBlock
                                 Margin="0,0,0,4"
-                                FontSize="22"
-                                FontWeight="SemiBold"
+                                Style="{ThemeResource TitleLarge}"
                                 Text="Internet Banking Calculator" />
 
                             <!--  Subtitle  -->
                             <TextBlock
                                 Margin="0,0,0,24"
-                                FontSize="13"
-                                Foreground="#666666"
+                                Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                Style="{ThemeResource BodySmall}"
                                 Text="Arithmetic, factorial &amp; Fibonacci – powered by the Java Math API"
                                 TextWrapping="Wrap" />
 
@@ -77,7 +76,7 @@
                             <TextBox
                                 x:Name="ExpressionInput"
                                 Padding="10,10,10,10"
-                                BorderBrush="#CCCCCC"
+                                BorderBrush="{ThemeResource OutlineVariantBrush}"
                                 CornerRadius="8"
                                 FontSize="16"
                                 IsEnabled="{Binding IsInputEnabled}"
@@ -126,10 +125,10 @@
                                     Foreground="{StaticResource ButtonForeground}"
                                     IsEnabled="{Binding IsInputEnabled}">
                                     <Button.Resources>
-                                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#279845" />
-                                        <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#1A8338" />
-                                        <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="White" />
-                                        <SolidColorBrush x:Key="ButtonForegroundPressed" Color="White" />
+                                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="{StaticResource ButtonFacHover}" />
+                                        <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="{StaticResource ButtonFacPressed}" />
+                                        <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="{ThemeResource OnPrimaryColor}" />
+                                        <SolidColorBrush x:Key="ButtonForegroundPressed" Color="{ThemeResource OnPrimaryColor}" />
                                     </Button.Resources>
                                 </Button>
 
@@ -146,10 +145,10 @@
                                     Foreground="{StaticResource ButtonForeground}"
                                     IsEnabled="{Binding IsInputEnabled}">
                                     <Button.Resources>
-                                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#006E7A" />
-                                        <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#005A65" />
-                                        <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="White" />
-                                        <SolidColorBrush x:Key="ButtonForegroundPressed" Color="White" />
+                                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="{StaticResource ButtonFibHover}" />
+                                        <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="{StaticResource ButtonFibPressed}" />
+                                        <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="{ThemeResource OnPrimaryColor}" />
+                                        <SolidColorBrush x:Key="ButtonForegroundPressed" Color="{ThemeResource OnPrimaryColor}" />
                                     </Button.Resources>
                                 </Button>
 
@@ -160,18 +159,18 @@
                                     Grid.ColumnSpan="3"
                                     Padding="10"
                                     HorizontalAlignment="Stretch"
-                                    Background="#5B4FCF"
+                                    Background="{StaticResource ButtonPrimesBackground}"
                                     Command="{Binding StreamPrimes}"
                                     Content="Primes(n)"
                                     CornerRadius="8"
                                     FontWeight="SemiBold"
-                                    Foreground="White"
+                                    Foreground="{StaticResource ButtonForeground}"
                                     IsEnabled="{Binding IsInputEnabled}">
                                     <Button.Resources>
-                                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#4B3FBF" />
-                                        <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#3B2FAF" />
-                                        <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="White" />
-                                        <SolidColorBrush x:Key="ButtonForegroundPressed" Color="White" />
+                                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="{StaticResource ButtonPrimesHover}" />
+                                        <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="{StaticResource ButtonPrimesPressed}" />
+                                        <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="{ThemeResource OnPrimaryColor}" />
+                                        <SolidColorBrush x:Key="ButtonForegroundPressed" Color="{ThemeResource OnPrimaryColor}" />
                                     </Button.Resources>
                                 </Button>
                             </Grid>
@@ -190,7 +189,7 @@
                                     <ProgressRing
                                         Width="20"
                                         Height="20"
-                                        Foreground="#4A90D9"
+                                        Foreground="{StaticResource ButtonCalculateBackground}"
                                         IsActive="{Binding IsLoading}"
                                         Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibilityConverter}}" />
                                     <TextBlock
@@ -206,7 +205,7 @@
                             <Border
                                 Margin="0,12,0,0"
                                 Padding="14"
-                                Background="#F3F0FF"
+                                Background="{StaticResource PrimesResultBackground}"
                                 CornerRadius="8">
                                 <StackPanel>
                                     <StackPanel
@@ -215,20 +214,19 @@
                                         Spacing="8">
                                         <TextBlock
                                             VerticalAlignment="Center"
-                                            FontSize="12"
-                                            FontWeight="SemiBold"
-                                            Foreground="#5B4FCF"
+                                            Foreground="{StaticResource PrimesResultForeground}"
+                                            Style="{ThemeResource LabelMedium}"
                                             Text="Primes (Sieve of Eratosthenes)" />
                                         <ProgressRing
                                             Width="14"
                                             Height="14"
-                                            Foreground="#5B4FCF"
+                                            Foreground="{StaticResource PrimesResultForeground}"
                                             IsActive="{Binding IsPrimesRunning}"
                                             Visibility="{Binding IsPrimesRunning, Converter={StaticResource BoolToVisibilityConverter}}" />
                                     </StackPanel>
                                     <TextBlock
                                         FontFamily="Consolas, Courier New, monospace"
-                                        Foreground="#2D2060"
+                                        Foreground="{StaticResource PrimesResultText}"
                                         Text="{Binding PrimesResult}"
                                         TextWrapping="Wrap" />
                                 </StackPanel>
@@ -238,13 +236,12 @@
                             <Border
                                 Margin="0,24,0,0"
                                 Padding="0,16,0,0"
-                                BorderBrush="#EEEEEE"
+                                BorderBrush="{ThemeResource OutlineVariantBrush}"
                                 BorderThickness="0,1,0,0">
                                 <StackPanel>
                                     <TextBlock
                                         Margin="0,0,0,8"
-                                        FontSize="16"
-                                        FontWeight="SemiBold"
+                                        Style="{ThemeResource TitleMedium}"
                                         Text="History" />
                                     <ListView
                                         x:Name="HistoryList"
@@ -257,7 +254,7 @@
                                                 <TextBlock
                                                     Padding="0,4,0,4"
                                                     FontSize="14"
-                                                    Foreground="#444444"
+                                                    Foreground="{ThemeResource OnSurfaceBrush}"
                                                     Text="{Binding}" />
                                             </DataTemplate>
                                         </ListView.ItemTemplate>

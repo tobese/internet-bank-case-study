@@ -2,7 +2,7 @@
     x:Class="InternetBankCalculator.Pages.About.AboutPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Background="#F5F7FA">
+    Background="{ThemeResource BackgroundBrush}">
     <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
         <StackPanel
             MaxWidth="740"
@@ -15,8 +15,8 @@
                     <Image Height="200" Source="ms-appx:///Assets/About.png" />
                 </Border>
                 <TextBlock
-                    FontSize="15"
-                    Foreground="#555555"
+                    Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                    Style="{ThemeResource BodyLarge}"
                     Text="Dogger Bank is a fictitious internet bank — a case study demonstrating the latest and greatest in cloud-native technology, from a C# / WebAssembly frontend to a Java API running on Kubernetes in the cloud."
                     TextWrapping="Wrap" />
             </StackPanel>
@@ -24,29 +24,28 @@
             <StackPanel Margin="0,24,0,0">
                 <Border
                     Padding="28"
-                    Background="White"
-                    BorderBrush="#E0E0E0"
+                    Background="{ThemeResource SurfaceBrush}"
+                    BorderBrush="{ThemeResource OutlineVariantBrush}"
                     BorderThickness="1"
                     CornerRadius="12">
                     <StackPanel Spacing="8">
                         <TextBlock
                             Margin="0,0,0,12"
-                            FontSize="18"
-                            FontWeight="SemiBold"
+                            Style="{ThemeResource TitleLarge}"
                             Text="Mainframe to Cloudframe?" />
                         <HyperlinkButton
                             Margin="0,8,0,0"
                             Click="CloudBanking_Click"
                             Content="Cloud Banking: Real-World Bank Cloud Migrations"
                             FontSize="16"
-                            Foreground="#0078D7"
+                            Foreground="{ThemeResource PrimaryBrush}"
                             ToolTipService.ToolTip="Go to Cloud Banking: Real-World Bank Cloud Migrations page" />
                         <HyperlinkButton
                             Margin="0,8,0,0"
                             Click="MainframeModernization_Click"
                             Content="Mainframe Modernization"
                             FontSize="16"
-                            Foreground="#0078D7"
+                            Foreground="{ThemeResource PrimaryBrush}"
                             ToolTipService.ToolTip="Go to AS/400 &amp; COBOL Modernization page" />
                     </StackPanel>
                 </Border>
@@ -55,29 +54,28 @@
             <StackPanel Margin="0,24,0,0">
                 <Border
                     Padding="28"
-                    Background="White"
-                    BorderBrush="#E0E0E0"
+                    Background="{ThemeResource SurfaceBrush}"
+                    BorderBrush="{ThemeResource OutlineVariantBrush}"
                     BorderThickness="1"
                     CornerRadius="12">
                     <StackPanel Spacing="8">
                         <TextBlock
                             Margin="0,0,0,8"
-                            FontSize="18"
-                            FontWeight="SemiBold"
+                            Style="{ThemeResource TitleLarge}"
                             Text="Developer Development" />
                         <HyperlinkButton
                             Margin="0,8,0,0"
                             Click="CobolToModern_Click"
                             Content="COBOL to Modern Languages"
                             FontSize="16"
-                            Foreground="#0078D7"
+                            Foreground="{ThemeResource PrimaryBrush}"
                             ToolTipService.ToolTip="Go to COBOL to Java/C# quick guide page" />
                         <HyperlinkButton
                             Margin="0,8,0,0"
                             Click="FromJavaToCSharp_Click"
                             Content="From Java to C#"
                             FontSize="16"
-                            Foreground="#0078D7"
+                            Foreground="{ThemeResource PrimaryBrush}"
                             ToolTipService.ToolTip="Guide for Java developers transitioning to C#" />
                     </StackPanel>
                 </Border>
@@ -86,29 +84,28 @@
             <StackPanel Margin="0,24,0,0">
                 <Border
                     Padding="28"
-                    Background="White"
-                    BorderBrush="#E0E0E0"
+                    Background="{ThemeResource SurfaceBrush}"
+                    BorderBrush="{ThemeResource OutlineVariantBrush}"
                     BorderThickness="1"
                     CornerRadius="12">
                     <StackPanel Spacing="8">
                         <TextBlock
                             Margin="0,0,0,8"
-                            FontSize="18"
-                            FontWeight="SemiBold"
+                            Style="{ThemeResource TitleLarge}"
                             Text="Dogger - From Land to Bank" />
                         <HyperlinkButton
                             Margin="0,8,0,0"
                             Click="DoggerLand_Click"
                             Content="Doggerland"
                             FontSize="16"
-                            Foreground="#0078D7"
+                            Foreground="{ThemeResource PrimaryBrush}"
                             ToolTipService.ToolTip="Go to Doggerland page" />
                         <HyperlinkButton
                             Margin="0,0,0,0"
                             Click="DoggerBank_Click"
                             Content="Dogger Bank"
                             FontSize="16"
-                            Foreground="#0078D7"
+                            Foreground="{ThemeResource PrimaryBrush}"
                             ToolTipService.ToolTip="Go to Dogger Bank page" />
                     </StackPanel>
                 </Border>
