@@ -41,7 +41,7 @@
                 <Border
                     Grid.Row="0"
                     Padding="16,0,16,0"
-                    Background="#1A1A2E">
+                    Background="{ThemeResource SurfaceInverseBrush}">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
@@ -128,14 +128,14 @@
                 <Border
                     Grid.Row="2"
                     Padding="20,14,20,14"
-                    Background="#1A1A2E">
+                    Background="{ThemeResource SurfaceInverseBrush}">
                     <StackPanel
                         HorizontalAlignment="Center"
                         Orientation="Horizontal"
                         Spacing="12">
                         <TextBlock
                             VerticalAlignment="Center"
-                            Foreground="#AAAACC"
+                            Foreground="{ThemeResource OnSurfaceInverseBrush}"
                             Style="{ThemeResource LabelMedium}"
                             Text="🎓 Mathematician of the day:" />
                         <StackPanel>
@@ -144,14 +144,14 @@
                                 Style="{ThemeResource LabelMedium}"
                                 Text="{Binding DailyMathematician.Name}" />
                             <TextBlock
-                                Foreground="#AAAACC"
+                                Foreground="{ThemeResource OnSurfaceInverseBrush}"
                                 Style="{ThemeResource LabelSmall}"
                                 Text="{Binding DailyMathematician.Era}" />
                         </StackPanel>
                         <TextBlock
                             MaxWidth="500"
                             VerticalAlignment="Center"
-                            Foreground="#CCCCDD"
+                            Foreground="{ThemeResource OnSurfaceInverseBrush}"
                             Style="{ThemeResource BodySmall}"
                             Text="{Binding DailyMathematician.Description}"
                             TextWrapping="Wrap" />
