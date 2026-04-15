@@ -19,15 +19,15 @@ public sealed partial class CalculatorPage : Page
     }
 
 #if !WINDOWS
-    private void OnLoaded(object sender, RoutedEventArgs e)
+    private void OnLoaded(object? sender, RoutedEventArgs e)
     {
         Windows.UI.Core.SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
     }
-    private void OnUnloaded(object sender, RoutedEventArgs e)
+    private void OnUnloaded(object? sender, RoutedEventArgs e)
     {
         Windows.UI.Core.SystemNavigationManager.GetForCurrentView().BackRequested -= OnBackRequested;
     }
-    private void OnBackRequested(object sender, Windows.UI.Core.BackRequestedEventArgs e)
+    private void OnBackRequested(object? sender, Windows.UI.Core.BackRequestedEventArgs e)
     {
         if (Frame.CanGoBack)
         {

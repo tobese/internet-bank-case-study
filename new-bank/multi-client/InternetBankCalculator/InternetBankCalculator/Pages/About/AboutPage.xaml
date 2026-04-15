@@ -15,8 +15,8 @@
                     <Image Height="200" Source="ms-appx:///Assets/About.png" />
                 </Border>
                 <TextBlock
-                    FontSize="15"
                     Foreground="#555555"
+                    Style="{ThemeResource BodyLarge}"
                     Text="Dogger Bank is a fictitious internet bank — a case study demonstrating the latest and greatest in cloud-native technology, from a C# / WebAssembly frontend to a Java API running on Kubernetes in the cloud."
                     TextWrapping="Wrap" />
             </StackPanel>
@@ -31,8 +31,7 @@
                     <StackPanel Spacing="8">
                         <TextBlock
                             Margin="0,0,0,12"
-                            FontSize="18"
-                            FontWeight="SemiBold"
+                            Style="{ThemeResource TitleLarge}"
                             Text="Mainframe to Cloudframe?" />
                         <HyperlinkButton
                             Margin="0,8,0,0"
@@ -62,8 +61,7 @@
                     <StackPanel Spacing="8">
                         <TextBlock
                             Margin="0,0,0,8"
-                            FontSize="18"
-                            FontWeight="SemiBold"
+                            Style="{ThemeResource TitleLarge}"
                             Text="Developer Development" />
                         <HyperlinkButton
                             Margin="0,8,0,0"
@@ -93,8 +91,7 @@
                     <StackPanel Spacing="8">
                         <TextBlock
                             Margin="0,0,0,8"
-                            FontSize="18"
-                            FontWeight="SemiBold"
+                            Style="{ThemeResource TitleLarge}"
                             Text="Dogger - From Land to Bank" />
                         <HyperlinkButton
                             Margin="0,8,0,0"

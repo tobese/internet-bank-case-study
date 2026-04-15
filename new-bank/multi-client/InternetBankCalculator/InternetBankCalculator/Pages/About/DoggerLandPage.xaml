@@ -14,13 +14,12 @@
             <!--  Hero Header  -->
             <StackPanel Spacing="12">
                 <TextBlock
-                    FontSize="30"
-                    FontWeight="Bold"
                     Foreground="#1A1A1A"
+                    Style="{ThemeResource HeadlineLarge}"
                     Text="Doggerland" />
                 <TextBlock
-                    FontSize="15"
                     Foreground="#555555"
+                    Style="{ThemeResource BodyLarge}"
                     Text="A vast prehistoric landmass that once connected Britain to mainland Europe across what is now the North Sea — drowned by rising seas at the end of the last ice age."
                     TextWrapping="Wrap" />
             </StackPanel>
@@ -45,10 +44,7 @@
                     <ThemeShadow />
                 </Border.Shadow>
                 <StackPanel Spacing="12">
-                    <TextBlock
-                        FontSize="18"
-                        FontWeight="SemiBold"
-                        Text="What Was Doggerland?" />
+                    <TextBlock Style="{ThemeResource TitleLarge}" Text="What Was Doggerland?" />
                     <TextBlock
                         FontSize="14"
                         Foreground="#333333"
@@ -77,10 +73,7 @@
                     <ThemeShadow />
                 </Border.Shadow>
                 <StackPanel Spacing="12">
-                    <TextBlock
-                        FontSize="18"
-                        FontWeight="SemiBold"
-                        Text="Mesolithic Inhabitants" />
+                    <TextBlock Style="{ThemeResource TitleLarge}" Text="Mesolithic Inhabitants" />
                     <TextBlock
                         FontSize="14"
                         Foreground="#333333"
@@ -109,10 +102,7 @@
                     <ThemeShadow />
                 </Border.Shadow>
                 <StackPanel Spacing="12">
-                    <TextBlock
-                        FontSize="18"
-                        FontWeight="SemiBold"
-                        Text="The Great Drowning" />
+                    <TextBlock Style="{ThemeResource TitleLarge}" Text="The Great Drowning" />
                     <TextBlock
                         FontSize="14"
                         Foreground="#333333"
@@ -141,10 +131,7 @@
                     <ThemeShadow />
                 </Border.Shadow>
                 <StackPanel Spacing="12">
-                    <TextBlock
-                        FontSize="18"
-                        FontWeight="SemiBold"
-                        Text="Discovery and the Name" />
+                    <TextBlock Style="{ThemeResource TitleLarge}" Text="Discovery and the Name" />
                     <TextBlock
                         FontSize="14"
                         Foreground="#333333"

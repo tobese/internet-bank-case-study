@@ -14,13 +14,12 @@
             <!--  Header  -->
             <StackPanel Spacing="12">
                 <TextBlock
-                    FontSize="30"
-                    FontWeight="Bold"
                     Foreground="#1A1A1A"
+                    Style="{ThemeResource HeadlineLarge}"
                     Text="System Design" />
                 <TextBlock
-                    FontSize="15"
                     Foreground="#555555"
+                    Style="{ThemeResource BodyLarge}"
                     Text="How doggerbank.online works — from a browser request to the database and back. A full-stack cloud-native application on AWS EKS."
                     TextWrapping="Wrap" />
             </StackPanel>
@@ -33,9 +32,8 @@
                 <StackPanel Spacing="0">
                     <TextBlock
                         Margin="0,0,0,20"
-                        FontSize="17"
-                        FontWeight="SemiBold"
                         Foreground="White"
+                        Style="{ThemeResource TitleLarge}"
                         Text="Architecture Overview" />
 
                     <!--  Browser  -->
@@ -45,9 +43,8 @@
                         CornerRadius="8">
                         <TextBlock
                             HorizontalAlignment="Center"
-                            FontSize="14"
-                            FontWeight="SemiBold"
                             Foreground="White"
+                            Style="{ThemeResource LabelLarge}"
                             Text="Browser" />
                     </Border>
 
@@ -57,8 +54,8 @@
                         Spacing="0">
                         <TextBlock
                             HorizontalAlignment="Center"
-                            FontSize="11"
                             Foreground="#668899"
+                            Style="{ThemeResource LabelSmall}"
                             Text="HTTPS" />
                         <TextBlock
                             HorizontalAlignment="Center"
@@ -74,9 +71,8 @@
                         CornerRadius="8">
                         <TextBlock
                             HorizontalAlignment="Center"
-                            FontSize="14"
-                            FontWeight="SemiBold"
                             Foreground="White"
+                            Style="{ThemeResource LabelLarge}"
                             Text="AWS ALB  ·  ACM TLS certificate" />
                     </Border>
 
@@ -95,14 +91,13 @@
                         <StackPanel HorizontalAlignment="Center" Spacing="2">
                             <TextBlock
                                 HorizontalAlignment="Center"
-                                FontSize="14"
-                                FontWeight="SemiBold"
                                 Foreground="White"
+                                Style="{ThemeResource LabelLarge}"
                                 Text="web-client pods" />
                             <TextBlock
                                 HorizontalAlignment="Center"
-                                FontSize="12"
                                 Foreground="#AAAACC"
+                                Style="{ThemeResource LabelSmall}"
                                 Text="nginx + Uno Platform WASM" />
                         </StackPanel>
                     </Border>
@@ -113,8 +108,8 @@
                         Spacing="0">
                         <TextBlock
                             HorizontalAlignment="Center"
-                            FontSize="11"
                             Foreground="#668899"
+                            Style="{ThemeResource LabelSmall}"
                             Text="/api/*" />
                         <TextBlock
                             HorizontalAlignment="Center"
@@ -131,14 +126,13 @@
                         <StackPanel HorizontalAlignment="Center" Spacing="2">
                             <TextBlock
                                 HorizontalAlignment="Center"
-                                FontSize="14"
-                                FontWeight="SemiBold"
                                 Foreground="White"
+                                Style="{ThemeResource LabelLarge}"
                                 Text="api pods" />
                             <TextBlock
                                 HorizontalAlignment="Center"
-                                FontSize="12"
                                 Foreground="#AAAACC"
+                                Style="{ThemeResource LabelSmall}"
                                 Text="Spring Boot 3 · Java 21 · virtual threads" />
                         </StackPanel>
                     </Border>
@@ -178,14 +172,13 @@
                             <StackPanel HorizontalAlignment="Center" Spacing="2">
                                 <TextBlock
                                     HorizontalAlignment="Center"
-                                    FontSize="13"
-                                    FontWeight="SemiBold"
                                     Foreground="White"
+                                    Style="{ThemeResource LabelLarge}"
                                     Text="PostgreSQL 17" />
                                 <TextBlock
                                     HorizontalAlignment="Center"
-                                    FontSize="11"
                                     Foreground="#AAAACC"
+                                    Style="{ThemeResource LabelSmall}"
                                     Text="StatefulSet · persistent volume"
                                     TextAlignment="Center"
                                     TextWrapping="Wrap" />
@@ -199,14 +192,13 @@
                             <StackPanel HorizontalAlignment="Center" Spacing="2">
                                 <TextBlock
                                     HorizontalAlignment="Center"
-                                    FontSize="13"
-                                    FontWeight="SemiBold"
                                     Foreground="White"
+                                    Style="{ThemeResource LabelLarge}"
                                     Text="Redis 7" />
                                 <TextBlock
                                     HorizontalAlignment="Center"
-                                    FontSize="11"
                                     Foreground="#AAAACC"
+                                    Style="{ThemeResource LabelSmall}"
                                     Text="primes cache · 24 h TTL"
                                     TextAlignment="Center"
                                     TextWrapping="Wrap" />
@@ -257,10 +249,7 @@
                     <ThemeShadow />
                 </Border.Shadow>
                 <StackPanel Spacing="12">
-                    <TextBlock
-                        FontSize="18"
-                        FontWeight="SemiBold"
-                        Text="Request Flow" />
+                    <TextBlock Style="{ThemeResource TitleLarge}" Text="Request Flow" />
                     <TextBlock
                         FontSize="14"
                         Foreground="#333333"
@@ -289,10 +278,7 @@
                     <ThemeShadow />
                 </Border.Shadow>
                 <StackPanel Spacing="12">
-                    <TextBlock
-                        FontSize="18"
-                        FontWeight="SemiBold"
-                        Text="Frontend — Uno Platform WebAssembly" />
+                    <TextBlock Style="{ThemeResource TitleLarge}" Text="Frontend — Uno Platform WebAssembly" />
                     <TextBlock
                         FontSize="14"
                         Foreground="#333333"
@@ -328,10 +314,7 @@
                     <ThemeShadow />
                 </Border.Shadow>
                 <StackPanel Spacing="12">
-                    <TextBlock
-                        FontSize="18"
-                        FontWeight="SemiBold"
-                        Text="API — Spring Boot 3 · Java 21" />
+                    <TextBlock Style="{ThemeResource TitleLarge}" Text="API — Spring Boot 3 · Java 21" />
                     <TextBlock
                         FontSize="14"
                         Foreground="#333333"
@@ -367,10 +350,7 @@
                     <ThemeShadow />
                 </Border.Shadow>
                 <StackPanel Spacing="12">
-                    <TextBlock
-                        FontSize="18"
-                        FontWeight="SemiBold"
-                        Text="Data Tier — PostgreSQL &amp; Redis" />
+                    <TextBlock Style="{ThemeResource TitleLarge}" Text="Data Tier — PostgreSQL &amp; Redis" />
                     <TextBlock
                         FontSize="14"
                         Foreground="#333333"
@@ -399,10 +379,7 @@
                     <ThemeShadow />
                 </Border.Shadow>
                 <StackPanel Spacing="12">
-                    <TextBlock
-                        FontSize="18"
-                        FontWeight="SemiBold"
-                        Text="Observability — Metrics · Logs · Traces" />
+                    <TextBlock Style="{ThemeResource TitleLarge}" Text="Observability — Metrics · Logs · Traces" />
                     <TextBlock
                         FontSize="14"
                         Foreground="#333333"
@@ -445,10 +422,7 @@
                     <ThemeShadow />
                 </Border.Shadow>
                 <StackPanel Spacing="12">
-                    <TextBlock
-                        FontSize="18"
-                        FontWeight="SemiBold"
-                        Text="Infrastructure &amp; Auto-Scaling" />
+                    <TextBlock Style="{ThemeResource TitleLarge}" Text="Infrastructure &amp; Auto-Scaling" />
                     <TextBlock
                         FontSize="14"
                         Foreground="#333333"
@@ -484,10 +458,7 @@
                     <ThemeShadow />
                 </Border.Shadow>
                 <StackPanel Spacing="12">
-                    <TextBlock
-                        FontSize="18"
-                        FontWeight="SemiBold"
-                        Text="CI/CD — GitHub Actions" />
+                    <TextBlock Style="{ThemeResource TitleLarge}" Text="CI/CD — GitHub Actions" />
                     <TextBlock
                         FontSize="14"
                         Foreground="#333333"

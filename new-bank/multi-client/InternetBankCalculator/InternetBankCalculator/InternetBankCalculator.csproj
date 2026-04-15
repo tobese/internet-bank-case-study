@@ -25,6 +25,7 @@
       Http;
       Localization;
       Toolkit;
+      Material;
     </UnoFeatures>
   </PropertyGroup>
   <ItemGroup>

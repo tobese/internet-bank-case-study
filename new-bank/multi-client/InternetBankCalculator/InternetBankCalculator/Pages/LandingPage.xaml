@@ -21,15 +21,14 @@
                     Stretch="Uniform" />
                 <TextBlock
                     HorizontalAlignment="Center"
-                    FontSize="32"
-                    FontWeight="Bold"
                     Foreground="#1A1A1A"
+                    Style="{ThemeResource HeadlineLarge}"
                     Text="Welcome to Doggerbank" />
                 <TextBlock
                     MaxWidth="560"
                     HorizontalAlignment="Center"
-                    FontSize="15"
                     Foreground="#555555"
+                    Style="{ThemeResource BodyLarge}"
                     Text="A floating point bank at the edge of the North Sea — calculator, history, and the deep story of the land beneath the waves."
                     TextAlignment="Center"
                     TextWrapping="Wrap" />
@@ -56,12 +55,11 @@
                         Stretch="Uniform" />
                     <TextBlock
                         HorizontalAlignment="Center"
-                        FontSize="18"
-                        FontWeight="SemiBold"
+                        Style="{ThemeResource TitleLarge}"
                         Text="Calculator" />
                     <TextBlock
-                        FontSize="13"
                         Foreground="#444444"
+                        Style="{ThemeResource BodySmall}"
                         Text="Arithmetic, factorial, Fibonacci and prime number streaming — all powered by the Java Math API."
                         TextAlignment="Center"
                         TextWrapping="Wrap" />
