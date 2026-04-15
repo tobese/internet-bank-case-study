@@ -125,10 +125,10 @@
                                     Foreground="{StaticResource ButtonForeground}"
                                     IsEnabled="{Binding IsInputEnabled}">
                                     <Button.Resources>
-                                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#279845" />
-                                        <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#1A8338" />
-                                        <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="White" />
-                                        <SolidColorBrush x:Key="ButtonForegroundPressed" Color="White" />
+                                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="{StaticResource ButtonFacHover}" />
+                                        <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="{StaticResource ButtonFacPressed}" />
+                                        <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="{ThemeResource OnPrimaryColor}" />
+                                        <SolidColorBrush x:Key="ButtonForegroundPressed" Color="{ThemeResource OnPrimaryColor}" />
                                     </Button.Resources>
                                 </Button>
 
@@ -145,10 +145,10 @@
                                     Foreground="{StaticResource ButtonForeground}"
                                     IsEnabled="{Binding IsInputEnabled}">
                                     <Button.Resources>
-                                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#006E7A" />
-                                        <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#005A65" />
-                                        <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="White" />
-                                        <SolidColorBrush x:Key="ButtonForegroundPressed" Color="White" />
+                                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="{StaticResource ButtonFibHover}" />
+                                        <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="{StaticResource ButtonFibPressed}" />
+                                        <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="{ThemeResource OnPrimaryColor}" />
+                                        <SolidColorBrush x:Key="ButtonForegroundPressed" Color="{ThemeResource OnPrimaryColor}" />
                                     </Button.Resources>
                                 </Button>
 
@@ -159,18 +159,18 @@
                                     Grid.ColumnSpan="3"
                                     Padding="10"
                                     HorizontalAlignment="Stretch"
-                                    Background="#5B4FCF"
+                                    Background="{StaticResource ButtonPrimesBackground}"
                                     Command="{Binding StreamPrimes}"
                                     Content="Primes(n)"
                                     CornerRadius="8"
                                     FontWeight="SemiBold"
-                                    Foreground="White"
+                                    Foreground="{StaticResource ButtonForeground}"
                                     IsEnabled="{Binding IsInputEnabled}">
                                     <Button.Resources>
-                                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#4B3FBF" />
-                                        <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#3B2FAF" />
-                                        <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="White" />
-                                        <SolidColorBrush x:Key="ButtonForegroundPressed" Color="White" />
+                                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="{StaticResource ButtonPrimesHover}" />
+                                        <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="{StaticResource ButtonPrimesPressed}" />
+                                        <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="{ThemeResource OnPrimaryColor}" />
+                                        <SolidColorBrush x:Key="ButtonForegroundPressed" Color="{ThemeResource OnPrimaryColor}" />
                                     </Button.Resources>
                                 </Button>
                             </Grid>
@@ -189,7 +189,7 @@
                                     <ProgressRing
                                         Width="20"
                                         Height="20"
-                                        Foreground="#4A90D9"
+                                        Foreground="{StaticResource ButtonCalculateBackground}"
                                         IsActive="{Binding IsLoading}"
                                         Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibilityConverter}}" />
                                     <TextBlock
@@ -205,7 +205,7 @@
                             <Border
                                 Margin="0,12,0,0"
                                 Padding="14"
-                                Background="#F3F0FF"
+                                Background="{StaticResource PrimesResultBackground}"
                                 CornerRadius="8">
                                 <StackPanel>
                                     <StackPanel
@@ -214,19 +214,19 @@
                                         Spacing="8">
                                         <TextBlock
                                             VerticalAlignment="Center"
-                                            Foreground="#5B4FCF"
+                                            Foreground="{StaticResource PrimesResultForeground}"
                                             Style="{ThemeResource LabelMedium}"
                                             Text="Primes (Sieve of Eratosthenes)" />
                                         <ProgressRing
                                             Width="14"
                                             Height="14"
-                                            Foreground="#5B4FCF"
+                                            Foreground="{StaticResource PrimesResultForeground}"
                                             IsActive="{Binding IsPrimesRunning}"
                                             Visibility="{Binding IsPrimesRunning, Converter={StaticResource BoolToVisibilityConverter}}" />
                                     </StackPanel>
                                     <TextBlock
                                         FontFamily="Consolas, Courier New, monospace"
-                                        Foreground="#2D2060"
+                                        Foreground="{StaticResource PrimesResultText}"
                                         Text="{Binding PrimesResult}"
                                         TextWrapping="Wrap" />
                                 </StackPanel>

@@ -15,26 +15,46 @@
                                 x:Key="TitleTextBlockStyle"
                                 BasedOn="{ThemeResource HeadlineSmall}"
                                 TargetType="TextBlock">
-                                <Setter Property="Foreground" Value="#1A1A1A" />
+                                <Setter Property="Foreground" Value="{ThemeResource OnSurfaceBrush}" />
                         </Style>
                         <Style
                                 x:Key="SubtitleTextBlockStyle"
                                 BasedOn="{ThemeResource TitleLarge}"
                                 TargetType="TextBlock">
-                                <Setter Property="Foreground" Value="#333" />
+                                <Setter Property="Foreground" Value="{ThemeResource OnSurfaceBrush}" />
                         </Style>
 
                         <!--  Add resources here  -->
                         <Converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
                         <SolidColorBrush x:Key="ResultBackgroundSuccess" Color="#F0F4F8" />
                         <SolidColorBrush x:Key="ResultBackgroundError" Color="#FDECEA" />
-                        <SolidColorBrush x:Key="ResultForegroundSuccess" Color="#1A1A1A" />
+                        <SolidColorBrush x:Key="ResultForegroundSuccess" Color="{ThemeResource OnSurfaceColor}" />
                         <SolidColorBrush x:Key="ResultForegroundError" Color="#C62828" />
 
                         <SolidColorBrush x:Key="ButtonCalculateBackground" Color="#4A90D9" />
                         <SolidColorBrush x:Key="ButtonFacBackground" Color="#34A853" />
                         <SolidColorBrush x:Key="ButtonFibBackground" Color="#00838F" />
-                        <SolidColorBrush x:Key="ButtonForeground" Color="White" />
+                        <SolidColorBrush x:Key="ButtonForeground" Color="{ThemeResource OnPrimaryColor}" />
+
+                        <!--  Button hover/pressed states  -->
+                        <SolidColorBrush x:Key="ButtonCalculateHover" Color="#3A80C9" />
+                        <SolidColorBrush x:Key="ButtonCalculatePressed" Color="#2A70B9" />
+                        <SolidColorBrush x:Key="ButtonFacHover" Color="#279845" />
+                        <SolidColorBrush x:Key="ButtonFacPressed" Color="#1A8338" />
+                        <SolidColorBrush x:Key="ButtonFibHover" Color="#006E7A" />
+                        <SolidColorBrush x:Key="ButtonFibPressed" Color="#005A65" />
+                        <SolidColorBrush x:Key="ButtonPrimesBackground" Color="#5B4FCF" />
+                        <SolidColorBrush x:Key="ButtonPrimesHover" Color="#4B3FBF" />
+                        <SolidColorBrush x:Key="ButtonPrimesPressed" Color="#3B2FAF" />
+
+                        <!--  Primes result panel  -->
+                        <SolidColorBrush x:Key="PrimesResultBackground" Color="#F3F0FF" />
+                        <SolidColorBrush x:Key="PrimesResultForeground" Color="#5B4FCF" />
+                        <SolidColorBrush x:Key="PrimesResultText" Color="#2D2060" />
+
+                        <!--  Page accent colors  -->
+                        <SolidColorBrush x:Key="LandingCtaBackground" Color="#1565C0" />
+                        <SolidColorBrush x:Key="DoggerHeroBackground" Color="#1a3a5c" />
 
                         <Converters:BoolToBrushConverter
                                 x:Key="BoolToBackgroundConverter"
@@ -47,7 +67,7 @@
 
                         <!--  Default dark text for all TextBlocks so light-background pages are always readable  -->
                         <Style TargetType="TextBlock">
-                                <Setter Property="Foreground" Value="#1A1A1A" />
+                                <Setter Property="Foreground" Value="{ThemeResource OnSurfaceBrush}" />
                         </Style>
 
                         <Style x:Key="NavButtonStyle" TargetType="Button">

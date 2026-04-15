@@ -67,7 +67,7 @@
                         x:Name="BtnToCalc"
                         Padding="20,10"
                         HorizontalAlignment="Center"
-                        Background="#1565C0"
+                        Background="{StaticResource LandingCtaBackground}"
                         Click="BtnToCalc_Click"
                         Content="Open Calculator"
                         CornerRadius="8"
